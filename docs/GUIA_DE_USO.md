@@ -34,7 +34,7 @@ O painel também faz o `bootstrap` sozinho na primeira abertura. A base pública
 | Aba | Para quê |
 |---|---|
 | Como funciona | as 9 etapas com os números reais e o status de cada uma |
-| Gerar roteiro | pedido em texto → roteiro com storyboard 9:16, legenda, CTA, vídeos de referência e metas de engajamento. Deixe **Modo offline** ligado para usar as respostas pré-calculadas (instantâneo, sem chave) |
+| Gerar roteiro | pedido em texto → roteiro com storyboard 9:16, legenda, CTA, vídeos de referência e metas de engajamento. Escolha a plataforma do perfil onde o vídeo será lançado; o resultado traz a confiança, o checklist "Antes de gravar" e as metas. Sem chave ou sem internet, ligue **Modo offline** para usar as respostas pré-calculadas |
 | Nichos | engajamento, % de posts no top e o que o top de cada nicho usa; botão para gerar roteiro do nicho |
 | Padrões do top | frequência de cada característica (% dos posts e % por criador), tema × formato, lift top × resto |
 | Métrica ponderada | o Índice de Desempenho Ponderado, com os pesos ajustáveis ao vivo |

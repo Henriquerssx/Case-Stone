@@ -71,7 +71,6 @@ a{{text-underline-offset:3px}}
 /* métricas */
 [data-testid="stMetricLabel"] p{{text-transform:uppercase;letter-spacing:.16em;font-size:.68rem !important;color:{MIST_70};font-weight:700}}
 [data-testid="stMetricValue"]{{font-family:"Outfit",sans-serif;font-weight:700}}
-[data-testid="stHeader"]{{background:transparent}}
 [data-testid="stVerticalBlockBorderWrapper"]{{transition:border-color .25s}}
 [data-testid="stVerticalBlockBorderWrapper"]:hover{{border-color:rgba(50,173,161,.6) !important}}
 .cds-rail{{list-style:none;margin:.2rem 0 1rem;padding:0;border-top:1px solid var(--hair)}}
@@ -122,6 +121,31 @@ a{{text-underline-offset:3px}}
 /* gancho do roteiro */
 .cds-hook{{display:flex;gap:.7rem;align-items:flex-start;font-family:"Outfit",sans-serif;font-weight:700;font-size:1.45rem;line-height:1.15;
   margin:.5rem 0 .9rem;color:var(--mist)}}
+
+/* faixa do resultado: confiança + motivo + quem redigiu */
+.cds-strip{{display:flex;flex-wrap:wrap;gap:.45rem .9rem;align-items:center;margin:1.2rem 0 1rem;padding:.75rem 1rem;
+  border:1px solid var(--hair);border-radius:1rem;background:rgba(6,53,46,.55)}}
+.cds-conf{{display:inline-flex;align-items:center;gap:.45rem;font-family:"Outfit",sans-serif;font-weight:700;text-transform:uppercase;
+  letter-spacing:.08em;font-size:.74rem;padding:.32rem .75rem;border-radius:99px;white-space:nowrap}}
+.cds-conf i{{width:.5rem;height:.5rem;border-radius:50%;background:currentColor}}
+.cds-conf.alta{{background:var(--teal);color:var(--ink)}}
+.cds-conf.media{{border:1px solid var(--teal);color:var(--mist)}}
+.cds-conf.baixa{{border:1px dashed {MIST_70};color:var(--mist)}}
+.cds-strip .why{{color:var(--mist);font-size:.92rem;flex:1 1 22rem}}
+.cds-strip .meta{{color:{MIST_70};font-size:.8rem}}
+
+/* checklist "antes de gravar" */
+.cds-check{{list-style:none;margin:.3rem 0 .6rem;padding:0;border-top:1px solid var(--hair)}}
+.cds-check li{{display:grid;grid-template-columns:1.4rem 1fr 4.2rem;gap:.15rem .7rem;align-items:center;padding:.6rem .1rem;
+  border-bottom:1px solid var(--hair);margin:0 !important}}
+.cds-check .ck{{display:flex;color:var(--teal)}}
+.cds-check .tx{{color:var(--mist);font-size:.95rem}}
+.cds-check .pc{{font-family:"Outfit",sans-serif;font-weight:700;font-size:1.15rem;text-align:right;color:var(--mist)}}
+.cds-check .bar{{grid-column:2 / -1;height:4px;border-radius:99px;background:rgba(230,234,233,.08);overflow:hidden}}
+.cds-check .bar b{{display:block;height:100%;border-radius:99px;background:var(--teal)}}
+
+/* cabeçalho fixo opaco: o conteúdo não passa por baixo com uma linha cortando o texto */
+[data-testid="stHeader"]{{background:rgba(3,33,29,.92) !important;backdrop-filter:blur(10px);box-shadow:none !important;border:0 !important}}
 
 </style>"""
 
@@ -295,3 +319,30 @@ def universe_cards(summary: pd.DataFrame, covers: dict[str, str | None]) -> str:
 
 def hook_html(gancho: str) -> str:
     return f'<div class="cds-hook">{star_svg(22)}<div>“{html.escape(gancho)}”</div></div>'
+
+
+_CONF = {"alta": "Confiança alta", "media": "Confiança média", "baixa": "Confiança baixa"}
+
+
+def result_strip_html(level: str, reason: str, scope: str, writer: str) -> str:
+    """Uma linha com o que importa antes do roteiro: nível de confiança, por quê, recorte e quem redigiu."""
+    lv = level if level in _CONF else "baixa"
+    return (f'<div class="cds-strip" role="status"><span class="cds-conf {lv}"><i></i>{_CONF[lv]}</span>'
+            f'<span class="why">{html.escape(reason[:1].upper() + reason[1:]) if reason else ""}</span>'
+            f'<span class="meta">{html.escape(scope)} · redação: {html.escape(writer)}</span></div>')
+
+
+_CHECK_SVG = ('<svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" '
+              'stroke="currentColor" stroke-width="2"/><path d="M7.5 12.5l3 3 6-6.5" fill="none" stroke="currentColor" '
+              'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>')
+
+
+def checklist_html(items: list[tuple[str, float, int, int]]) -> str:
+    """Checklist de gravação: cada item é o elemento mais frequente do top em um campo, com a % e uma barra."""
+    rows = []
+    for text, freq, n, total in items:
+        pct = f"{freq * 100:.0f}%"
+        rows.append(f'<li title="{n} de {total} posts do top"><span class="ck">{_CHECK_SVG}</span>'
+                    f'<span class="tx">{html.escape(text)}</span><span class="pc">{pct}</span>'
+                    f'<span class="bar"><b style="width:{min(freq, 1) * 100:.0f}%"></b></span></li>')
+    return f'<ul class="cds-check">{"".join(rows)}</ul>'

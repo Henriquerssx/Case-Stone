@@ -17,7 +17,7 @@ Map what the highest-engagement posts aimed at micro and small entrepreneurs (MP
 Every recommendation and every creative points back to real, verifiable posts (validated `post_id`s). Patterns are reported as observed, not causal. They are read two ways, per post and per creator, and stress-tested by a weighted index (niche, creator, period, account size).
 
 ## Operating Context
-- Shown live on a laptop or projector during a pitch. Offline mode (precomputed answers) is on by default, so the demo does not depend on API quotas.
+- Shown live on a laptop or projector during a pitch. Generation runs live by default; an offline toggle (precomputed answers) keeps the demo working without API quotas or internet.
 - Runs locally: `streamlit run demo/app.py`. Fresh clones load the public sanitized base from `data/release/`.
 
 ## Capabilities and Constraints

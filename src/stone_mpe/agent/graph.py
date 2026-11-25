@@ -242,7 +242,8 @@ def make_graph(llm: FallbackClient | None = None):
         if notes:
             explanation += "\n\nNotas: " + "; ".join(notes) + "."
         out = AgentOutput(mode=inp.mode, query=inp.query, segment_used=s["meta"].get("segment_used"), findings=s["findings"],
-                          reference_posts=s["refs"], creatives=creatives, confidence_flag=low, confidence_level=level, confidence_reason=reason, explanation=explanation.strip(),
+                          reference_posts=s["refs"], creatives=creatives, confidence_flag=low, confidence_level=level, confidence_reason=reason,
+                          segment_asked=s["meta"].get("segment_asked"), notes=notes, explanation=explanation.strip(),
                           run_id=s["run_id"], llm=s.get("llm_used", "none"))
         rec = {"run_id": s["run_id"], "ts": datetime.now(timezone.utc).isoformat(), "mode": inp.mode, "query": inp.query,
                "segment": inp.segment, "segment_used": out.segment_used, "filters": s["meta"].get("filters_used"),

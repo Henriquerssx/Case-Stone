@@ -96,6 +96,8 @@ class AgentOutput(BaseModel):
     confidence_flag: bool = Field(..., description="true só quando a confiança é baixa (menos de 10 posts no recorte)")
     confidence_level: Optional[Literal["alta", "media", "baixa"]] = None
     confidence_reason: str = ""
+    segment_asked: Optional[str] = Field(None, description="nicho pedido ou inferido, antes de qualquer ampliação")
+    notes: list[str] = Field(default_factory=list, description="como o recorte foi montado e ampliado, passo a passo")
     explanation: str
     run_id: str
     llm: str = Field("none", description="provedor/modelo usado ou 'none' (modo template)")

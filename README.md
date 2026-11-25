@@ -51,8 +51,9 @@ pip install -r requirements.lock.txt && pip install -e . --no-deps
 streamlit run demo/app.py                             # monta a base pública e abre http://localhost:8501
 ```
 
-Na aba **Gerar roteiro**, deixe **Modo offline** ligado e clique em **Gerar**. Coleta, categorização e geração ao vivo
-exigem chaves no `.env` (modelo em `.env.example`): ver [Guia de uso](docs/GUIA_DE_USO.md).
+Na aba **Gerar roteiro**, escolha a plataforma do perfil onde o vídeo será lançado e clique em **Gerar**. A geração ao vivo
+usa as chaves do `.env` (modelo em `.env.example`); sem chave ou sem internet, ligue **Modo offline** para usar as
+respostas salvas. Ver [Guia de uso](docs/GUIA_DE_USO.md).
 
 ```bash
 pytest                                                # 67 testes, base sintética, sem chamadas externas

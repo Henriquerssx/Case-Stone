@@ -177,8 +177,8 @@ def storyboard_grid(cr, key: str, per_row: int = 4) -> None:
         for k, c in enumerate(cs[start:start + per_row]):
             i = start + k + 1
             with cols[k]:
-                st.markdown(storyboard.svg_frame(c, i, uid=key), unsafe_allow_html=True)
-                st.caption(f"**{c.tempo or f'cena {i}'}** · {storyboard.PLANO_LABEL.get(c.plano, c.plano)}  \n{c.visual}")
+                st.markdown(storyboard.svg_frame(c, i, uid=key, total=len(cs)), unsafe_allow_html=True)
+                st.caption(f"**{storyboard.PLANO_LABEL.get(c.plano, c.plano)}**  \n{c.visual}")
 
 
 if release.ensure_db():  # clone novo: monta a base pública de data/release/
@@ -205,9 +205,15 @@ with tab_how:
                 "e o agente transforma os padrões em roteiros que citam os posts reais de onde vieram.**")
     st.subheader("A galáxia dos posts")
     st.caption("Cada ponto é uma publicação elegível, por nicho, data e engajamento (escala log). As verde-limão são o top 10% "
-               "da plataforma. Arraste para girar, role para aproximar, passe o mouse para ver o perfil.")
+               "da plataforma. Arraste para girar e passe o mouse para ver o perfil; para aproximar, use os botões do canto. "
+               "A rolagem do mouse continua descendo a página.")
+    # o 3D do Plotly sempre bloqueia a roda do mouse (mesmo com scrollZoom desligado): este script estático,
+    # sem dados, segura o evento antes do gráfico e deixa a página rolar; girar e aproximar pelos botões seguem iguais
+    st.html("""<script>(function(){var d=document;if(d.__cdsWheel)return;d.__cdsWheel=true;
+d.addEventListener('wheel',function(e){var t=e.target;if(t&&t.closest&&t.closest('.js-plotly-plot .gl-container')){e.stopPropagation();}},
+{capture:true,passive:true});})();</script>""", unsafe_allow_javascript=True)
     st.plotly_chart(c_galaxy(), width="stretch", key="galaxy",
-                    config={"displaylogo": False, "modeBarButtonsToRemove": ["resetCameraLastSave3d"]})
+                    config={"displaylogo": False, "scrollZoom": False, "modeBarButtonsToRemove": ["resetCameraLastSave3d"]})
     st.subheader("As 9 etapas, com os números reais")
     st.markdown(brand.rail_html(steps, _n), unsafe_allow_html=True)
     with st.expander("Comandos para reproduzir cada etapa"):
@@ -255,135 +261,219 @@ with tab_how:
         "6. **registrar**: grava a execução em `outputs/runs.jsonl`. Sem LLM disponível, um template usa os mesmos dados.")
 
 # ---------------- Gerar roteiro ----------------
+PLAT_NOME = {"instagram": "Instagram", "youtube": "YouTube"}
+FEAT_BOOL = {"tem_rosto": "Rosto na câmera", "texto_na_tela": "Texto na tela", "prova_social": "Prova social",
+             "criador_e_empreendedor_real": "Quem fala é empreendedor real",
+             "oferta_ou_beneficio_explicito": "Oferta ou benefício explícito"}
+# o que conferir antes de gravar: a característica mais frequente do top em cada campo que se controla na gravação
+CHECK = [("tipo_hook", lambda v: f"Gancho de {v} nos 3 primeiros segundos"),
+         ("texto_na_tela", lambda v: "Texto na tela desde o primeiro segundo"),
+         ("tem_rosto", lambda v: "Rosto para a câmera"),
+         ("criador_e_empreendedor_real", lambda v: "Quem fala é um empreendedor de verdade"),
+         ("tom", lambda v: f"Tom {v}"),
+         ("duracao_faixa", lambda v: f"Duração de {v.replace('-', '–')}"),
+         ("formato_video", lambda v: f"Formato {v}")]
+
+
+def feat_label(feature: str) -> str:
+    f, _, v = feature.partition("=")
+    return FEAT_BOOL.get(f) or f"{LABELS.get(f, f)}: {v}"
+
+
+def checklist_items(findings) -> list[tuple[str, float, int, int]]:
+    best = {}
+    for f in findings:
+        k, _, v = f.feature.partition("=")
+        if v in ("", "nenhum", "n/d", "desconhecido", "não"):
+            continue
+        if k not in best or f.frequency > best[k][1]:
+            best[k] = (v, f.frequency, f.n_posts, f.total)
+    items = [(fmt(best[k][0]), *best[k][1:]) for k, fmt in CHECK if k in best]
+    return sorted(items, key=lambda x: -x[1])
+
+
+def nome_nicho(slug: str | None) -> str:
+    return niches.NOMES.get(slug, slug) if slug else "todos os nichos"
+
+
+def humanize(text: str) -> str:
+    for slug, nome in niches.NOMES.items():
+        text = text.replace(f"'{slug}'", nome)
+    return text
+
+
 with tab_rot:
     examples = [q["query"] for q in demo_cache.DEMO_QUERIES]
     c1, c2 = st.columns([1, 3])
-    mode = c1.radio("Modo", ["gerar_criativo", "recomendar", "analisar"],
+    mode = c1.radio("O que você quer", ["gerar_criativo", "recomendar", "analisar"],
                     format_func={"gerar_criativo": "Roteiro de vídeo", "recomendar": "Recomendação", "analisar": "Análise"}.get)
-    offline = c1.toggle("Modo offline (respostas salvas)", value=True, help="Usa respostas pré-computadas: para apresentar sem internet.")
-    query = c2.text_area("O que você quer criar?", value=examples[2], height=80)
-    c3, c4, c5, c6 = st.columns(4)
-    seg_opt = c3.selectbox("Segmento", ["(inferir do pedido)"] + segments())
+    query = c2.text_area("Descreva o pedido", value=examples[2], height=96)
+    c3, c4, c5, c6, c7 = st.columns([1.35, 1, 1.1, 1, .7])
+    platform = c3.selectbox("Plataforma do perfil de lançamento", ["instagram", "youtube"], key="ag_plat",
+                            format_func=PLAT_NOME.get,
+                            help="Onde o vídeo será lançado. Os padrões, os vídeos de referência e as metas vêm dos posts de alto desempenho desta plataforma. "
+                                 "Se ela tiver poucos posts no nicho, o agente amplia e avisa.")
+    followers = c4.number_input("Seguidores desse perfil", min_value=100, value=10000, step=1000,
+                                help="Usado para converter as metas de engajamento em curtidas + comentários.")
+    seg_opt = c5.selectbox("Nicho", ["(inferir do pedido)"] + segments(),
+                           format_func=lambda s: s if s.startswith("(") else nome_nicho(s))
     segment = None if seg_opt.startswith("(") else seg_opt
-    platform = c4.selectbox("Plataforma", ["(todas)", "youtube", "instagram"], key="ag_plat")
-    size = c5.selectbox("Tamanho dos perfis de referência", ["(todos)", "micro", "medio", "grande"])
-    n_cr = c6.number_input("Roteiros", 1, 3, 1)
-    c7, c8 = st.columns([3, 1])
-    followers = c7.number_input("Seguidores do perfil que vai publicar (para calcular metas)", min_value=100, value=10000, step=1000)
-    pub_plat = c8.selectbox("Onde vai publicar", ["instagram", "youtube"])
+    size = c6.selectbox("Porte das referências", ["(todos)", "micro", "medio", "grande"],
+                        format_func=lambda s: {"medio": "médio"}.get(s, s))
+    n_cr = c7.number_input("Roteiros", 1, 3, 1)
+    b1, b2 = st.columns([1, 3], vertical_alignment="center")
+    go_btn = b1.button("Gerar", type="primary", width="stretch")
+    offline = b2.toggle("Modo offline: usar respostas salvas (para apresentar sem internet)", value=False)
 
-    if st.button("Gerar", type="primary"):
+    if go_btn:
         out = None
         if offline:
             out = demo_cache.get(mode, query, segment)
             if not out:
-                st.warning("Pedido não está nas respostas salvas; executando ao vivo.")
+                st.warning("Este pedido não está nas respostas salvas; gerando ao vivo.")
         if out is None:
-            filters = {k: v for k, v in dict(platform=None if platform == "(todas)" else platform,
-                                              profile_size=None if size == "(todos)" else size).items() if v}
-            with st.spinner("Consultando a base e redigindo..."):
+            filters = {k: v for k, v in dict(platform=platform, profile_size=None if size == "(todos)" else size).items() if v}
+            with st.spinner("Consultando a base e redigindo o roteiro..."):
                 try:
                     out = run(mode, query, segment=segment, filters=filters or None, n_creatives=int(n_cr), llm=agent_llm())
                 except Exception as e:
                     out = demo_cache.get(mode, query, segment)
-                    st.error(f"Falha ao vivo ({e}); {'usando resposta salva' if out else 'sem resposta salva para este pedido'}.")
+                    st.error(f"Falha ao vivo ({type(e).__name__}); "
+                             f"{'usando a resposta salva' if out else 'sem resposta salva para este pedido'}.")
+            if out is not None and out.llm == "none":
+                saved = demo_cache.get(mode, query, segment)
+                if saved is not None and saved.llm != "none":
+                    out = saved
+                    st.info("Os modelos gratuitos estão indisponíveis agora: mostrando a resposta salva para este pedido.")
         st.session_state.out = out
+        st.session_state.out_plat = platform
 
     out = st.session_state.get("out")
     if out:
+        pub_plat = st.session_state.get("out_plat", platform)
         _lv = out.confidence_level or ("baixa" if out.confidence_flag else "alta")
-        _ic = {"alta": ":material/verified:", "media": ":material/info:", "baixa": ":material/warning:"}[_lv]
-        badge = f"{_ic} confiança {'média' if _lv == 'media' else _lv}" + (f" ({out.confidence_reason})" if out.confidence_reason else "")
-        st.markdown(f"**{badge}** · recorte: `{out.segment_used or 'todos os segmentos'}` · "
-                    f"redação: `{out.llm if out.llm != 'none' else 'template (sem LLM)'}` · execução `{out.run_id}`")
-        st.markdown(out.explanation)
+        main_text, _, notes_txt = out.explanation.partition("\n\nNotas: ")
+        notes = out.notes or [n.strip() for n in notes_txt.rstrip(".").split("; ") if n.strip()]
+        notes = [humanize(n) for n in notes if not n.startswith("confiança")]
+        reason = out.confidence_reason or ""
+        if out.segment_asked:
+            reason = reason.replace("o nicho pedido", f"o nicho {nome_nicho(out.segment_asked)}")
+        writer = out.llm.split("/")[-1] if out.llm != "none" else "template (sem LLM)"
+        st.markdown(brand.result_strip_html(_lv, reason, f"nicho usado: {nome_nicho(out.segment_used)}", writer),
+                    unsafe_allow_html=True)
 
         nicho = out.segment_used if out.segment_used in segments() else None
         bm = status.benchmarks(pub_plat, nicho) or status.benchmarks(pub_plat)
         meta = status.goals(int(followers), bm)
         all_refs = status.reference_metrics([r.post_id for r in out.reference_posts])
 
+        if out.mode != "gerar_criativo":
+            with st.container(border=True):
+                st.markdown(main_text)
+
         for i, cr in enumerate(out.creatives, 1):
             refs = all_refs[all_refs.post_id.isin(cr.inspired_by)]
+            cs = storyboard.scenes(cr)
             with st.container(border=True):
-                st.markdown(f"### Roteiro {i}: {cr.titulo}")
-                st.markdown(f"**Formato:** {cr.formato} · **gancho** nos 3 primeiros segundos")
+                st.caption(f"Roteiro {i} de {len(out.creatives)} · {cr.formato}")
+                st.markdown(f"### {cr.titulo or 'Roteiro'}")
                 st.markdown(brand.hook_html(cr.gancho), unsafe_allow_html=True)
-                t_sb, t_txt, t_ref = st.tabs(["Storyboard ilustrado", "Roteiro e legenda", "Vídeos de referência"])
+                t_sb, t_txt, t_why, t_ref = st.tabs(["Storyboard", "Roteiro e legenda", "Por que assim",
+                                                     f"Vídeos de referência ({len(refs)})"])
                 with t_sb:
-                    storyboard_grid(cr, key=f"{out.run_id}{i}", per_row=min(max(len(storyboard.scenes(cr)), 1), 5))
-                    st.caption("Quadros 9:16: ilustração do tipo de plano, texto na tela como no vídeo e a fala como legenda.")
+                    storyboard_grid(cr, key=f"{out.run_id}{i}", per_row=min(max(len(cs), 1), 5))
                 with t_txt:
-                    a, b = st.columns([3, 2])
+                    a, b = st.columns([3, 2], gap="large")
                     with a:
                         st.markdown("**Roteiro de gravação**")
                         st.markdown(cr.roteiro)
                         st.markdown(f"**CTA:** {cr.cta}")
                     with b:
-                        st.markdown("**Legenda (copiar)**")
+                        st.markdown("**Legenda** (pronta para copiar)")
                         st.code(cr.legenda, language=None, wrap_lines=True)
-                    if cr.justificativa:
-                        st.caption(cr.justificativa)
+                with t_why:
+                    st.markdown(cr.justificativa or "Escolhas feitas a partir dos padrões mais frequentes do top do recorte.")
+                    if not refs.empty:
+                        st.markdown("**Apoiado em:** " + " · ".join(f"[@{r.handle}]({r.url})" for r in refs.itertuples()))
                 with t_ref:
-                    st.caption("Posts reais de alto desempenho que inspiraram este roteiro: o mais próximo do vídeo a gravar.")
+                    st.caption("Posts reais de alto desempenho em que este roteiro se apoia: o mais próximo do vídeo a gravar.")
                     ref_gallery(refs, cols=4)
                 d1, d2, _ = st.columns([1, 1, 2])
-                d1.download_button("Baixar storyboard (.html)",
+                d1.download_button("Storyboard (.html)",
                                    storyboard.storyboard_html(cr, refs, meta, int(followers), niches.NOMES.get(nicho, nicho) if nicho else None),
-                                   file_name=f"storyboard_{out.run_id}_{i}.html", mime="text/html", key=f"sb{i}")
-                d2.download_button("Baixar roteiro (.md)", roteiro_md(cr, refs, meta, int(followers)),
-                                   file_name=f"roteiro_{out.run_id}_{i}.md", key=f"dl{i}")
+                                   file_name=f"storyboard_{out.run_id}_{i}.html", mime="text/html", key=f"sb{i}",
+                                   icon=":material/download:")
+                d2.download_button("Roteiro (.md)", roteiro_md(cr, refs, meta, int(followers)),
+                                   file_name=f"roteiro_{out.run_id}_{i}.md", key=f"dl{i}", icon=":material/description:")
 
-        st.subheader("Métricas: de onde vem e aonde mirar")
-        if meta:
-            m = st.columns(4)
-            st.caption(f"Metas no **{pub_plat}**" + (f", nicho **{niches.NOMES.get(nicho, nicho)}**" if nicho else "") + ".")
-            m[0].metric("Mediana do nicho" if nicho else "Mediana da base", _n(meta["mediana_da_base"]),
-                        help=f"{_pct(bm['mediana_geral'], 3)} dos seguidores")
-            m[1].metric("Para entrar no top 10%", _n(meta["entrar_no_top"]), help=f"{_pct(bm['limiar_top'])} dos seguidores")
-            m[2].metric("Mediana do top", _n(meta["mediana_do_top"]), help=f"{_pct(bm['mediana_top'])} dos seguidores")
-            m[3].metric("Views por seguidor (top)", f"{bm['views_por_seguidor_top']:.1f}".replace(".", ",") if bm.get("views_por_seguidor_top") else "n/d",
-                        help="Alcance relativo (fora do ranking). No Instagram, a coleta básica não traz views.")
-            st.caption(f"Curtidas + comentários que um post precisaria para um perfil com {_n(followers)} seguidores, "
-                       f"calculado sobre {_n(bm['n'])} publicações elegíveis. São referências observadas, não previsões.")
+        k1, k2 = st.columns([1.15, 1], gap="large")
+        with k1:
+            st.subheader("Antes de gravar")
+            items = checklist_items(out.findings)
+            if items:
+                st.markdown(brand.checklist_html(items), unsafe_allow_html=True)
+                st.caption(f"Frequência de cada elemento entre os {_n(items[0][3])} posts de alto desempenho do recorte. "
+                           "Padrões observados, não garantia de resultado.")
+        with k2:
+            st.subheader(f"Metas no {PLAT_NOME.get(pub_plat, pub_plat)}")
+            if meta:
+                m = st.columns(2)
+                m[0].metric("Para entrar no top 10%", _n(meta["entrar_no_top"]), help=f"{_pct(bm['limiar_top'])} dos seguidores")
+                m[1].metric("Mediana do top", _n(meta["mediana_do_top"]), help=f"{_pct(bm['mediana_top'])} dos seguidores")
+                m = st.columns(2)
+                m[0].metric("Mediana do nicho" if nicho else "Mediana da base", _n(meta["mediana_da_base"]),
+                            help=f"{_pct(bm['mediana_geral'], 3)} dos seguidores")
+                m[1].metric("Views por seguidor (top)",
+                            f"{bm['views_por_seguidor_top']:.1f}".replace(".", ",") if bm.get("views_por_seguidor_top") else "n/d",
+                            help="Alcance relativo (fora do ranking). No Instagram, a coleta básica não traz views.")
+                st.caption(f"Curtidas + comentários para um perfil com {_n(followers)} seguidores"
+                           + (f", nicho {nome_nicho(nicho)}" if nicho else "") + f", sobre {_n(bm['n'])} publicações elegíveis. "
+                           "Referências observadas, não previsões.")
+
         if not all_refs.empty:
-            r = all_refs.sort_values("engagement_rate")
-            fig = go.Figure(go.Bar(x=r["engagement_rate"] * 100, y="@" + r["handle"] + " · " + r["post_id"].str[-6:], orientation="h",
-                                   marker=dict(color=SERIES_1, cornerradius=4), text=[_pct(v, 1) for v in r["engagement_rate"]],
-                                   textposition="outside", customdata=r[["views", "likes", "comments", "followers"]],
-                                   hovertemplate="%{y}<br>engajamento %{x:.2f}%<br>%{customdata[0]:,} views · %{customdata[1]:,} curtidas"
-                                                 " · %{customdata[2]:,} comentários<br>%{customdata[3]:,} seguidores<extra></extra>"))
-            # linhas de referência só quando as referências são de uma plataforma (escalas diferentes)
-            rplats = r["platform"].unique()
-            bm_r = status.benchmarks(rplats[0], nicho) if len(rplats) == 1 else {}
-            lab_med = "mediana do nicho" if nicho else "mediana da base"
-            for k, (val, lab) in enumerate([(bm_r.get("mediana_geral"), f"{lab_med} ({rplats[0]})" if bm_r else lab_med),
-                                            (bm_r.get("limiar_top"), "entrada no top")]):
-                if val:
-                    fig.add_vline(x=val * 100, line=dict(color=MUTED, width=1, dash="dot"))
-                    fig.add_annotation(x=val * 100, y=1 + 0.09 * (k + 1), yref="paper", text=f"{lab} {_pct(val)}", showarrow=False,
-                                       font=dict(color=MUTED, size=11), xanchor="left", xshift=3)
-            fig.update_xaxes(title="engajamento (%)", range=[0, r["engagement_rate"].max() * 100 * 1.15])
-            fig.update_layout(margin=dict(t=48))
-            st.plotly_chart(_layout(fig, 120 + 46 * len(r)).update_layout(margin=dict(t=48)), width="stretch")
-            st.dataframe(all_refs.assign(perfil="@" + all_refs.handle)[
-                ["perfil", "faixa", "followers", "views", "likes", "comments", "engagement_rate", "percentile", "url"]],
-                hide_index=True, column_config={
-                    "url": st.column_config.LinkColumn("link", display_text="abrir"), "followers": st.column_config.NumberColumn("seguidores", format="localized"),
-                    "views": st.column_config.NumberColumn(format="localized"), "likes": st.column_config.NumberColumn("curtidas", format="localized"),
-                    "comments": st.column_config.NumberColumn("comentários", format="localized"),
-                    "engagement_rate": st.column_config.NumberColumn("engajamento", format="percent"),
-                    "percentile": st.column_config.NumberColumn("percentil", format="percent")})
+            with st.expander(f"Desempenho dos {len(all_refs)} vídeos de referência", icon=":material/leaderboard:"):
+                r = all_refs.sort_values("engagement_rate")
+                fig = go.Figure(go.Bar(x=r["engagement_rate"] * 100, y="@" + r["handle"] + " · " + r["post_id"].str[-6:], orientation="h",
+                                       marker=dict(color=SERIES_1, cornerradius=4), text=[_pct(v, 1) for v in r["engagement_rate"]],
+                                       textposition="outside", customdata=r[["views", "likes", "comments", "followers"]],
+                                       hovertemplate="%{y}<br>engajamento %{x:.2f}%<br>%{customdata[0]:,} views · %{customdata[1]:,} curtidas"
+                                                     " · %{customdata[2]:,} comentários<br>%{customdata[3]:,} seguidores<extra></extra>"))
+                rplats = r["platform"].unique()
+                bm_r = status.benchmarks(rplats[0], nicho) if len(rplats) == 1 else {}
+                lab_med = "mediana do nicho" if nicho else "mediana da base"
+                for k, (val, lab) in enumerate([(bm_r.get("mediana_geral"), f"{lab_med} ({rplats[0]})" if bm_r else lab_med),
+                                                (bm_r.get("limiar_top"), "entrada no top")]):
+                    if val:
+                        fig.add_vline(x=val * 100, line=dict(color=MUTED, width=1, dash="dot"))
+                        fig.add_annotation(x=val * 100, y=1 + 0.09 * (k + 1), yref="paper", text=f"{lab} {_pct(val)}", showarrow=False,
+                                           font=dict(color=MUTED, size=11), xanchor="left", xshift=3)
+                fig.update_xaxes(title="engajamento (%)", range=[0, r["engagement_rate"].max() * 100 * 1.15])
+                st.plotly_chart(_layout(fig, 120 + 46 * len(r)).update_layout(margin=dict(t=48)), width="stretch")
+                st.dataframe(all_refs.assign(perfil="@" + all_refs.handle)[
+                    ["perfil", "faixa", "followers", "views", "likes", "comments", "engagement_rate", "percentile", "url"]],
+                    hide_index=True, column_config={
+                        "url": st.column_config.LinkColumn("link", display_text="abrir"), "followers": st.column_config.NumberColumn("seguidores", format="localized"),
+                        "views": st.column_config.NumberColumn(format="localized"), "likes": st.column_config.NumberColumn("curtidas", format="localized"),
+                        "comments": st.column_config.NumberColumn("comentários", format="localized"),
+                        "engagement_rate": st.column_config.NumberColumn("engajamento", format="percent"),
+                        "percentile": st.column_config.NumberColumn("percentil", format="percent")})
         if out.findings:
-            st.markdown("**Por que esses elementos:** frequência no top do recorte")
-            fd = pd.DataFrame([f.model_dump() for f in out.findings])
-            fd = fd[~fd.feature.str.startswith("tipo_post=") & ~fd.feature.str.endswith("=não")]
-            fd = fd.sort_values("frequency", ascending=False).head(12).sort_values("frequency")
-            fig = go.Figure(go.Bar(x=fd["frequency"] * 100, y=fd["feature"], orientation="h", marker=dict(color=SERIES_1, cornerradius=4),
-                                   text=[f"{v * 100:.0f}% ({n}/{t})" for v, n, t in zip(fd["frequency"], fd["n_posts"], fd["total"])],
-                                   textposition="outside", hovertemplate="%{y}: %{x:.0f}%<extra></extra>"))
-            fig.update_xaxes(title="% dos posts de alto desempenho do recorte", range=[0, 118])
-            st.plotly_chart(_layout(fig, 60 + 30 * len(fd)), width="stretch")
+            with st.expander("Todos os padrões do recorte", icon=":material/bar_chart:"):
+                fd = pd.DataFrame([f.model_dump() for f in out.findings])
+                fd = fd[~fd.feature.str.startswith("tipo_post=") & ~fd.feature.str.endswith("=não")]
+                fd = fd.sort_values("frequency", ascending=False).head(14).sort_values("frequency")
+                fig = go.Figure(go.Bar(x=fd["frequency"] * 100, y=fd["feature"].map(feat_label), orientation="h",
+                                       marker=dict(color=SERIES_1, cornerradius=4),
+                                       text=[f"{v * 100:.0f}% ({n}/{t})" for v, n, t in zip(fd["frequency"], fd["n_posts"], fd["total"])],
+                                       textposition="outside", hovertemplate="%{y}: %{x:.0f}%<extra></extra>"))
+                fig.update_xaxes(title="% dos posts de alto desempenho do recorte", range=[0, 118])
+                st.plotly_chart(_layout(fig, 60 + 30 * len(fd)), width="stretch")
+        with st.expander("Como o agente chegou aqui", icon=":material/route:"):
+            if notes:
+                st.markdown("\n".join(f"{k}. {n[:1].upper() + n[1:]}" for k, n in enumerate(notes, 1)))
+            if out.mode == "gerar_criativo" and main_text:
+                st.caption(main_text)
+            st.caption(f"Execução `{out.run_id}` · redação `{out.llm}` · registrada em `outputs/runs.jsonl`.")
 
 # ---------------- Nichos ----------------
 with tab_nic:

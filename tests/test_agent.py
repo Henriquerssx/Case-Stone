@@ -24,6 +24,7 @@ def test_tres_modos_sem_llm_retornam_contrato(synthetic_db, mode):
 def test_segmento_inferido_e_amplia_quando_pequeno(synthetic_db):
     out = run("analisar", "o que engaja donos de restaurante?")
     assert "segmento inferido do pedido: alimentacao" in out.explanation
+    assert out.segment_asked == "alimentacao" and any("segmento inferido" in n for n in out.notes)
     # o segmento sintético tem poucos posts no top -> recorre aos padrões gerais e diz por quê
     assert out.confidence_level in ("media", "baixa") and out.confidence_reason
     assert "padrões gerais" in out.explanation or out.confidence_level == "baixa"
