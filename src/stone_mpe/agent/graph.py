@@ -78,6 +78,21 @@ def _pct(x: float) -> str:
     return f"{x * 100:.0f}%".replace(".", ",")
 
 
+def confidence(total: int, meta: dict) -> tuple[str, str]:
+    """Nível de confiança do recorte: alta (≥ 30 posts no nicho pedido), média (10–29, ou padrões gerais porque o
+    nicho tem poucos posts no top) e baixa (< 10 posts sustentam os padrões)."""
+    lo = config.get("agent.confidence_min_posts", 10)
+    hi = config.get("agent.confidence_high_posts", 30)
+    if total < lo:
+        return "baixa", f"só {total} publicações de alto desempenho sustentam estes padrões"
+    if meta.get("segment_dropped"):
+        return "media", (f"o nicho pedido tem poucos posts no top; os padrões vêm de {total} publicações de toda a base")
+    if total < hi:
+        return "media", f"{total} publicações de alto desempenho no recorte"
+    extra = " (com filtros ampliados)" if meta.get("widened") else ""
+    return "alta", f"{total} publicações de alto desempenho no recorte{extra}"
+
+
 def _template_explanation(s: State) -> str:
     total = s["meta"].get("n_top_recorte", 0)
     if total == 0:
@@ -217,17 +232,17 @@ def make_graph(llm: FallbackClient | None = None):
         if inp.mode == "gerar_criativo" and not creatives and s["refs"]:
             creatives = [_template_creative(s)]  # último recurso, ainda rastreável
         total = s["meta"].get("n_top_recorte", 0)
-        low = total < config.get("agent.confidence_min_posts", 10) or bool(s["meta"].get("widened"))
+        level, reason = confidence(total, s["meta"])
+        low = level == "baixa"
         explanation = s.get("explanation") or ""
         if inp.mode == "gerar_criativo" and not explanation:
             explanation = _template_explanation(s)
         notes = s["notes"] + s["meta"].get("widened", [])
-        if low:
-            notes.append(f"confiança baixa: recorte com {total} publicações de alto desempenho")
+        notes.append(f"confiança {'média' if level == 'media' else level}: {reason}")
         if notes:
             explanation += "\n\nNotas: " + "; ".join(notes) + "."
         out = AgentOutput(mode=inp.mode, query=inp.query, segment_used=s["meta"].get("segment_used"), findings=s["findings"],
-                          reference_posts=s["refs"], creatives=creatives, confidence_flag=low, explanation=explanation.strip(),
+                          reference_posts=s["refs"], creatives=creatives, confidence_flag=low, confidence_level=level, confidence_reason=reason, explanation=explanation.strip(),
                           run_id=s["run_id"], llm=s.get("llm_used", "none"))
         rec = {"run_id": s["run_id"], "ts": datetime.now(timezone.utc).isoformat(), "mode": inp.mode, "query": inp.query,
                "segment": inp.segment, "segment_used": out.segment_used, "filters": s["meta"].get("filters_used"),

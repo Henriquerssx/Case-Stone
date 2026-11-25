@@ -48,7 +48,8 @@ analysis:
     weights: {nicho: 0.35, perfil: 0.30, periodo: 0.20, porte: 0.15}
 
 agent:
-  confidence_min_posts: 10    # Q-08: abaixo disso, confidence_flag = true
+  confidence_min_posts: 10    # Q-08: abaixo disso, confiança baixa (confidence_flag = true)
+  confidence_high_posts: 30   # a partir disso, confiança alta (com o nicho pedido preservado)
   reference_k: 5
   max_refs_per_creator: 2
   findings_per_field: 3

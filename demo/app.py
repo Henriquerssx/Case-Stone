@@ -247,7 +247,8 @@ with tab_how:
     st.markdown(
         "1. **validar_entrada**: confere o pedido e infere segmento e tipo de post pelas palavras usadas.\n"
         "2. **consulta_base**: SQL no top do recorte; conta a frequência de cada característica. Se o recorte tiver "
-        f"menos de {config.get('agent.confidence_min_posts', 10)} posts, amplia e marca **confiança baixa**.\n"
+        f"menos de {config.get('agent.confidence_min_posts', 10)} posts, amplia em etapas (porte → tipo de post → plataforma → nicho, por último) "
+        "e mostra a **confiança** em três níveis, com o motivo: alta (≥ 30 posts), média (10–29 ou padrões gerais) e baixa (< 10).\n"
         "3. **posts_referencia**: escolhe os posts mais parecidos com o pedido (BM25) e de maior engajamento, "
         f"no máximo {config.get('agent.max_refs_per_creator', 2)} por criador.\n"
         "4. **gerar_criativo**: o LLM só *redige* gancho, roteiro, legenda e CTA a partir desses números e posts.\n"
@@ -291,7 +292,9 @@ with tab_rot:
 
     out = st.session_state.get("out")
     if out:
-        badge = ":material/warning: confiança baixa (recorte pequeno ou ampliado)" if out.confidence_flag else ":material/verified: confiança adequada"
+        _lv = out.confidence_level or ("baixa" if out.confidence_flag else "alta")
+        _ic = {"alta": ":material/verified:", "media": ":material/info:", "baixa": ":material/warning:"}[_lv]
+        badge = f"{_ic} confiança {'média' if _lv == 'media' else _lv}" + (f" ({out.confidence_reason})" if out.confidence_reason else "")
         st.markdown(f"**{badge}** · recorte: `{out.segment_used or 'todos os segmentos'}` · "
                     f"redação: `{out.llm if out.llm != 'none' else 'template (sem LLM)'}` · execução `{out.run_id}`")
         st.markdown(out.explanation)

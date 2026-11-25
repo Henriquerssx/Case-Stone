@@ -141,7 +141,8 @@ def build(n_creatives_min: int = 5) -> str:
             w(f"- **Formato:** {c.formato}  ")
             w(f"- **Gancho (0–3s):** {c.gancho}  ")
             w(f"- **CTA:** {c.cta}  ")
-            w(f"- **Confiança:** {'⚠️ baixa — padrão apoiado em poucas publicações' if out.confidence_flag else 'adequada'}\n")
+            _lv = out.confidence_level or ("baixa" if out.confidence_flag else "alta")
+            w(f"- **Confiança:** {'média' if _lv == 'media' else _lv}" + (f" ({out.confidence_reason})" if out.confidence_reason else "") + "\n")
             if c.cenas:
                 w("**Roteiro (storyboard)**\n")
                 w("| Tempo | Plano | O que aparece | Fala | Texto na tela |\n|---|---|---|---|---|")

@@ -24,8 +24,9 @@ def test_tres_modos_sem_llm_retornam_contrato(synthetic_db, mode):
 def test_segmento_inferido_e_amplia_quando_pequeno(synthetic_db):
     out = run("analisar", "o que engaja donos de restaurante?")
     assert "segmento inferido do pedido: alimentacao" in out.explanation
-    # o segmento sintético tem poucos posts no top -> sinaliza baixa confiança
-    assert out.confidence_flag
+    # o segmento sintético tem poucos posts no top -> recorre aos padrões gerais e diz por quê
+    assert out.confidence_level in ("media", "baixa") and out.confidence_reason
+    assert "padrões gerais" in out.explanation or out.confidence_level == "baixa"
 
 
 def test_criativo_com_referencia_inventada_e_descartado_e_refeito(synthetic_db):
@@ -76,9 +77,18 @@ def test_execucao_registrada(synthetic_db, env):
     assert rec["tools_called"] == ["consulta_base", "posts_referencia"] and rec["reference_post_ids"]
 
 
-def test_filtro_sem_resultado(synthetic_db):
+def test_filtro_sem_resultado_amplia_soltando_porte_antes_do_nicho(synthetic_db):
     out = run("gerar_criativo", "qualquer coisa", filters={"platform": "youtube", "profile_size": "micro"})
-    assert out.findings == [] and out.creatives == [] and out.confidence_flag
+    assert "filtro de porte de perfil removido" in out.explanation
+    assert out.findings and out.creatives
+
+
+def test_niveis_de_confianca():
+    from stone_mpe.agent.graph import confidence
+    assert confidence(5, {})[0] == "baixa"
+    assert confidence(15, {})[0] == "media"
+    assert confidence(625, {"segment_dropped": True})[0] == "media"
+    assert confidence(154, {})[0] == "alta"
 
 
 def test_tipo_post_ambiguo_nao_filtra():

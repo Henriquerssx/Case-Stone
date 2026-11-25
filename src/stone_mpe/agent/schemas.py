@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Literal, Optional
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
 
 Mode = Literal["analisar", "recomendar", "gerar_criativo"]
 
@@ -93,7 +93,15 @@ class AgentOutput(BaseModel):
     findings: list[Finding]
     reference_posts: list[ReferencePost]
     creatives: list[Creative] = Field(default_factory=list)
-    confidence_flag: bool
+    confidence_flag: bool = Field(..., description="true só quando a confiança é baixa (menos de 10 posts no recorte)")
+    confidence_level: Optional[Literal["alta", "media", "baixa"]] = None
+    confidence_reason: str = ""
     explanation: str
     run_id: str
     llm: str = Field("none", description="provedor/modelo usado ou 'none' (modo template)")
+
+    @model_validator(mode="after")
+    def _nivel(self):  # respostas antigas (cache da demo) só têm o flag
+        if self.confidence_level is None:
+            self.confidence_level = "baixa" if self.confidence_flag else "alta"
+        return self

@@ -59,20 +59,39 @@ def infer_scope(query: str, segment: str | None, filters: dict) -> tuple[str | N
     return segment, filters, notes
 
 
-def consulta_base(segment: str | None, filters: dict, min_posts: int = 3) -> tuple[pd.DataFrame, list[Finding], dict]:
-    """Recorte do top + frequências. Amplia o recorte (e sinaliza) se ficar vazio/pequeno demais."""
-    meta = {"segment_used": segment, "filters_used": dict(filters), "widened": []}
+RELAX_ORDER = [("profile_size", "porte de perfil"), ("tipo_post", "tipo de post"), ("platform", "plataforma"),
+               ("date_from", "data inicial"), ("date_to", "data final")]
+
+
+def consulta_base(segment: str | None, filters: dict, min_posts: int | None = None) -> tuple[pd.DataFrame, list[Finding], dict]:
+    """Recorte do top + frequências.
+
+    Quando o recorte tem menos de `agent.confidence_min_posts` posts, amplia em etapas, preservando o que o pedido
+    mais diz: primeiro solta porte, tipo de post, plataforma e datas; o nicho só sai por último. Cada etapa fica
+    registrada em meta["widened"] e pesa no nível de confiança.
+    """
+    target = min_posts or config.get("agent.confidence_min_posts", 10)
+    filters = dict(filters)
+    meta = {"segment_used": segment, "segment_asked": segment, "filters_used": dict(filters), "widened": [],
+            "segment_dropped": False}
     df = load_top(segment, filters)
-    if len(df) < min_posts and segment:
-        meta["widened"].append(f"segmento '{segment}' tem só {len(df)} posts no top; recorte ampliado para todos os segmentos")
+    for key, label in RELAX_ORDER:
+        if len(df) >= target:
+            break
+        if filters.get(key):
+            n_before = len(df)
+            filters = {k: v for k, v in filters.items() if k != key}
+            df = load_top(segment, filters)
+            meta["widened"].append(f"filtro de {label} removido ({n_before} → {len(df)} posts no top)")
+    if len(df) < target and segment:
+        n_before = len(df)
         segment = None
-        meta["segment_used"] = None
         df = load_top(None, filters)
-    if len(df) < min_posts and filters.get("tipo_post"):
-        meta["widened"].append(f"tipo_post '{filters['tipo_post']}' com poucos posts; filtro removido")
-        filters = {k: v for k, v in filters.items() if k != "tipo_post"}
-        meta["filters_used"] = filters
-        df = load_top(segment, filters)
+        meta["segment_dropped"] = True
+        meta["widened"].append(f"o nicho '{meta['segment_asked']}' tem só {n_before} posts no top; "
+                               f"padrões gerais da base ({len(df)} posts)")
+    meta["segment_used"] = segment
+    meta["filters_used"] = filters
     freq = frequencies(df, FINDING_FIELDS)
     k = config.get("agent.findings_per_field", 3)
     out: list[Finding] = []

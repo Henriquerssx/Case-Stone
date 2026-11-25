@@ -98,7 +98,10 @@ Grafo LangGraph determinístico (`agent/graph.py`):
 - Números e links vêm só das ferramentas (SQL na base). O modelo de linguagem apenas redige.
 - `validar_saida` descarta qualquer `post_id` que não veio de `posts_referencia` e pede nova geração (máximo 2).
 - No máximo 2 referências por criador, para que um canal dominante não monopolize as referências.
-- Recortes com menos de 10 posts no top ligam `confidence_flag`.
+- Recortes com menos de 10 posts no top são ampliados em etapas, preservando o nicho pedido: primeiro saem porte,
+  tipo de post, plataforma e datas; o nicho sai por último. A confiança tem três níveis, com o motivo escrito:
+  **alta** (≥ 30 posts no nicho pedido), **média** (10–29, ou padrões gerais porque o nicho tem poucos posts) e
+  **baixa** (< 10). `confidence_flag` = confiança baixa.
 - Sem modelo disponível, um template determinístico responde com os mesmos dados (a demo nunca quebra).
 
 ## Decisões declaradas
@@ -106,7 +109,7 @@ Grafo LangGraph determinístico (`agent/graph.py`):
 | Parâmetro | Valor |
 |---|---|
 | Ranking | top 10%, percentil **por plataforma** (IG e YT têm distribuições diferentes); a versão combinada também é calculada (sensibilidade) |
-| `confidence_flag` | ativado quando o recorte tem < 10 publicações de alto desempenho ou quando foi ampliado |
+| Confiança | alta ≥ 30 posts no nicho pedido · média 10–29 ou padrões gerais da base · baixa < 10 (`confidence_flag`) |
 | Valores fora do TAP | `duracao_faixa` = `<15s \| 15-30s \| 30-60s \| 60-90s \| >90s`; `legenda_tamanho` = `curta <125 \| média ≤500 \| longa`; `tipo_cta` inclui `nenhum` |
 | Campos calculados, não pedidos ao modelo | `tipo_post`, `duracao_faixa` e `legenda_tamanho` saem dos metadados. Nível 1: `ritmo_cortes_0a10 = null` |
 | Nível 2: ritmo de cortes | `ritmo_cortes_0a10 = min(10, round(10 × trocas de cena/s))`, com limiar de cena 0,3. É medido, e não julgado pelo modelo. |
