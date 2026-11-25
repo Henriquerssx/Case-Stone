@@ -24,7 +24,7 @@ FONT_FACES = """
 
 def star_svg(size: int = 22, color: str = LIME, glow: bool = True) -> str:
     """A estrela de quatro pontas (motivo do Clube dos Sonhos), desenhada em SVG."""
-    f = f' style="filter:drop-shadow(0 0 6px rgba(230,234,233,.55))"' if glow else ""
+    f = ' style="filter:drop-shadow(0 0 6px rgba(230,234,233,.55))"' if glow else ""
     return (f'<svg width="{size}" height="{size}" viewBox="0 0 24 24" aria-hidden="true"{f}>'
             f'<path d="M12 0 C12.9 6.6 17.4 11.1 24 12 C17.4 12.9 12.9 17.4 12 24 C11.1 17.4 6.6 12.9 0 12 '
             f'C6.6 11.1 11.1 6.6 12 0 Z" fill="{color}"/></svg>')

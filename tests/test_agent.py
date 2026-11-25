@@ -42,8 +42,6 @@ def test_criativo_com_referencia_inventada_e_descartado_e_refeito(synthetic_db):
         out_ids["pid"] = pid
         return json.dumps({"creatives": [{"gancho": "g", "roteiro": "r", "legenda": "l", "cta": "c", "inspired_by": [pid, "fake_2"]}]})
 
-    orig = fake.complete
-
     def complete(prompt, images=None, json_mode=True):
         fake.prompts.append(prompt)
         return bad if len(fake.prompts) == 1 else good_response()

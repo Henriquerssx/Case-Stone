@@ -4,7 +4,6 @@ import subprocess
 
 import pytest
 
-from stone_mpe import storage
 from stone_mpe.analysis import comments, patterns
 from stone_mpe.multimodal import categorize, video
 from stone_mpe.multimodal import rubric as R

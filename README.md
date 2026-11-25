@@ -55,7 +55,7 @@ Na aba **Gerar roteiro**, deixe **Modo offline** ligado e clique em **Gerar**. C
 exigem chaves no `.env` (modelo em `.env.example`): ver [Guia de uso](docs/GUIA_DE_USO.md).
 
 ```bash
-pytest                                                # 65 testes, base sintética, sem chamadas externas
+pytest                                                # 67 testes, base sintética, sem chamadas externas
 ```
 
 ## Como funciona
@@ -114,7 +114,7 @@ demo/             painel (app.py), identidade visual e 3D (brand.py), fontes (st
 data/release/     base pública sanitizada + MANIFEST.json
 outputs/          playbook, tabelas de padrões, métrica ponderada, concordância
 docs/             relatório, metodologia, resultados, modelos, guia, privacidade, roteiro do vídeo
-tests/            65 testes (base sintética)
+tests/            67 testes (base sintética)
 ```
 
 ## Dados, privacidade e segurança

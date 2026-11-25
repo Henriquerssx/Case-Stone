@@ -12,6 +12,8 @@ import json
 from typing import Literal, Optional
 
 from fastmcp import FastMCP
+from fastmcp.exceptions import ToolError
+from pydantic import ValidationError
 
 from stone_mpe import config
 from stone_mpe.api import run
@@ -39,7 +41,11 @@ def analisar_engajamento(
     criativos (gancho, roteiro, legenda, CTA). Toda resposta traz os posts reais que a sustentam."""
     filters = {k: v for k, v in dict(platform=platform, date_from=date_from, date_to=date_to,
                                      profile_size=profile_size, tipo_post=tipo_post).items() if v}
-    return run(mode, query, segment=segment, filters=filters or None, n_creatives=n_creatives).model_dump()
+    try:
+        return run(mode, query, segment=segment, filters=filters or None, n_creatives=n_creatives).model_dump()
+    except ValidationError as e:  # entrada fora do contrato: mensagem curta para o cliente, sem traceback
+        campos = "; ".join(f"{'.'.join(map(str, err['loc']))}: {err['msg']}" for err in e.errors())
+        raise ToolError(f"entrada inválida ({campos})") from None
 
 
 @mcp.tool()

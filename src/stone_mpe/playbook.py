@@ -153,7 +153,7 @@ def build(n_creatives_min: int = 5) -> str:
                 w("")
             if c.roteiro and (not c.cenas or len(c.roteiro) > 120):
                 w(f"**Roteiro**\n\n{c.roteiro}\n")
-            w(f"**Legenda**\n\n> " + c.legenda.replace("\n", "\n> ") + "\n")
+            w("**Legenda**\n\n> " + c.legenda.replace("\n", "\n> ") + "\n")
             w("**Publicações de referência**\n")
             for pid in c.inspired_by:
                 r = refs[pid]

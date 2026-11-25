@@ -61,3 +61,19 @@ def test_import_instagram_recusa_codigo_que_vira_caminho(tmp_path, env):
     from stone_mpe import config
     saved = [json.loads(line) for line in (config.raw_dir("instagram") / "export.jsonl").read_text(encoding="utf-8").splitlines()]
     assert [p["url"] for p in saved] == ["https://www.instagram.com/p/Abc_123/"]
+
+
+def test_mcp_recusa_entrada_invalida_com_mensagem_curta(synthetic_db):
+    import asyncio
+
+    from fastmcp import Client
+
+    from stone_mpe.mcp_server import mcp
+
+    async def call():
+        async with Client(mcp) as c:
+            return await c.call_tool("analisar_engajamento", {"mode": "recomendar", "query": "x" * 600},
+                                     raise_on_error=False)
+
+    res = asyncio.run(call())
+    assert res.is_error and "entrada inválida" in str(res.content) and "Traceback" not in str(res.content)
