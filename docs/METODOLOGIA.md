@@ -73,6 +73,9 @@ se foi melhor do que o normal do próprio criador. Implementação: `src/stone_m
 - **Humana:** amostra cega de 50 posts do top, estratificada por plataforma × porte (`cli sample`, semente 42).
   A pessoa rotula sem ver a resposta do modelo (`demo/rotular.py`). Métricas: concordância e κ de Cohen para campos
   categóricos e booleanos; MAE e % dentro de ±2 pontos para notas (`cli agreement` → `outputs/concordancia.csv`).
+- **Rotulagem cega assistida por IA (complementar):** um assistente de IA rotula a mesma amostra vendo só capa, título
+  e legenda, sem acesso à categorização (`validation/rotulagem_ia.csv`; `cli agreement --file ... --out concordancia_ia`).
+  Fica em arquivo separado e nunca é apresentada como validação humana.
 - **Entre modelos (complementar):** outro modelo recategoriza a mesma amostra (`cli cross-check`). Mede a estabilidade da
   rubrica, não o acerto, e não substitui a validação humana.
 

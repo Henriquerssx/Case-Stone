@@ -31,3 +31,7 @@ outputs/*.log
 # sistema
 .DS_Store
 Thumbs.db
+
+# capturas de revisão de design (mostram capas de terceiros)
+.impeccable/review/
+.impeccable/*.local.json

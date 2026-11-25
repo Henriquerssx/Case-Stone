@@ -58,7 +58,9 @@ def main(argv: list[str] | None = None) -> int:
     p = sub.add_parser("sample")
     p.add_argument("-n", type=int, default=50)
     p.add_argument("--overwrite", action="store_true", help="sorteia de novo mesmo se já houver rótulos")
-    sub.add_parser("agreement")
+    p = sub.add_parser("agreement", help="concordância rotulagem × modelo (padrão: validação manual)")
+    p.add_argument("--file", default=None, help="outra rotulagem, ex.: validation/rotulagem_ia.csv")
+    p.add_argument("--out", default="concordancia", help="nome do arquivo em outputs/ (sem extensão)")
     p = sub.add_parser("cross-check", help="concordância entre modelos na amostra (complementar à validação humana)")
     p.add_argument("--model", default="gemma-4-26b-a4b-it,gemma-4-31b-it", help="verificador(es), em ordem")
     sub.add_parser("analyze")
@@ -139,7 +141,7 @@ def main(argv: list[str] | None = None) -> int:
         print(f"{len(s)} posts em {agreement.sample_path()}. Rotule com: streamlit run demo/rotular.py")
     elif a.cmd == "agreement":
         from stone_mpe.analysis import agreement
-        print(agreement.compute().to_string(index=False))
+        print(agreement.compute(a.file, a.out).to_string(index=False))
     elif a.cmd == "cross-check":
         from stone_mpe.analysis import agreement
         print(agreement.cross_model(a.model).to_string(index=False))

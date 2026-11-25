@@ -20,41 +20,26 @@ from stone_mpe.analysis import comments, creators, lead_signals, niches, pattern
 from stone_mpe.collect.media import thumb_path  # noqa: E402
 from stone_mpe.api import run  # noqa: E402
 
-st.set_page_config(page_title="Impulso Stone · Engajamento MPE", page_icon="🟢", layout="wide")
-try:  # cores acompanham o tema (claro/escuro) do Streamlit
-    _DARK = st.context.theme.type == "dark"
-except Exception:
-    _DARK = False
-# Identidade Impulso Stone / Clube dos Sonhos. Paletas de gráfico validadas (contraste, daltonismo, separação):
-# claro = verde Stone + roxo Impulso; escuro = os mesmos matizes mais claros sobre a tinta #03211D.
-BRAND = {"sherwood": "#004132", "lime": "#C7F93C", "purple": "#A780FF", "ink": "#03211D", "deep": "#055046",
-         "teal": "#32ADA1", "mist": "#E6EAE9", "smoke": "#EFEFEF"}
-SERIES_1, SERIES_2 = ("#3FAF55", "#9A78F0") if _DARK else ("#128C4F", "#8A63E6")
-SEQ = ([[0, "#06352E"], [0.5, "#1E8A55"], [1, "#C7F93C"]] if _DARK
-       else [[0, "#E9F5EE"], [0.5, "#5FBC87"], [1, "#004132"]])
-INK, MUTED, GRID = ("#EFEFEF", "#A9BDB7", "#0E4A40") if _DARK else ("#03211D", "#4A615B", "#E6EAE9")
-HOVER_BG = "#06352E" if _DARK else "#FFFFFF"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import brand  # noqa: E402
 
-st.markdown(f"""<style>
-.brand-hero {{background:{BRAND['sherwood']};color:#FFFFFF;border-radius:1.25rem;padding:1.6rem 1.8rem 1.4rem;margin:0 0 1rem;
-  position:relative;overflow:hidden}}
-.brand-hero:after {{content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;border-radius:50%;
-  background:{BRAND['lime']};opacity:.16}}
-.brand-hero .eyebrow {{font-family:Outfit,sans-serif;font-weight:600;font-size:.78rem;letter-spacing:.14em;color:{BRAND['lime']};margin:0}}
-.brand-hero h1 {{font-family:Outfit,sans-serif;color:#FFFFFF;font-size:2.1rem;line-height:1.15;margin:.35rem 0 .4rem;padding:0}}
-.brand-hero p {{color:#D6E4DF;margin:0;max-width:760px;font-size:.98rem}}
-.brand-hero .pill {{display:inline-block;margin-top:.9rem;background:{BRAND['lime']};color:{BRAND['sherwood']};font-weight:700;
-  border-radius:999px;padding:.3rem .9rem;font-size:.82rem}}
-[data-testid="stMetricValue"] {{font-family:Outfit,sans-serif;font-weight:600}}
-{'button[kind="primary"] p, button[kind="primary"] {color:' + BRAND['ink'] + ' !important}' if _DARK else ''}
-</style>""", unsafe_allow_html=True)  # CSS estático, sem dados externos
+st.set_page_config(page_title="Impulso Stone · O que faz um pequeno negócio brilhar", page_icon=":material/auto_awesome:",
+                   layout="wide")
+_DARK = True  # o mundo do Clube dos Sonhos é noturno: tema único (.streamlit/config.toml)
+# paleta de gráficos validada sobre a tinta #03211D (contraste ≥ 3:1, separação para daltonismo)
+SERIES_1, SERIES_2 = "#2EA99C", "#9A78F0"  # verde-água do Clube + roxo do Impulso
+SEQ = [[0, "#06352E"], [0.5, "#1E8A55"], [1, "#C7F93C"]]
+INK, MUTED, GRID = "#E6EAE9", "#A9BDB7", "rgba(230,234,233,.10)"
+HOVER_BG = "#06352E"
+st.markdown(brand.css(), unsafe_allow_html=True)  # CSS estático, sem dados externos
 
 LABELS = {"tipo_post": "Tipo de post", "formato_video": "Formato de vídeo", "tipo_hook": "Tipo de gancho",
           "tema_principal": "Tema", "tom": "Tom", "tipo_cta": "Tipo de CTA", "duracao_faixa": "Duração",
           "legenda_tamanho": "Tamanho da legenda", "tem_rosto": "Rosto", "texto_na_tela": "Texto na tela",
           "prova_social": "Prova social", "criador_e_empreendedor_real": "Criador é empreendedor real",
           "tem_cta": "Tem CTA", "oferta_ou_beneficio_explicito": "Oferta explícita", "usa_linguagem_regional": "Linguagem regional"}
-STATUS = {"ok": "✅ pronto", "parcial": "◐ em andamento", "pendente": "○ pendente"}
+STATUS = {"ok": ":material/check_circle: pronto", "parcial": ":material/pending: em andamento",
+          "pendente": ":material/radio_button_unchecked: pendente"}
 
 
 
@@ -81,19 +66,74 @@ def agent_llm():
     return get_client("agent")
 
 
-@st.cache_data(ttl=60)
+@st.cache_data(ttl=600)
 def base_stats() -> dict:
     p = config.outputs_dir() / "base_stats.json"
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
 
 
-@st.cache_data(ttl=60)
+@st.cache_data(ttl=600)
 def top_df(segment: str | None, platform: str | None, tipo_post: str | None) -> pd.DataFrame:
     f = {k: v for k, v in dict(platform=platform, tipo_post=tipo_post).items() if v}
     return patterns.load_top(segment, f)
 
 
-@st.cache_data(ttl=60)
+# ---- cache: o Streamlit reexecuta o script inteiro a cada clique; o que é só leitura da base fica em memória ----
+@st.cache_data(ttl=600, show_spinner=False)
+def c_sql(q: str) -> pd.DataFrame:
+    return storage.read_sql(q)
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def c_pipeline() -> list[dict]:
+    return status.pipeline()
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def c_niches(pf: str | None) -> pd.DataFrame:
+    return niches.summary(pf)
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def c_top_posts(seg: str, n: int, pf: str | None) -> pd.DataFrame:
+    return niches.top_posts(seg, n, pf)
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def c_covers(segs: tuple[str, ...], pf: str | None) -> dict:
+    out = {}
+    for seg in segs:
+        skip = set(config.get("demo.cover_skip", []) or [])
+        tp = niches.top_posts(seg, 5, pf)
+        tp = tp[~tp["post_id"].isin(skip)]
+        out[seg] = next((u for u in (storyboard.thumb_data_uri(pid) for pid in tp["post_id"]) if u), None)
+    return out
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def c_lift(fields: tuple[str, ...]) -> pd.DataFrame:
+    return patterns.lift(list(fields))
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def c_idp(w: tuple[tuple[str, float], ...]):
+    d = weighted.compute(weight_override=dict(w))
+    return d, weighted.summary(d, weight_override=dict(w)), weighted.top_patterns(d)
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def c_galaxy():
+    g = storage.read_sql("SELECT platform, handle, segmento, posted_at, engagement_rate, is_top FROM posts "
+                         "WHERE eligible = 1 AND engagement_rate > 0")
+    return brand.galaxy_figure(g, niches.NOMES)
+
+
+@st.cache_data(ttl=600, show_spinner=False)
+def c_comments() -> dict:
+    return comments.summary()
+
+
+@st.cache_data(ttl=600)
 def segments() -> list[str]:
     return sorted(storage.read_sql("SELECT DISTINCT segmento FROM posts")["segmento"].dropna().tolist())
 
@@ -148,28 +188,31 @@ if not storage.table_exists("posts"):
     st.error("Base ainda não construída. Rode `python -m stone_mpe.cli build-base`.")
     st.stop()
 
-st.markdown("""<div class="brand-hero"><p class="eyebrow">IMPULSO STONE · STONE × INTELI ACADEMY</p>
-<h1>Conteúdo de alto engajamento para MPEs</h1>
-<p>Do começo ao crescimento: o que as publicações que mais engajam pequenos empreendedores têm em comum,
-e roteiros prontos para o Impulso Stone ligados a posts reais.</p>
-<span class="pill">Padrões observados no top 10% · correlação, não garantia</span></div>""", unsafe_allow_html=True)
+_bs = base_stats()
+_h1, _h2 = st.columns([1.25, 1], vertical_alignment="center")
+with _h1:
+    st.markdown(brand.hero_html(_bs.get("n_posts_raw", 0), _bs.get("n_profiles", 0), _bs.get("n_top", 0), 6), unsafe_allow_html=True)
+with _h2:
+    # HTML gerado só a partir de números internos (sem texto externo)
+    st.iframe(brand.star3d_html(int(_bs.get("n_posts_eligible", 0) or 0), int(_bs.get("n_top", 0) or 0)), height=430)
 
 tab_how, tab_rot, tab_nic, tab_pad, tab_idp, tab_perf, tab_base = st.tabs(
     ["Como funciona", "Gerar roteiro", "Nichos", "Padrões do top", "Métrica ponderada", "Perfis em destaque", "Base"])
 
 # ---------------- Como funciona ----------------
 with tab_how:
-    steps = status.pipeline()
+    steps = c_pipeline()
     st.markdown("**Dados públicos entram, viram uma base ranqueada, cada post de sucesso é descrito por uma rubrica fixa, "
                 "e o agente transforma os padrões em roteiros que citam os posts reais de onde vieram.**")
-    for row in range(0, len(steps), 3):
-        cols = st.columns(3)
-        for col, s in zip(cols, steps[row:row + 3]):
-            with col.container(border=True):
-                st.markdown(f"**{s['etapa']}** · {STATUS[s['status']]}")
-                st.markdown(f"<span style='font-size:1.9rem;font-weight:600'>{_n(s['numero'])}</span>", unsafe_allow_html=True)
-                st.caption(s["detalhe"])
-                st.code(s["comando"], language=None, wrap_lines=True)
+    st.subheader("A galáxia dos posts")
+    st.caption("Cada ponto é uma publicação elegível, por nicho, data e engajamento (escala log). As verde-limão são o top 10% "
+               "da plataforma. Arraste para girar, role para aproximar, passe o mouse para ver o perfil.")
+    st.plotly_chart(c_galaxy(), width="stretch", key="galaxy",
+                    config={"displaylogo": False, "modeBarButtonsToRemove": ["resetCameraLastSave3d"]})
+    st.subheader("As 9 etapas, com os números reais")
+    st.markdown(brand.rail_html(steps, _n), unsafe_allow_html=True)
+    with st.expander("Comandos para reproduzir cada etapa"):
+        st.code("\n".join(f"# {s['etapa']}\n{s['comando']}" for s in steps), language="bash")
 
     c1, c2 = st.columns([3, 2])
     with c1:
@@ -248,7 +291,7 @@ with tab_rot:
 
     out = st.session_state.get("out")
     if out:
-        badge = "⚠️ confiança baixa (recorte pequeno ou ampliado)" if out.confidence_flag else "✅ confiança adequada"
+        badge = ":material/warning: confiança baixa (recorte pequeno ou ampliado)" if out.confidence_flag else ":material/verified: confiança adequada"
         st.markdown(f"**{badge}** · recorte: `{out.segment_used or 'todos os segmentos'}` · "
                     f"redação: `{out.llm if out.llm != 'none' else 'template (sem LLM)'}` · execução `{out.run_id}`")
         st.markdown(out.explanation)
@@ -262,12 +305,11 @@ with tab_rot:
             refs = all_refs[all_refs.post_id.isin(cr.inspired_by)]
             with st.container(border=True):
                 st.markdown(f"### Roteiro {i}: {cr.titulo}")
-                st.markdown(f"**Formato:** {cr.formato}")
-                st.markdown(f"<div style='font-size:1.35rem;font-weight:600;margin:.4rem 0'>🎬 0–3 s: “{html.escape(cr.gancho)}”</div>",
-                            unsafe_allow_html=True)
+                st.markdown(f"**Formato:** {cr.formato} · **gancho** nos 3 primeiros segundos")
+                st.markdown(brand.hook_html(cr.gancho), unsafe_allow_html=True)
                 t_sb, t_txt, t_ref = st.tabs(["Storyboard ilustrado", "Roteiro e legenda", "Vídeos de referência"])
                 with t_sb:
-                    storyboard_grid(cr, key=f"{out.run_id}{i}")
+                    storyboard_grid(cr, key=f"{out.run_id}{i}", per_row=min(max(len(storyboard.scenes(cr)), 1), 5))
                     st.caption("Quadros 9:16: ilustração do tipo de plano, texto na tela como no vídeo e a fala como legenda.")
                 with t_txt:
                     a, b = st.columns([3, 2])
@@ -325,7 +367,7 @@ with tab_rot:
             st.dataframe(all_refs.assign(perfil="@" + all_refs.handle)[
                 ["perfil", "faixa", "followers", "views", "likes", "comments", "engagement_rate", "percentile", "url"]],
                 hide_index=True, column_config={
-                    "url": st.column_config.LinkColumn("link"), "followers": st.column_config.NumberColumn("seguidores", format="localized"),
+                    "url": st.column_config.LinkColumn("link", display_text="abrir"), "followers": st.column_config.NumberColumn("seguidores", format="localized"),
                     "views": st.column_config.NumberColumn(format="localized"), "likes": st.column_config.NumberColumn("curtidas", format="localized"),
                     "comments": st.column_config.NumberColumn("comentários", format="localized"),
                     "engagement_rate": st.column_config.NumberColumn("engajamento", format="percent"),
@@ -343,15 +385,26 @@ with tab_rot:
 
 # ---------------- Nichos ----------------
 with tab_nic:
-    st.markdown("**Quanto cada nicho empreendedor engaja, quanto chega ao top e o que o top de cada nicho usa.**")
+    st.subheader("Escolha o seu nicho")
+    st.caption("Quanto cada nicho empreendedor engaja, quanto chega ao top e o que o top de cada nicho usa. "
+               "A capa é o post de maior engajamento do nicho.")
     n1, n2 = st.columns([1, 3])
     nplat = n1.radio("Plataforma", ["instagram", "youtube", "(ambas)"], key="nic_plat",
                      help="Instagram e YouTube têm escalas diferentes de engajamento: compare nichos dentro da mesma plataforma.")
     pf = None if nplat == "(ambas)" else nplat
-    ns = niches.summary(pf)
+    ns = c_niches(pf)
     if ns.empty:
         st.info("Sem dados para esta plataforma.")
     else:
+        _covers = c_covers(tuple(ns["nicho"]), pf)
+        _ord = ns.sort_values("taxa_top", ascending=False)
+        _cc = st.columns(len(_ord))
+        for _col, _r in zip(_cc, _ord.itertuples()):
+            with _col:
+                _sel = st.session_state.get("nic_pick") == _r.nicho
+                st.markdown(brand.universe_card(_r, _covers.get(_r.nicho), selected=_sel), unsafe_allow_html=True)
+                st.button("Ver nicho", key=f"nic_card_{_r.nicho}", width="stretch", type="primary" if _sel else "secondary",
+                          on_click=lambda v=_r.nicho: st.session_state.update(nic_pick=v))
         with n2:
             r = ns.sort_values("er_mediana")
             fig = go.Figure(go.Bar(x=r["er_mediana"] * 100, y=r["nome"], orientation="h", marker=dict(color=SERIES_1, cornerradius=4),
@@ -366,9 +419,12 @@ with tab_nic:
                         gancho=ns.gancho_top.fillna("—"), tema=ns.tema_top.fillna("—"), duracao=ns.duracao_top.fillna("—"))
         for c in ("views_por_seguidor", "cta_no_top", "er_mediana_top"):
             tbl[c] = pd.to_numeric(tbl[c], errors="coerce")
-        st.dataframe(
-            tbl[["nome", "perfis", "posts", "posts_top", "taxa_top", "er_mediana", "er_p90", "er_mediana_top", "views_por_seguidor",
-                 "formato", "gancho", "tema", "duracao", "cta_no_top"]],
+        _cols = ["nome", "perfis", "posts", "posts_top", "taxa_top", "er_mediana", "er_p90", "er_mediana_top", "views_por_seguidor",
+                 "formato", "gancho", "tema", "duracao", "cta_no_top"]
+        _cols = [c for c in _cols if not (c in ("views_por_seguidor", "duracao") and tbl[c].replace("—", None).isna().all())]
+        _exp = st.expander("Tabela completa dos nichos")
+        _exp.dataframe(
+            tbl[_cols],
             hide_index=True, column_config={
                 "nome": "nicho", "posts_top": "no top", "taxa_top": st.column_config.NumberColumn("% no top", format="percent"),
                 "er_mediana": st.column_config.NumberColumn("engaj. mediano", format="percent"),
@@ -377,11 +433,13 @@ with tab_nic:
                 "views_por_seguidor": st.column_config.NumberColumn("views/seguidor", format="%.2f"),
                 "formato": "formato mais comum no top", "gancho": "gancho", "tema": "tema", "duracao": "duração",
                 "cta_no_top": st.column_config.NumberColumn("top com CTA", format="percent")})
-        st.caption("No Instagram há poucos perfis por nicho: leia como sinal, não como regra. “% no top” usa o limiar da plataforma.")
+        _exp.caption("No Instagram há poucos perfis por nicho: leia como sinal, não como regra. “% no top” usa o limiar da plataforma.")
 
         st.subheader("Detalhe do nicho")
         d1, d2 = st.columns(2)
-        pick = d1.selectbox("Nicho", ns["nicho"].tolist(), format_func=lambda k: niches.NOMES.get(k, k))
+        if st.session_state.get("nic_pick") not in ns["nicho"].tolist():
+            st.session_state.pop("nic_pick", None)
+        pick = d1.selectbox("Nicho", ns["nicho"].tolist(), format_func=lambda k: niches.NOMES.get(k, k), key="nic_pick")
         fol = d2.number_input("Seguidores do perfil", min_value=100, value=10000, step=1000, key="nic_fol")
         row = ns.set_index("nicho").loc[pick]
         g = status.goals(int(fol), status.benchmarks(pf, pick))
@@ -403,7 +461,7 @@ with tab_nic:
                 col.markdown(f"**{LABELS[fld]}** no top ({len(dt)} posts)")
                 col.plotly_chart(_layout(fig, 50 + 34 * len(fr)), width="stretch", key=f"nic_{fld}")
         st.markdown("**Posts de maior engajamento do nicho**")
-        ref_gallery(niches.top_posts(pick, 5, pf), cols=5)
+        ref_gallery(c_top_posts(pick, 5, pf), cols=5)
         if st.button(f"Gerar roteiro para {niches.NOMES.get(pick, pick)}", key="nic_go"):
             with st.spinner("Consultando o nicho e redigindo..."):
                 st.session_state.out = run("gerar_criativo", f"Vídeo curto para atrair empreendedores de {niches.NOMES.get(pick, pick).lower()} "
@@ -422,7 +480,7 @@ with tab_pad:
         st.info("Nenhuma publicação de alto desempenho categorizada neste recorte.")
     else:
         if len(df) < config.get("agent.confidence_min_posts", 10):
-            st.warning(f"⚠️ Recorte com apenas {len(df)} publicações: padrões frágeis.")
+            st.warning(f"Recorte com apenas {len(df)} publicações: padrões frágeis.", icon=":material/warning:")
         conc = patterns.concentration(df)
         if conc:
             st.caption(f"{len(df)} posts de {conc['n_criadores']} criadores · os 4 maiores somam {conc['share_top4'] * 100:.0f}% do recorte. "
@@ -453,7 +511,7 @@ with tab_pad:
                                        texttemplate="%{text}", hovertemplate="%{y} × %{x}: %{z} posts<extra></extra>", showscale=False))
             st.plotly_chart(_layout(fig, 80 + 34 * len(ct)), width="stretch")
         try:
-            lf = patterns.lift(["formato_video", "tipo_hook", "tema_principal", "tipo_cta", "tom"])
+            lf = c_lift(("formato_video", "tipo_hook", "tema_principal", "tipo_cta", "tom"))
             if not lf.empty:
                 st.subheader("Top × resto da base (lift)")
                 st.caption("lift > 1: mais comum no top do que numa amostra aleatória de fora do top. "
@@ -478,8 +536,7 @@ with tab_idp:
     if sum(w_in.values()) == 0:
         st.warning("Dê peso a pelo menos um componente.")
     else:
-        idp_df = weighted.compute(weight_override=w_in)
-        summ = weighted.summary(idp_df, weight_override=w_in)
+        idp_df, summ, tp = c_idp(tuple(sorted(w_in.items())))
         for plat, d in summ.get("plataformas", {}).items():
             st.markdown(f"**{plat.capitalize()}** · {_n(d['elegiveis'])} posts elegíveis")
             m = st.columns(4)
@@ -493,7 +550,6 @@ with tab_idp:
                         delta_color="inverse", help="participação dos 4 criadores com mais posts no top; menor = padrão mais distribuído")
             m[3].metric("Top do IDP já categorizado", _pct(d["idp_categorizados"] / d["top_idp"] if d["top_idp"] else None, 0),
                         help="os padrões abaixo usam só os posts com categorização")
-        tp = weighted.top_patterns(idp_df)
         if not tp.empty:
             st.subheader("Os padrões se mantêm?")
             st.caption("Valores mais frequentes no top oficial e no top do IDP. Barras parecidas = o padrão não depende de nicho, "
@@ -513,15 +569,20 @@ with tab_idp:
             st.plotly_chart(fig, width="stretch")
         st.subheader("Posts com maior IDP")
         show = idp_df.sort_values("idp", ascending=False).head(15).merge(
-            storage.read_sql("SELECT post_id, url FROM posts"), on="post_id", how="left")
+            c_sql("SELECT post_id, url FROM posts"), on="post_id", how="left")
+        show = show.assign(segmento=show["segmento"].map(lambda v: niches.NOMES.get(v, v)),
+                           **{c: show[c] * 100 for c in ("c_nicho", "c_perfil", "c_periodo", "c_porte")})
         st.dataframe(show[["handle", "platform", "segmento", "faixa", "engagement_rate", "c_nicho", "c_perfil", "c_periodo", "c_porte",
                            "idp", "is_top", "url"]]
                      .rename(columns={"engagement_rate": "engajamento", "c_nicho": "nicho", "c_perfil": "perfil", "c_periodo": "período",
-                                      "c_porte": "porte", "is_top": "no top oficial"}),
+                                      "c_porte": "porte", "is_top": "no top oficial", "platform": "plataforma", "segmento": "segmento"}),
                      hide_index=True, column_config={
                          "engajamento": st.column_config.NumberColumn(format="percent"),
-                         "idp": st.column_config.ProgressColumn("IDP", format="%.2f", min_value=0, max_value=1),
-                         "url": st.column_config.LinkColumn("link"),
+                         **{c: st.column_config.NumberColumn(f"{c} (percentil)", format="%.2f",
+                                                             help="posição de 0 a 100 dentro do grupo de comparação")
+                            for c in ("nicho", "perfil", "período", "porte")},
+                         "idp": st.column_config.ProgressColumn("IDP", format="%.4f", min_value=0, max_value=1),
+                         "url": st.column_config.LinkColumn("link", display_text="abrir"),
                          "no top oficial": st.column_config.CheckboxColumn()})
 
 # ---------------- Perfis ----------------
@@ -535,7 +596,7 @@ with tab_perf:
                      .rename(columns={"taxa_no_top": "% dos posts no top"}), hide_index=True,
                      column_config={"% dos posts no top": st.column_config.ProgressColumn(format="percent", min_value=0, max_value=1)})
     lead = lead_signals.cta_summary(df_all)
-    cm = comments.summary()
+    cm = c_comments()
     if lead:
         st.subheader("Sinais de lead")
         c = st.columns(3)
@@ -556,7 +617,7 @@ with tab_base:
     c[3].metric("Perfis", s.get("n_profiles", 0))
     st.caption(f"Publicadas de {s.get('posted_from')} a {s.get('posted_to')} · coletadas de {s.get('collected_from')} a {s.get('collected_to')} "
                f"· percentil por {'plataforma' if s.get('ranking_scope') == 'platform' else 'base combinada'}")
-    posts = storage.read_sql("SELECT platform, faixa, engagement_rate, is_top FROM posts WHERE eligible = 1 AND engagement_rate > 0")
+    posts = c_sql("SELECT platform, faixa, engagement_rate, is_top FROM posts WHERE eligible = 1 AND engagement_rate > 0")
     col1, col2 = st.columns(2)
     with col1:
         st.subheader("Taxa de engajamento por plataforma")

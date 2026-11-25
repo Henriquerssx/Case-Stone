@@ -64,7 +64,8 @@ def pipeline() -> list[dict]:
         {"etapa": "5. Categorização", "numero": cat_top, "detalhe": f"de {top} do top · {cat_rest} fora do top (lift) · {cat_n2} no Nível 2",
          "status": st(top > 0 and cat_top >= top, cat_top > 0), "comando": "cli categorize --until-done"},
         {"etapa": "6. Validação manual", "numero": labeled, "detalhe": "de 50 rotulados" + (" · concordância calculada" if conc.exists() else "")
-                   + (" · checagem entre modelos feita" if (out / "concordancia_modelos.csv").exists() else ""),
+                   + (" · checagem entre modelos feita" if (out / "concordancia_modelos.csv").exists() else "")
+                   + (" · rotulagem cega por IA feita (não substitui a humana)" if (out / "concordancia_ia.csv").exists() else ""),
          "status": st(conc.exists() and labeled >= 50, labeled > 0), "comando": "streamlit run demo/rotular.py → cli agreement"},
         {"etapa": "7. Padrões", "numero": cat_top, "detalhe": f"comentários analisados: {n_comments}",
          "status": st((out / "patterns.json").exists() and cat_top >= top, (out / "patterns.json").exists()), "comando": "cli collect-comments · cli analyze"},

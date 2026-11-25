@@ -74,13 +74,19 @@ def _norm_bool(v):
     return {"1": 1, "true": 1, "sim": 1, "s": 1, "0": 0, "false": 0, "não": 0, "nao": 0, "n": 0}.get(s)
 
 
-def compute() -> pd.DataFrame:
-    manual = pd.read_csv(sample_path(), dtype=str, encoding="utf-8-sig").fillna("")
+def compute(path: str | Path | None = None, out_name: str = "concordancia") -> pd.DataFrame:
+    """Concordância entre uma rotulagem (padrão: a manual) e a categorização usada nas análises.
+
+    path/out_name permitem avaliar outra rotulagem (ex.: validation/rotulagem_ia.csv → outputs/concordancia_ia.csv)
+    sem tocar no arquivo da validação humana."""
+    manual = pd.read_csv(path or sample_path(), dtype=str, encoding="utf-8-sig").fillna("")
     join, params = storage.categ_join()
     auto = storage.read_sql(f"SELECT c.* FROM posts p {join}", params)
     m = manual.merge(auto, on="post_id", suffixes=("_man", "_auto"))
     rows = []
     for f in LABEL_FIELDS:
+        if f + "_man" not in m:  # rotulagem parcial: campo não rotulado fica de fora
+            continue
         man, aut = m[f + "_man"], m[f + "_auto"]
         if f in R.BOOL_FIELDS:
             pairs = [(_norm_bool(x), int(y)) for x, y in zip(man, aut) if _norm_bool(x) is not None and pd.notna(y)]
@@ -99,8 +105,8 @@ def compute() -> pd.DataFrame:
         rows.append({"campo": f, "n": len(pairs), "concordancia": sum(x == y for x, y in pairs) / len(pairs),
                      "kappa": cohen_kappa(list(a), list(b)), "mae": None, "metrica": "exata"})
     res = pd.DataFrame(rows)
-    res.to_csv(config.outputs_dir() / "concordancia.csv", index=False)
-    (config.outputs_dir() / "concordancia.json").write_text(res.to_json(orient="records", force_ascii=False, indent=2), encoding="utf-8")
+    res.to_csv(config.outputs_dir() / f"{out_name}.csv", index=False)
+    (config.outputs_dir() / f"{out_name}.json").write_text(res.to_json(orient="records", force_ascii=False, indent=2), encoding="utf-8")
     return res
 
 

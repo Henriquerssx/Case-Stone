@@ -63,3 +63,7 @@ http:
   llm_timeout_s: 45
   llm_cooldown_s: 90
   llm_quota_cooldown_s: 3600   # 429 de cota diária esgotada: não adianta tentar de novo logo
+
+demo:
+  # capas que não devem ilustrar os cartões de nicho no pitch (ex.: post com tema político)
+  cover_skip: [ig_DdCHiXjOzZf]

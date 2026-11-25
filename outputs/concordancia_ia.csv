@@ -1,0 +1,15 @@
+campo,n,concordancia,kappa,mae,metrica
+formato_video,50,0.66,0.5960076045627377,,exata
+tipo_hook,50,0.7,0.5817066369213607,,exata
+tema_principal,50,0.6,0.5171414775470787,,exata
+tom,50,0.8,0.4758909853249478,,exata
+tipo_cta,50,0.94,0.9023437499999999,,exata
+tem_rosto,50,0.98,0.9571183533447684,,exata
+criador_e_empreendedor_real,50,0.8,0.4517543859649124,,exata
+prova_social,50,0.88,0.6511627906976744,,exata
+texto_na_tela,50,0.98,0.9547920433996383,,exata
+usa_linguagem_regional,50,0.94,0.3801652892561978,,exata
+tem_cta,50,0.98,0.9598715890850722,,exata
+oferta_ou_beneficio_explicito,50,0.94,0.8681898066783831,,exata
+forca_hook_0a10,50,0.9,,1.46,±2 pontos
+clareza_mensagem_0a10,50,0.72,,1.98,±2 pontos

@@ -1,0 +1,11 @@
+{
+  "schema": 1,
+  "source": "DESIGN.md",
+  "extras": {
+    "buttonPrimaryShadow": "0 10px 30px -12px rgba(50,173,161,.75)",
+    "focusRing": "2px solid #32ADA1, offset 2px",
+    "hairline": "1px solid rgba(230,234,233,.12)",
+    "heroRise": "cds-rise .9s cubic-bezier(.16,1,.3,1), staggered 80ms; disabled under prefers-reduced-motion",
+    "limeGlow": "text-shadow 0 0 28px rgba(199,249,60,.35)"
+  }
+}

@@ -27,7 +27,7 @@ def test_cenas_do_modelo_tem_prioridade_e_plano_normalizado():
 
 def test_svg_e_html_autocontido():
     svg = storyboard.svg_frame(Cena(tempo="0-3s", plano="tela", fala="a" * 300, texto_tela="Texto <com> & especial"), 1)
-    assert svg.startswith("<svg") and "&lt;com&gt;" in svg and "…" in svg
+    assert svg.startswith("<svg") and "&lt;COM&gt;" in svg and "<com>" not in svg and "…" in svg
     html = storyboard.storyboard_html(_cr(), metas={"mediana_da_base": 4, "entrar_no_top": 128, "mediana_do_top": 345}, followers=10000)
     assert html.startswith("<!doctype html>") and html.count("<svg") == 2 and "128" in html
 
@@ -51,3 +51,17 @@ def test_concordancia_entre_modelos(synthetic_db, monkeypatch):
     res = agreement.cross_model("fake", gap_s=0, client=FakeLLM([json.dumps(BASE)]))
     assert not res.empty and set(res["campo"]) >= {"tema_principal", "tem_rosto", "forca_hook_0a10"}
     assert res["concordancia"].between(0, 1).all()
+
+
+def test_agreement_aceita_outra_rotulagem_sem_tocar_na_manual(synthetic_db, tmp_path):
+    import pandas as pd
+    from stone_mpe import config
+    from stone_mpe.analysis import agreement
+    top = synthetic_db[synthetic_db["is_top"]].head(5)
+    rot = pd.DataFrame({"post_id": top["post_id"], "tem_cta": "true", "texto_na_tela": "true", "tipo_cta": "comentar"})
+    f = tmp_path / "rotulagem_ia.csv"
+    rot.to_csv(f, index=False, encoding="utf-8-sig")
+    res = agreement.compute(f, "concordancia_ia")
+    assert (config.outputs_dir() / "concordancia_ia.csv").exists()
+    assert not (config.outputs_dir() / "concordancia.csv").exists()
+    assert set(res["campo"]) >= {"tem_cta", "texto_na_tela"}

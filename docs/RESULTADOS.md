@@ -151,5 +151,20 @@ Mede a estabilidade da rubrica, não o acerto. Arquivo: `outputs/concordancia_mo
 Campos objetivos são estáveis. Tema, gancho e formato concordam moderadamente: os achados sobre eles são tendências.
 Tom e linguagem regional não sustentam recomendações isoladas.
 
+**Rotulagem cega assistida por IA (terceiro avaliador, não substitui a humana):** os mesmos 50 posts da amostra foram
+rotulados por um assistente de IA que viu só a capa, o título e a legenda, sem acesso à categorização do modelo
+(`validation/rotulagem_ia.csv`, `outputs/concordancia_ia.csv`).
+
+| Campo | Concordância com o modelo | Kappa |
+|---|---|---|
+| Tem CTA · rosto · texto na tela | 98% · 98% · 98% | 0,96 · 0,96 · 0,95 |
+| Tipo de CTA · oferta explícita · linguagem regional | 94% · 94% · 94% | 0,90 · 0,87 · 0,38 |
+| Prova social · empreendedor real · tom | 88% · 80% · 80% | 0,65 · 0,45 · 0,48 |
+| Gancho · formato · tema | 70% · 66% · 60% | 0,58 · 0,60 · 0,52 |
+| Notas 0–10 (força do gancho · clareza), ±2 pontos | 90% · 72% | — |
+
+Três leituras independentes (o modelo da análise, um segundo modelo e a rotulagem cega por IA) convergem: campos
+objetivos acima de 94%, campos interpretativos entre 60% e 76%.
+
 **Validação humana:** 50 posts sorteados do top (estratificados por plataforma e porte) em `validation/manual_sample.csv`,
 rotulados às cegas em `demo/rotular.py`. O resultado sai em `outputs/concordancia.csv` com `python -m stone_mpe.cli agreement`.

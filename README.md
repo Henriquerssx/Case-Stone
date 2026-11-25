@@ -55,7 +55,7 @@ Na aba **Gerar roteiro**, deixe **Modo offline** ligado e clique em **Gerar**. C
 exigem chaves no `.env` (modelo em `.env.example`): ver [Guia de uso](docs/GUIA_DE_USO.md).
 
 ```bash
-pytest                                                # 64 testes, base sintética, sem chamadas externas
+pytest                                                # 65 testes, base sintética, sem chamadas externas
 ```
 
 ## Como funciona
@@ -81,9 +81,12 @@ flowchart LR
 - **Resiliência:** cadeia de 7 modelos gratuitos com fallback, pausa de modelos indisponíveis, retomada automática e
   modo offline. Custo de inferência: zero.
 
-**Identidade visual:** o painel e o storyboard usam as cores públicas do Impulso Stone (verde Sherwood `#004132`,
-verde-limão `#C7F93C`, roxo `#A780FF`) e do Clube dos Sonhos (tinta `#03211D`, verde-água `#32ADA1`), com Manrope e
-Outfit. Tema claro e escuro em `.streamlit/config.toml`; as paletas dos gráficos foram validadas para contraste e daltonismo.
+**Identidade visual:** o painel segue o mundo do Clube dos Sonhos (fundo tinta `#03211D`, títulos Outfit em caixa alta,
+ações em pílula verde-água `#32ADA1`, estrela de quatro pontas como motivo) com o verde-limão do Impulso Stone `#C7F93C`
+reservado ao que "brilha", o top 10%. Dois elementos em 3D com função: a estrela facetada do topo, cercada por partículas
+na proporção real do top 10% (inclina com o ponteiro), e a **galáxia 3D** dos 6.235 posts por nicho, data e engajamento.
+Fontes servidas pelo próprio projeto (funciona sem internet); paletas de gráfico validadas para contraste e daltonismo;
+sistema documentado em [DESIGN.md](DESIGN.md).
 
 Detalhes em [docs/METODOLOGIA.md](docs/METODOLOGIA.md) e [docs/DESEMPENHO_DOS_MODELOS.md](docs/DESEMPENHO_DOS_MODELOS.md).
 
@@ -94,7 +97,8 @@ Detalhes em [docs/METODOLOGIA.md](docs/METODOLOGIA.md) e [docs/DESEMPENHO_DOS_MO
 | Rubrica estável entre dois modelos diferentes (campos objetivos) | 96–98% de concordância (kappa 0,93–0,96) |
 | Rubrica estável entre modelos (tema, gancho, formato) | 69–76%: lidos como tendência |
 | Padrões resistem ao controle de nicho, perfil, época e porte | sim: gancho de curiosidade 48% → 48% |
-| Validação humana às cegas | 50 posts sorteados, ferramenta de rotulagem em `demo/rotular.py` |
+| Rotulagem cega por IA (terceiro avaliador, mesmos 50 posts) | 94–98% nos campos objetivos; 60–70% em gancho, formato e tema |
+| Validação humana às cegas | pendente: 50 posts sorteados, ferramenta de rotulagem em `demo/rotular.py` |
 
 ## Estrutura
 
@@ -106,11 +110,11 @@ src/stone_mpe/
   analysis/       padrões, lift, nichos, métrica ponderada, comentários, concordância
   agent/          grafo LangGraph, ferramentas, prompts e contrato
   api.py · mcp_server.py · cli.py · playbook.py · storyboard.py · release.py
-demo/             painel (app.py) e tela de rotulagem manual (rotular.py)
+demo/             painel (app.py), identidade visual e 3D (brand.py), fontes (static/), tela de rotulagem (rotular.py)
 data/release/     base pública sanitizada + MANIFEST.json
 outputs/          playbook, tabelas de padrões, métrica ponderada, concordância
 docs/             relatório, metodologia, resultados, modelos, guia, privacidade, roteiro do vídeo
-tests/            64 testes (base sintética)
+tests/            65 testes (base sintética)
 ```
 
 ## Dados, privacidade e segurança

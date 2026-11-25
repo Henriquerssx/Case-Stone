@@ -49,6 +49,10 @@ análise (`python -m stone_mpe.cli cross-check`).
 | Tom, prova social, linguagem regional | 80–93% | 0,38–0,54 | não usar isoladamente |
 | Notas 0–10 (±2 pontos) | 98–100% | — | estáveis |
 
+Uma terceira leitura, a **rotulagem cega assistida por IA** dos mesmos 50 posts (só capa, título e legenda, sem ver a
+resposta do modelo), dá o mesmo quadro: 94–98% em CTA, rosto, texto na tela e oferta; 60–70% em gancho, formato e tema
+(`outputs/concordancia_ia.csv`, comando `cli agreement --file validation/rotulagem_ia.csv --out concordancia_ia`).
+
 Isso mede a estabilidade, não o acerto. A medida de acerto é a **validação humana** em 50 posts (`demo/rotular.py`),
 que calcula concordância e kappa entre a pessoa e o modelo.
 

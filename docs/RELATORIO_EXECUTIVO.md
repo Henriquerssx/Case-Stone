@@ -73,7 +73,8 @@ crescer* · *Bastidores e vendas no restaurante* · *Separar o dinheiro do salã
 - Campos objetivos (CTA, rosto, texto na tela) têm 96–98% de concordância entre dois modelos diferentes.
   Tema, gancho e formato, 69–76%: são lidos como tendência.
 - O agente nunca cita uma publicação que não esteja na base: 75 de 75 execuções rastreáveis.
-- Validação humana: 50 publicações sorteadas às cegas, rotuladas na ferramenta do projeto.
+- Uma rotulagem cega assistida por IA dos mesmos 50 posts confirma o quadro (94–98% nos campos objetivos).
+- Validação humana: 50 publicações sorteadas às cegas, a rotular na ferramenta do projeto.
 
 ## Limitações
 

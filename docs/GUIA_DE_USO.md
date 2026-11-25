@@ -128,7 +128,7 @@ A tela de rotulagem mostra a legenda a partir da base local completa; num clone 
 ## 7. Testes
 
 ```bash
-pytest          # 64 testes com base sintética; não chamam APIs externas
+pytest          # 65 testes com base sintética; não chamam APIs externas
 ```
 
 ## Problemas comuns

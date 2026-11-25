@@ -20,16 +20,16 @@ from stone_mpe.collect.media import thumb_path
 
 W, H = 270, 480
 # identidade Impulso Stone: verde Stone, verde Sherwood, verde claro, névoa e roxo de destaque
-BLUE, BLUE_DK, BLUE_LT, BLUE_XL, ORANGE = "#128C4F", "#004132", "#8FD1AA", "#E9F5EE", "#8A63E6"
+# mundo do painel: figuras em verde-água e névoa sobre a tinta, verde-limão como único acento
+BLUE, BLUE_DK, BLUE_LT, BLUE_XL, ORANGE = "#32ADA1", "#E6EAE9", "#7FCFC5", "#0B4A40", "#C7F93C"
 PLANO_LABEL = {"rosto": "Rosto para a câmera", "produto": "Produto em destaque", "maos": "Mãos / processo",
                "tela": "Tela / número", "ambiente": "Ambiente / bastidores", "cliente": "Cliente / atendimento"}
-BG = {"rosto": ("#EEF8F2", "#D3EEDD"), "produto": ("#F6FBE6", "#E6F5BE"), "maos": ("#EAF6F4", "#CBE9E4"),
-      "tela": ("#EFF2F1", "#DCE3E1"), "ambiente": ("#F3F7EE", "#DDEBCF"), "cliente": ("#F3EFFC", "#E0D6F8")}
+BG = {k: ("#06352E", "#055046") for k in ("rosto", "produto", "maos", "tela", "ambiente", "cliente")}
 
 _ILLU = {
     "rosto": f"""<path d="M48 410 Q135 292 222 410 Z" fill="{BLUE}"/><circle cx="135" cy="262" r="50" fill="{BLUE_LT}"/>
         <path d="M95 250 Q135 196 175 250 Q160 226 135 224 Q110 226 95 250 Z" fill="{BLUE_DK}"/>
-        <circle cx="232" cy="150" r="6" fill="{ORANGE}"/><text x="216" y="154" font-size="10" text-anchor="end" fill="{BLUE_DK}">REC</text>""",
+        <circle cx="232" cy="150" r="6" fill="{BLUE_DK}"/><text x="216" y="154" font-size="10" text-anchor="end" fill="{BLUE_DK}">REC</text>""",
     "produto": f"""<rect x="28" y="362" width="214" height="12" rx="6" fill="{BLUE_DK}"/>
         <rect x="80" y="296" width="110" height="66" rx="10" fill="{BLUE_LT}"/><rect x="92" y="262" width="86" height="38" rx="8" fill="{BLUE}"/>
         <rect x="133" y="236" width="4" height="26" fill="{BLUE_DK}"/><circle cx="135" cy="232" r="6" fill="{ORANGE}"/>
@@ -42,13 +42,13 @@ _ILLU = {
         <text x="135" y="232" font-size="18" font-weight="700" text-anchor="middle" fill="{BLUE_DK}">R$</text>
         <rect x="100" y="320" width="16" height="44" rx="3" fill="{BLUE_LT}"/><rect x="127" y="296" width="16" height="68" rx="3" fill="{BLUE}"/>
         <rect x="154" y="270" width="16" height="94" rx="3" fill="{ORANGE}"/>""",
-    "ambiente": f"""<rect x="40" y="252" width="190" height="150" fill="#ffffff" stroke="{BLUE_DK}" stroke-width="3"/>
+    "ambiente": f"""<rect x="40" y="252" width="190" height="150" fill="#0B4A40" stroke="{BLUE_DK}" stroke-width="3"/>
         <path d="M34 252 L236 252 L226 222 L44 222 Z" fill="{BLUE}"/>
         <path d="M44 222 l20 30 l20 -30 l20 30 l20 -30 l20 30 l20 -30 l20 30 l20 -30 l20 30" fill="none" stroke="{BLUE_XL}" stroke-width="5"/>
         <rect x="58" y="282" width="72" height="56" rx="4" fill="{BLUE_LT}"/><rect x="152" y="290" width="54" height="112" rx="4" fill="{BLUE_DK}"/>
         <circle cx="196" cy="350" r="4" fill="{ORANGE}"/>""",
     "cliente": f"""<circle cx="92" cy="262" r="30" fill="{BLUE_LT}"/><path d="M42 400 Q92 300 142 400 Z" fill="{BLUE}"/>
-        <circle cx="182" cy="270" r="28" fill="#f3c6a6"/><path d="M134 400 Q182 308 230 400 Z" fill="{ORANGE}"/>
+        <circle cx="182" cy="270" r="28" fill="#7FCFC5"/><path d="M134 400 Q182 308 230 400 Z" fill="{ORANGE}"/>
         <rect x="120" y="330" width="34" height="30" rx="4" fill="{BLUE_DK}"/><path d="M128 330 q9 -14 18 0" fill="none" stroke="{BLUE_DK}" stroke-width="3"/>""",
 }
 
@@ -67,30 +67,30 @@ def svg_frame(cena: Cena, i: int, uid: str = "") -> str:
     c1, c2 = BG.get(cena.plano, BG["rosto"])
     gid = f"g{uid}{i}"
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {W} {H}" width="100%" role="img" '
-             f'aria-label="Cena {i}: {html.escape(PLANO_LABEL.get(cena.plano, cena.plano))}" style="font-family:system-ui,Segoe UI,sans-serif">',
+             f'aria-label="Cena {i}: {html.escape(PLANO_LABEL.get(cena.plano, cena.plano))}" style="font-family:Outfit,Manrope,system-ui,sans-serif">',
              f'<defs><linearGradient id="{gid}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{c1}"/>'
              f'<stop offset="1" stop-color="{c2}"/></linearGradient><clipPath id="c{gid}"><rect width="{W}" height="{H}" rx="18"/></clipPath></defs>',
              f'<g clip-path="url(#c{gid})"><rect width="{W}" height="{H}" fill="url(#{gid})"/>',
              _ILLU.get(cena.plano, _ILLU["rosto"])]
     # selo da cena
     badge = f"CENA {i}" + (f" · {cena.tempo}" if cena.tempo else "")
-    parts.append(f'<rect x="12" y="12" width="{12 + 7.2 * len(badge):.0f}" height="24" rx="12" fill="#0b0b0b" opacity=".78"/>'
-                 f'<text x="22" y="28" font-size="12" font-weight="600" fill="#fff">{html.escape(badge)}</text>')
+    parts.append(f'<rect x="12" y="12" width="{12 + 7.2 * len(badge):.0f}" height="24" rx="12" fill="#03211D" opacity=".88" stroke="rgba(230,234,233,.25)"/>'
+                 f'<text x="22" y="28" font-size="11.5" font-weight="700" letter-spacing=".08em" fill="#E6EAE9">{html.escape(badge)}</text>')
     # texto na tela (como no vídeo)
     tl = _wrap(cena.texto_tela, 20, 3)
     if tl:
         top, lh = 64, 22
-        parts.append(f'<rect x="22" y="{top}" width="226" height="{16 + lh * len(tl)}" rx="10" fill="#ffffff" opacity=".96"/>')
+        parts.append(f'<rect x="22" y="{top}" width="226" height="{16 + lh * len(tl)}" rx="10" fill="#E6EAE9" opacity=".97"/>')
         for k, line in enumerate(tl):
-            parts.append(f'<text x="135" y="{top + 26 + k * lh}" font-size="17" font-weight="800" text-anchor="middle" '
-                         f'fill="#0b0b0b">{html.escape(line)}</text>')
+            parts.append(f'<text x="135" y="{top + 26 + k * lh}" font-size="16" font-weight="800" text-anchor="middle" '
+                         f'fill="#03211D">{html.escape(line.upper())}</text>')
     # fala como legenda
     fl = _wrap(cena.fala, 36, 3)
     if fl:
         y0 = H - 18 - 17 * len(fl)
-        parts.append(f'<rect x="0" y="{y0 - 18}" width="{W}" height="{H - y0 + 18}" fill="#0b0b0b" opacity=".72"/>')
+        parts.append(f'<rect x="0" y="{y0 - 18}" width="{W}" height="{H - y0 + 18}" fill="#03211D" opacity=".86"/>')
         for k, line in enumerate(fl):
-            parts.append(f'<text x="135" y="{y0 + k * 17}" font-size="12.5" text-anchor="middle" fill="#ffffff">{html.escape(line)}</text>')
+            parts.append(f'<text x="135" y="{y0 + k * 17}" font-size="12.5" text-anchor="middle" fill="#E6EAE9">{html.escape(line)}</text>')
     parts.append("</g></svg>")
     return "".join(parts)
 
