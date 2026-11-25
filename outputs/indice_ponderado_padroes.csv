@@ -1,0 +1,37 @@
+ranking,field,value,freq,n
+oficial,tipo_hook,curiosidade,0.48,625
+oficial,tipo_hook,promessa,0.205,625
+oficial,tipo_hook,pergunta,0.15,625
+oficial,formato_video,talking head,0.295,625
+oficial,formato_video,tutorial,0.206,625
+oficial,formato_video,bastidores,0.178,625
+oficial,tema_principal,vendas,0.248,625
+oficial,tema_principal,marketing,0.203,625
+oficial,tema_principal,história de empreendedor,0.147,625
+oficial,tipo_cta,nenhum,0.59,625
+oficial,tipo_cta,link na bio,0.258,625
+oficial,tipo_cta,comentar,0.091,625
+oficial,tom,informal,0.73,625
+oficial,tom,inspiracional,0.13,625
+oficial,tom,humorístico,0.099,625
+oficial,duracao_faixa,60-90s,0.43,625
+oficial,duracao_faixa,30-60s,0.275,625
+oficial,duracao_faixa,15-30s,0.149,625
+idp,tipo_hook,curiosidade,0.476,466
+idp,tipo_hook,promessa,0.193,466
+idp,tipo_hook,pergunta,0.163,466
+idp,formato_video,talking head,0.324,466
+idp,formato_video,tutorial,0.191,466
+idp,formato_video,humor/esquete,0.191,466
+idp,tema_principal,vendas,0.236,466
+idp,tema_principal,marketing,0.189,466
+idp,tema_principal,história de empreendedor,0.165,466
+idp,tipo_cta,nenhum,0.543,466
+idp,tipo_cta,link na bio,0.313,466
+idp,tipo_cta,comentar,0.082,466
+idp,tom,informal,0.717,466
+idp,tom,inspiracional,0.133,466
+idp,tom,humorístico,0.109,466
+idp,duracao_faixa,60-90s,0.428,466
+idp,duracao_faixa,30-60s,0.284,466
+idp,duracao_faixa,>90s,0.137,466

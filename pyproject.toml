@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stone-mpe"
+version = "1.0.0"
+description = "Mapeamento de conteúdo de alto engajamento para MPEs (Stone × Inteli Academy)"
+requires-python = ">=3.11"
+dependencies = [
+  "pandas>=2.2,<4",
+  "pyarrow>=14,<27",
+  "pydantic>=2.5,<3",
+  "requests>=2.32,<3",
+  "pyyaml>=6,<7",
+  "python-dotenv>=1.0,<2",
+  "langgraph>=1.0,<2",
+  "fastmcp>=4.0,<5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+demo = ["streamlit>=1.50,<2", "plotly>=6,<8"]
+level2 = ["yt-dlp>=2025.1.1", "faster-whisper>=1.0,<2"]
+
+[project.scripts]
+stone-mpe = "stone_mpe.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

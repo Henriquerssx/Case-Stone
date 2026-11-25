@@ -1,0 +1,65 @@
+# Parâmetros declarados da metodologia. Toda mudança aqui deve ser refletida no README.
+
+collection:
+  min_age_days: 14            # TAP §5: só posts com métricas estabilizadas
+  youtube:
+    max_videos_per_channel: 300
+    shorts_max_duration_s: 180  # Shorts podem ter até 3 min desde out/2024
+    verify_shorts_url: false    # true = confirma via youtube.com/shorts/{id} (1 HEAD por vídeo)
+    only_shorts: true
+  instagram:                  # rota do kickoff: Apify (collect/apify.py)
+    posts_per_profile: 60
+    months_back: 18
+    max_charge_usd: 4.0       # teto por execução; o plano gratuito do Apify dá US$ 5/mês
+
+profiles:
+  faixa_micro_max: 10000      # Aula 1: micro até 10 mil
+  faixa_medio_max: 100000     # médio 10–100 mil; grande acima
+
+ranking:
+  top_percentile: 0.90        # TAP §6.1: top 10%
+  scope: platform             # platform | combined  (Q-07: percentil por plataforma)
+
+categorization:
+  prompt_version: v1
+  max_json_retries: 2
+  min_interval_s: 4.5         # ~13 req/min no total, abaixo do limite gratuito típico
+  workers: 2                  # Nível 1 em paralelo; cada worker espera min_interval_s × workers
+  caption_max_chars: 2200
+
+level2:
+  prompt_version: v1-n2       # categorizações N2 têm prioridade sobre N1 nas análises
+  whisper_model: small        # faster-whisper em CPU (int8); "base" se estiver lento
+
+models:
+  # conferido em 2026-11-23: os 2.5 não aceitam chaves novas; listas = tentados em ordem
+  # free tier: cota diária é POR MODELO; a cadeia longa permite terminar no mesmo dia
+  gemini_categorize: gemini-3.5-flash-lite, gemini-flash-lite-latest, gemini-3.1-flash-lite, gemma-4-26b-a4b-it, gemini-3-flash-preview, gemini-3.6-flash
+  gemini_agent: gemini-3.5-flash, gemini-3.7-flash, gemini-3.6-flash, gemini-3-flash-preview, gemini-flash-latest, gemini-3.5-flash-lite, gemma-4-26b-a4b-it
+  openrouter_categorize: nvidia/nemotron-3.5-super-vl:free, google/gemma-4-31b-it:free
+  openrouter_agent: google/gemma-4-31b-it:free, nvidia/nemotron-3.5-lightning:free
+  ollama_categorize: qwen2.5vl:3b
+  ollama_agent: qwen2.5:7b
+
+analysis:
+  min_rest_sample: 50        # lift top × resto só com pelo menos 50 posts de fora do top categorizados
+  weighted_index:            # Índice de Desempenho Ponderado (leitura complementar; ver analysis/weighted.py)
+    min_group: 20            # grupos menores usam o percentil da plataforma
+    weights: {nicho: 0.35, perfil: 0.30, periodo: 0.20, porte: 0.15}
+
+agent:
+  confidence_min_posts: 10    # Q-08: abaixo disso, confidence_flag = true
+  reference_k: 5
+  max_refs_per_creator: 2
+  findings_per_field: 3
+  max_creative_retries: 2
+
+http:
+  max_retries: 6
+  base_delay_s: 2.0
+  max_delay_s: 120.0
+  timeout_s: 60
+  llm_max_retries: 2
+  llm_timeout_s: 45
+  llm_cooldown_s: 90
+  llm_quota_cooldown_s: 3600   # 429 de cota diária esgotada: não adianta tentar de novo logo

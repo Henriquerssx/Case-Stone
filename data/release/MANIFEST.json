@@ -1,0 +1,122 @@
+{
+  "gerado_em": "2026-11-25T00:30:29+00:00",
+  "removido": {
+    "posts": [
+      "caption",
+      "title",
+      "tags",
+      "thumbnail_url"
+    ],
+    "categorizations": [
+      "raw_json",
+      "error"
+    ],
+    "comment_signals": [
+      "exemplos"
+    ]
+  },
+  "arquivos": {
+    "posts.csv.gz": {
+      "linhas": 6675,
+      "colunas": [
+        "post_id",
+        "platform",
+        "handle",
+        "url",
+        "media_type",
+        "posted_at",
+        "collected_at",
+        "likes",
+        "comments",
+        "views",
+        "duration_s",
+        "followers",
+        "source_route",
+        "likes_hidden",
+        "age_days",
+        "profile_id",
+        "exclusion_reason",
+        "eligible",
+        "engagement_rate",
+        "faixa",
+        "origem",
+        "segmento",
+        "justificativa",
+        "percentile_platform",
+        "is_top_platform",
+        "percentile_combined",
+        "is_top_combined",
+        "is_top",
+        "percentile"
+      ],
+      "sha256": "fc7ad9a8e57f2f671dd8896547458e7479aad10dafeed6102c5787197a53fe73"
+    },
+    "profiles.csv": {
+      "linhas": 55,
+      "colunas": [
+        "profile_id",
+        "platform",
+        "handle",
+        "followers",
+        "faixa",
+        "origem",
+        "segmento",
+        "justificativa",
+        "n_posts",
+        "n_eligible",
+        "n_top",
+        "followers_collected_at"
+      ],
+      "sha256": "3c6fa78796e27ec1c53be02e26185a634eb891cfcbbc27642c46d85248fbd7d7"
+    },
+    "categorizations.csv.gz": {
+      "linhas": 775,
+      "colunas": [
+        "post_id",
+        "prompt_version",
+        "model",
+        "input_modalities",
+        "valid",
+        "created_at",
+        "tipo_post",
+        "duracao_faixa",
+        "formato_video",
+        "hook_primeiros_3s",
+        "tipo_hook",
+        "forca_hook_0a10",
+        "tema_principal",
+        "tem_rosto",
+        "criador_e_empreendedor_real",
+        "prova_social",
+        "texto_na_tela",
+        "legenda_tamanho",
+        "ritmo_cortes_0a10",
+        "tom",
+        "usa_linguagem_regional",
+        "clareza_mensagem_0a10",
+        "tem_cta",
+        "tipo_cta",
+        "oferta_ou_beneficio_explicito",
+        "elementos_top5"
+      ],
+      "sha256": "6e61fc1ed83562f7374cc015a96f262539446be7a02a5996d24a4cafb44cc800"
+    },
+    "comment_signals.csv": {
+      "linhas": 442,
+      "colunas": [
+        "post_id",
+        "source",
+        "n_sampled",
+        "n_contato",
+        "n_duvida",
+        "n_objecao",
+        "n_elogio",
+        "taxa_contato",
+        "taxa_duvida",
+        "taxa_objecao",
+        "taxa_elogio"
+      ],
+      "sha256": "eed86f956709940472827db3bc84fb5db728c3239744821658f94606d97b17f1"
+    }
+  }
+}

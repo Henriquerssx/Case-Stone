@@ -1,0 +1,35 @@
+# Identidade visual inspirada no Impulso Stone e no Clube dos Sonhos (cores e tipografia públicas dos sites).
+# Roobert (fonte do site do Impulso) é licenciada; Manrope e Outfit (Google Fonts) são as equivalentes livres.
+
+[browser]
+gatherUsageStats = false
+
+[theme]
+font = "Manrope:https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+headingFont = "Outfit:https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&display=swap"
+headingFontWeights = [700, 600, 600, 600, 600, 600]
+baseRadius = "0.75rem"
+buttonRadius = "full"
+showWidgetBorder = true
+
+[theme.light]
+primaryColor = "#004132"            # verde Sherwood (Impulso Stone)
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#EFF2F1"
+textColor = "#03211D"               # tinta (Clube dos Sonhos)
+linkColor = "#055046"
+borderColor = "#DCE3E1"
+dataframeHeaderBackgroundColor = "#E6EAE9"
+chartCategoricalColors = ["#128C4F", "#8A63E6", "#32ADA1", "#004132"]
+chartSequentialColors = ["#E9F5EE", "#BFE5CE", "#8FD1AA", "#5FBC87", "#32A867", "#128C4F", "#0B7043", "#055046", "#004132", "#03211D"]
+
+[theme.dark]
+primaryColor = "#C7F93C"            # verde-limão (botões do Impulso Stone)
+backgroundColor = "#03211D"
+secondaryBackgroundColor = "#06352E"
+textColor = "#EFEFEF"
+linkColor = "#C7F93C"
+borderColor = "#0E4A40"
+dataframeHeaderBackgroundColor = "#06352E"
+chartCategoricalColors = ["#3FAF55", "#9A78F0", "#32ADA1", "#C7F93C"]
+chartSequentialColors = ["#06352E", "#0B4A3C", "#0F5E45", "#14734D", "#1E8A55", "#3FAF55", "#6CC65A", "#97DB55", "#B8EC48", "#C7F93C"]

@@ -1,0 +1,7 @@
+# a base pública é verificada por SHA-256: os bytes não podem mudar no checkout
+data/release/*.csv binary
+data/release/*.gz binary
+data/release/MANIFEST.json binary
+
+# demais textos com LF no repositório
+* text=auto

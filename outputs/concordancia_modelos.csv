@@ -1,0 +1,15 @@
+verificador,campo,n,concordancia,kappa,mae,metrica
+"gemma-4-26b-a4b-it,gemma-4-31b-it",formato_video,45,0.6888888888888889,0.615149664019548,,exata
+"gemma-4-26b-a4b-it,gemma-4-31b-it",tipo_hook,45,0.7333333333333333,0.6221133659902028,,exata
+"gemma-4-26b-a4b-it,gemma-4-31b-it",tema_principal,45,0.7555555555555555,0.7021660649819494,,exata
+"gemma-4-26b-a4b-it,gemma-4-31b-it",tom,45,0.8,0.5006165228113442,,exata
+"gemma-4-26b-a4b-it,gemma-4-31b-it",tipo_cta,45,0.9555555555555556,0.9287410926365798,,exata
+"gemma-4-26b-a4b-it,gemma-4-31b-it",tem_rosto,45,0.9777777777777777,0.9491525423728813,,exata
+"gemma-4-26b-a4b-it,gemma-4-31b-it",criador_e_empreendedor_real,45,0.8888888888888888,0.6666666666666665,,exata
+"gemma-4-26b-a4b-it,gemma-4-31b-it",prova_social,45,0.8444444444444444,0.5360824742268041,,exata
+"gemma-4-26b-a4b-it,gemma-4-31b-it",texto_na_tela,45,0.9777777777777777,0.9491525423728813,,exata
+"gemma-4-26b-a4b-it,gemma-4-31b-it",usa_linguagem_regional,45,0.9333333333333333,0.3778801843317976,,exata
+"gemma-4-26b-a4b-it,gemma-4-31b-it",tem_cta,45,0.9777777777777777,0.9554896142433233,,exata
+"gemma-4-26b-a4b-it,gemma-4-31b-it",oferta_ou_beneficio_explicito,45,0.9111111111111111,0.8064516129032258,,exata
+"gemma-4-26b-a4b-it,gemma-4-31b-it",forca_hook_0a10,45,1.0,,0.35555555555555557,±2 pontos
+"gemma-4-26b-a4b-it,gemma-4-31b-it",clareza_mensagem_0a10,45,0.9777777777777777,,0.8666666666666667,±2 pontos

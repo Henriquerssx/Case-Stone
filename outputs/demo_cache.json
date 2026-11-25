@@ -1,0 +1,2478 @@
+{
+  "analisar|quais formatos de vídeo curto mais aparecem entre as publicações de alto desempenho de pequenos negócios de alimentação?|alimentacao": {
+    "mode": "analisar",
+    "query": "Quais formatos de vídeo curto mais aparecem entre as publicações de alto desempenho de pequenos negócios de alimentação?",
+    "segment_used": "alimentacao",
+    "findings": [
+      {
+        "feature": "criador_e_empreendedor_real=sim",
+        "frequency": 1.0,
+        "n_posts": 154,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_WxYN7fPd-h4",
+          "yt_RfQadOAwN58"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=30-60s",
+        "frequency": 0.2987,
+        "n_posts": 46,
+        "total": 154,
+        "example_post_ids": [
+          "yt_t2iyex_BlIs",
+          "yt_rRcZKUNz5RY",
+          "yt_dhkTCMcVaUI"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=15-30s",
+        "frequency": 0.2468,
+        "n_posts": 38,
+        "total": 154,
+        "example_post_ids": [
+          "yt_8YesB3PF2p4",
+          "yt_tpeDoLvlXMY",
+          "yt_2xEg3fzvIVA"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=60-90s",
+        "frequency": 0.1623,
+        "n_posts": 25,
+        "total": 154,
+        "example_post_ids": [
+          "yt__nAddFoTlm0",
+          "yt_TPtUd8QyLjA",
+          "yt_UnSKypIszQw"
+        ]
+      },
+      {
+        "feature": "formato_video=bastidores",
+        "frequency": 0.4026,
+        "n_posts": 62,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_RfQadOAwN58",
+          "yt__nAddFoTlm0"
+        ]
+      },
+      {
+        "feature": "formato_video=tutorial",
+        "frequency": 0.3701,
+        "n_posts": 57,
+        "total": 154,
+        "example_post_ids": [
+          "yt_t2iyex_BlIs",
+          "ig_DckBu86pMwc",
+          "yt_TPtUd8QyLjA"
+        ]
+      },
+      {
+        "feature": "formato_video=talking head",
+        "frequency": 0.1364,
+        "n_posts": 21,
+        "total": 154,
+        "example_post_ids": [
+          "yt_SWweplBQkK8",
+          "yt_fzIFryDiyng",
+          "yt_auGEoo1InBM"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=curta",
+        "frequency": 0.7922,
+        "n_posts": 122,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_WxYN7fPd-h4",
+          "yt_RfQadOAwN58"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=longa",
+        "frequency": 0.1299,
+        "n_posts": 20,
+        "total": 154,
+        "example_post_ids": [
+          "ig_DckBu86pMwc",
+          "ig_DdFf8BABDa7",
+          "ig_DchNZ0CheQN"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=média",
+        "frequency": 0.0779,
+        "n_posts": 12,
+        "total": 154,
+        "example_post_ids": [
+          "ig_DMps12IOWSw",
+          "ig_Ddyyft5RHS2",
+          "ig_DeiFpjzzUNp"
+        ]
+      },
+      {
+        "feature": "oferta_ou_beneficio_explicito=sim",
+        "frequency": 0.3052,
+        "n_posts": 47,
+        "total": 154,
+        "example_post_ids": [
+          "yt_t2iyex_BlIs",
+          "ig_Ddyyft5RHS2",
+          "ig_DckBu86pMwc"
+        ]
+      },
+      {
+        "feature": "prova_social=sim",
+        "frequency": 0.0195,
+        "n_posts": 3,
+        "total": 154,
+        "example_post_ids": [
+          "ig_Db9S2QNBK_R",
+          "yt_I5MqChTnwZg",
+          "yt_cXZxpxr-qns"
+        ]
+      },
+      {
+        "feature": "tem_rosto=sim",
+        "frequency": 0.4286,
+        "n_posts": 66,
+        "total": 154,
+        "example_post_ids": [
+          "yt_WxYN7fPd-h4",
+          "ig_DbwRJEbuaH7",
+          "ig_DckBu86pMwc"
+        ]
+      },
+      {
+        "feature": "tema_principal=vendas",
+        "frequency": 0.2792,
+        "n_posts": 43,
+        "total": 154,
+        "example_post_ids": [
+          "yt_RfQadOAwN58",
+          "yt_rRcZKUNz5RY",
+          "yt_TPtUd8QyLjA"
+        ]
+      },
+      {
+        "feature": "tema_principal=marketing",
+        "frequency": 0.2273,
+        "n_posts": 35,
+        "total": 154,
+        "example_post_ids": [
+          "yt_t2iyex_BlIs",
+          "ig_DckBu86pMwc",
+          "ig_DeiFpjzzUNp"
+        ]
+      },
+      {
+        "feature": "tema_principal=história de empreendedor",
+        "frequency": 0.1429,
+        "n_posts": 22,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt__nAddFoTlm0",
+          "yt_TqJ12xVgwDQ"
+        ]
+      },
+      {
+        "feature": "texto_na_tela=sim",
+        "frequency": 0.6234,
+        "n_posts": 96,
+        "total": 154,
+        "example_post_ids": [
+          "yt_WxYN7fPd-h4",
+          "ig_DMps12IOWSw",
+          "yt_t2iyex_BlIs"
+        ]
+      },
+      {
+        "feature": "tipo_cta=nenhum",
+        "frequency": 0.6558,
+        "n_posts": 101,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_WxYN7fPd-h4",
+          "yt_RfQadOAwN58"
+        ]
+      },
+      {
+        "feature": "tipo_cta=comentar",
+        "frequency": 0.2273,
+        "n_posts": 35,
+        "total": 154,
+        "example_post_ids": [
+          "ig_Ddyyft5RHS2",
+          "yt_SWweplBQkK8",
+          "yt_2xEg3fzvIVA"
+        ]
+      },
+      {
+        "feature": "tipo_cta=seguir",
+        "frequency": 0.0584,
+        "n_posts": 9,
+        "total": 154,
+        "example_post_ids": [
+          "yt_qsY8Gg-Q6i4",
+          "yt_2o7uUQSLvSI",
+          "yt_vwgj7NML8AQ"
+        ]
+      },
+      {
+        "feature": "tipo_hook=curiosidade",
+        "frequency": 0.4935,
+        "n_posts": 76,
+        "total": 154,
+        "example_post_ids": [
+          "yt_WxYN7fPd-h4",
+          "yt_RfQadOAwN58",
+          "ig_DMps12IOWSw"
+        ]
+      },
+      {
+        "feature": "tipo_hook=promessa",
+        "frequency": 0.2468,
+        "n_posts": 38,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_t2iyex_BlIs",
+          "ig_DckBu86pMwc"
+        ]
+      },
+      {
+        "feature": "tipo_hook=pergunta",
+        "frequency": 0.1818,
+        "n_posts": 28,
+        "total": 154,
+        "example_post_ids": [
+          "yt_SWweplBQkK8",
+          "yt_dhkTCMcVaUI",
+          "yt_Svtx7Dk2ehc"
+        ]
+      },
+      {
+        "feature": "tipo_post=short",
+        "frequency": 0.8636,
+        "n_posts": 133,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_WxYN7fPd-h4",
+          "yt_RfQadOAwN58"
+        ]
+      },
+      {
+        "feature": "tipo_post=reels",
+        "frequency": 0.1234,
+        "n_posts": 19,
+        "total": 154,
+        "example_post_ids": [
+          "ig_DbwRJEbuaH7",
+          "ig_Ddyyft5RHS2",
+          "ig_DckBu86pMwc"
+        ]
+      },
+      {
+        "feature": "tipo_post=imagem",
+        "frequency": 0.0065,
+        "n_posts": 1,
+        "total": 154,
+        "example_post_ids": [
+          "ig_DMps12IOWSw"
+        ]
+      },
+      {
+        "feature": "tom=informal",
+        "frequency": 0.8636,
+        "n_posts": 133,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_RfQadOAwN58",
+          "ig_DMps12IOWSw"
+        ]
+      },
+      {
+        "feature": "tom=inspiracional",
+        "frequency": 0.0909,
+        "n_posts": 14,
+        "total": 154,
+        "example_post_ids": [
+          "yt_2xEg3fzvIVA",
+          "yt_Svtx7Dk2ehc",
+          "ig_Dcqn5W-uCB2"
+        ]
+      },
+      {
+        "feature": "tom=humorístico",
+        "frequency": 0.026,
+        "n_posts": 4,
+        "total": 154,
+        "example_post_ids": [
+          "yt_WxYN7fPd-h4",
+          "yt_Mv7wtSbHfWM",
+          "yt_7esbBc_UBHE"
+        ]
+      }
+    ],
+    "reference_posts": [
+      {
+        "post_id": "yt_qxZeyj_gecM",
+        "url": "https://www.youtube.com/shorts/qxZeyj_gecM",
+        "platform": "youtube",
+        "handle": "deliverycomdebora",
+        "engagement_rate": 0.02783,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "bastidores",
+          "tipo_hook": "dor",
+          "hook_primeiros_3s": "Você é uma microempresa!",
+          "tema_principal": "gestão",
+          "tom": "inspiracional",
+          "tipo_cta": "nenhum",
+          "tem_rosto": 0,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "bastidores da produção",
+            "foco no segmento de alimentação",
+            "texto na tela chamativo",
+            "identificação com o pequeno empreendedor",
+            "vídeo curto e direto"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_fBU9Slqo2os",
+        "url": "https://www.youtube.com/shorts/fBU9Slqo2os",
+        "platform": "youtube",
+        "handle": "wansalgados",
+        "engagement_rate": 0.06904,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "bastidores",
+          "tipo_hook": "pergunta",
+          "hook_primeiros_3s": "Quem ama Mini Churros?",
+          "tema_principal": "marketing",
+          "tom": "informal",
+          "tipo_cta": "comentar",
+          "tem_rosto": 0,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "vídeo curto de produção",
+            "visual apetitoso do doce",
+            "texto na tela chamativo",
+            "pergunta interativa na legenda",
+            "foco no segmento de alimentação"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_dtY5bO-lgUA",
+        "url": "https://www.youtube.com/shorts/dtY5bO-lgUA",
+        "platform": "youtube",
+        "handle": "wansalgados",
+        "engagement_rate": 0.03766,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "bastidores",
+          "tipo_hook": "promessa",
+          "hook_primeiros_3s": "Confiança e força de vontade de fazer acontecer",
+          "tema_principal": "motivação",
+          "tom": "inspiracional",
+          "tipo_cta": "comentar",
+          "tem_rosto": 0,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "produção de salgados",
+            "texto motivacional",
+            "vídeo curto dinâmico",
+            "bastidores da produção",
+            "chamada para engajamento"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_JXH2Qx0teKU",
+        "url": "https://www.youtube.com/shorts/JXH2Qx0teKU",
+        "platform": "youtube",
+        "handle": "deliverycomdebora",
+        "engagement_rate": 0.03042,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "talking head",
+          "tipo_hook": "curiosidade",
+          "hook_primeiros_3s": "Esse vídeo não é sobre hambúrguer",
+          "tema_principal": "história de empreendedor",
+          "tom": "inspiracional",
+          "tipo_cta": "nenhum",
+          "tem_rosto": 1,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "Empreendedora real na cozinha",
+            "Hook intrigante que quebra expectativa",
+            "Bastidores do negócio de delivery",
+            "Legenda curta e instigante",
+            "Uso de texto na tela"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_Mv7wtSbHfWM",
+        "url": "https://www.youtube.com/shorts/Mv7wtSbHfWM",
+        "platform": "youtube",
+        "handle": "marcelomarani",
+        "engagement_rate": 0.04627,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "humor/esquete",
+          "tipo_hook": "pergunta",
+          "hook_primeiros_3s": "Você tem muita dor de cabeça com seus funcionários?",
+          "tema_principal": "gestão",
+          "tom": "humorístico",
+          "tipo_cta": "comentar",
+          "tem_rosto": 1,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "Identificação com a dor do empreendedor",
+            "Uso de humor na gestão",
+            "Chamada clara para comentários",
+            "Situação cotidiana de restaurante",
+            "Formato curto e dinâmico"
+          ]
+        }
+      }
+    ],
+    "creatives": [],
+    "confidence_flag": false,
+    "explanation": "Com base na análise de 154 posts de alto desempenho no segmento de alimentação, observamos que os formatos de vídeo curto mais frequentes são os de bastidores, com 40% (62/154), seguidos pelos tutoriais, com 37% (57/154). O formato talking head também é identificado, representando 14% (21/154) das publicações.\n\nEntre os perfis de referência, o @wansalgados utiliza o formato de bastidores para exibir a produção de itens como mini churros, focando no visual apetitoso. O perfil @deliverycomdebora apresenta tanto o formato de bastidores quanto o talking head, utilizando elementos como o criador sendo um empreendedor real na cozinha para gerar conexão. Esses padrões observados sugerem que mostrar o cotidiano da produção e o rosto do empreendedor são estratégias recorrentes para alcançar alto desempenho nesse recorte.",
+    "run_id": "5740122eb432",
+    "llm": "gemini/gemma-4-26b-a4b-it"
+  },
+  "recomendar|como atrair microempreendedoras de beleza para o programa do impulso?|beleza": {
+    "mode": "recomendar",
+    "query": "Como atrair microempreendedoras de beleza para o programa do Impulso?",
+    "segment_used": "beleza",
+    "findings": [
+      {
+        "feature": "criador_e_empreendedor_real=sim",
+        "frequency": 0.9737,
+        "n_posts": 148,
+        "total": 152,
+        "example_post_ids": [
+          "ig_DdCHiXjOzZf",
+          "yt_GfiMbTyylfw",
+          "yt_GfNq1hO5NSY"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=60-90s",
+        "frequency": 0.4079,
+        "n_posts": 62,
+        "total": 152,
+        "example_post_ids": [
+          "yt_GfNq1hO5NSY",
+          "yt_2Fu-QP_K6PQ",
+          "yt_UFnu98lc1Og"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=15-30s",
+        "frequency": 0.2566,
+        "n_posts": 39,
+        "total": 152,
+        "example_post_ids": [
+          "yt_ClKU9hLBkd8",
+          "yt_4UapXcQiqWY",
+          "yt_wg1UKi_woNI"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=30-60s",
+        "frequency": 0.2171,
+        "n_posts": 33,
+        "total": 152,
+        "example_post_ids": [
+          "yt_GfiMbTyylfw",
+          "yt_tcQKC2VJzOM",
+          "yt_bI_Alkdjd28"
+        ]
+      },
+      {
+        "feature": "formato_video=antes/depois",
+        "frequency": 0.3947,
+        "n_posts": 60,
+        "total": 152,
+        "example_post_ids": [
+          "yt_tcQKC2VJzOM",
+          "yt_4UapXcQiqWY",
+          "yt_UFnu98lc1Og"
+        ]
+      },
+      {
+        "feature": "formato_video=tutorial",
+        "frequency": 0.3026,
+        "n_posts": 46,
+        "total": 152,
+        "example_post_ids": [
+          "yt_GfNq1hO5NSY",
+          "yt_2Fu-QP_K6PQ",
+          "yt_ClKU9hLBkd8"
+        ]
+      },
+      {
+        "feature": "formato_video=talking head",
+        "frequency": 0.1316,
+        "n_posts": 20,
+        "total": 152,
+        "example_post_ids": [
+          "ig_DdCHiXjOzZf",
+          "yt_GfiMbTyylfw",
+          "yt_4I6VzV4V5AA"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=curta",
+        "frequency": 0.9079,
+        "n_posts": 138,
+        "total": 152,
+        "example_post_ids": [
+          "ig_DdCHiXjOzZf",
+          "yt_GfiMbTyylfw",
+          "yt_GfNq1hO5NSY"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=média",
+        "frequency": 0.0658,
+        "n_posts": 10,
+        "total": 152,
+        "example_post_ids": [
+          "yt_xXHmYQoolUk",
+          "ig_DZaQd7CxoTZ",
+          "ig_DdEc6NMuvEA"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=longa",
+        "frequency": 0.0263,
+        "n_posts": 4,
+        "total": 152,
+        "example_post_ids": [
+          "ig_DduTIO8EjHw",
+          "ig_Db02NA_x1fR",
+          "ig_Da5EwShRM2n"
+        ]
+      },
+      {
+        "feature": "oferta_ou_beneficio_explicito=sim",
+        "frequency": 0.1776,
+        "n_posts": 27,
+        "total": 152,
+        "example_post_ids": [
+          "yt_GfiMbTyylfw",
+          "yt_GfNq1hO5NSY",
+          "yt_KQhNcRu29Jk"
+        ]
+      },
+      {
+        "feature": "prova_social=sim",
+        "frequency": 0.4934,
+        "n_posts": 75,
+        "total": 152,
+        "example_post_ids": [
+          "yt_tcQKC2VJzOM",
+          "yt_4UapXcQiqWY",
+          "yt_wg1UKi_woNI"
+        ]
+      },
+      {
+        "feature": "tem_rosto=sim",
+        "frequency": 0.8026,
+        "n_posts": 122,
+        "total": 152,
+        "example_post_ids": [
+          "ig_DdCHiXjOzZf",
+          "yt_GfNq1hO5NSY",
+          "yt_2Fu-QP_K6PQ"
+        ]
+      },
+      {
+        "feature": "tema_principal=marketing",
+        "frequency": 0.4868,
+        "n_posts": 74,
+        "total": 152,
+        "example_post_ids": [
+          "yt_2Fu-QP_K6PQ",
+          "yt_tcQKC2VJzOM",
+          "yt_4UapXcQiqWY"
+        ]
+      },
+      {
+        "feature": "tema_principal=vendas",
+        "frequency": 0.375,
+        "n_posts": 57,
+        "total": 152,
+        "example_post_ids": [
+          "yt_GfiMbTyylfw",
+          "yt_ClKU9hLBkd8",
+          "yt_cu-nNkoua_s"
+        ]
+      },
+      {
+        "feature": "tema_principal=gestão",
+        "frequency": 0.0592,
+        "n_posts": 9,
+        "total": 152,
+        "example_post_ids": [
+          "ig_DZaQd7CxoTZ",
+          "yt_deZhIBKU6mo",
+          "yt_VZeXcUahThE"
+        ]
+      },
+      {
+        "feature": "texto_na_tela=sim",
+        "frequency": 0.2368,
+        "n_posts": 36,
+        "total": 152,
+        "example_post_ids": [
+          "ig_DdCHiXjOzZf",
+          "yt_GfiMbTyylfw",
+          "yt_GfNq1hO5NSY"
+        ]
+      },
+      {
+        "feature": "tipo_cta=nenhum",
+        "frequency": 0.8684,
+        "n_posts": 132,
+        "total": 152,
+        "example_post_ids": [
+          "ig_DdCHiXjOzZf",
+          "yt_GfiMbTyylfw",
+          "yt_GfNq1hO5NSY"
+        ]
+      },
+      {
+        "feature": "tipo_cta=comentar",
+        "frequency": 0.0921,
+        "n_posts": 14,
+        "total": 152,
+        "example_post_ids": [
+          "yt_xXHmYQoolUk",
+          "ig_DfW5KIIkVNy",
+          "yt_cgI_sc6nd4c"
+        ]
+      },
+      {
+        "feature": "tipo_cta=link na bio",
+        "frequency": 0.0395,
+        "n_posts": 6,
+        "total": 152,
+        "example_post_ids": [
+          "yt_nY8lbIWBE7k",
+          "yt_Kg56aNtLaxY",
+          "yt_4orWB_sSBz0"
+        ]
+      },
+      {
+        "feature": "tipo_hook=curiosidade",
+        "frequency": 0.5461,
+        "n_posts": 83,
+        "total": 152,
+        "example_post_ids": [
+          "yt_2Fu-QP_K6PQ",
+          "yt_ClKU9hLBkd8",
+          "yt_UFnu98lc1Og"
+        ]
+      },
+      {
+        "feature": "tipo_hook=promessa",
+        "frequency": 0.2434,
+        "n_posts": 37,
+        "total": 152,
+        "example_post_ids": [
+          "yt_GfNq1hO5NSY",
+          "yt_tcQKC2VJzOM",
+          "yt_4UapXcQiqWY"
+        ]
+      },
+      {
+        "feature": "tipo_hook=pergunta",
+        "frequency": 0.0987,
+        "n_posts": 15,
+        "total": 152,
+        "example_post_ids": [
+          "ig_DZaQd7CxoTZ",
+          "ig_Da5EwShRM2n",
+          "yt_cgI_sc6nd4c"
+        ]
+      },
+      {
+        "feature": "tipo_post=short",
+        "frequency": 0.9211,
+        "n_posts": 140,
+        "total": 152,
+        "example_post_ids": [
+          "yt_GfiMbTyylfw",
+          "yt_GfNq1hO5NSY",
+          "yt_2Fu-QP_K6PQ"
+        ]
+      },
+      {
+        "feature": "tipo_post=reels",
+        "frequency": 0.0395,
+        "n_posts": 6,
+        "total": 152,
+        "example_post_ids": [
+          "ig_DdCHiXjOzZf",
+          "ig_DduTIO8EjHw",
+          "ig_DdErsl2OfGT"
+        ]
+      },
+      {
+        "feature": "tipo_post=imagem",
+        "frequency": 0.0197,
+        "n_posts": 3,
+        "total": 152,
+        "example_post_ids": [
+          "ig_Db02NA_x1fR",
+          "ig_DZaQd7CxoTZ",
+          "ig_Da5EwShRM2n"
+        ]
+      },
+      {
+        "feature": "tom=informal",
+        "frequency": 0.8487,
+        "n_posts": 129,
+        "total": 152,
+        "example_post_ids": [
+          "ig_DdCHiXjOzZf",
+          "yt_GfiMbTyylfw",
+          "yt_GfNq1hO5NSY"
+        ]
+      },
+      {
+        "feature": "tom=inspiracional",
+        "frequency": 0.0921,
+        "n_posts": 14,
+        "total": 152,
+        "example_post_ids": [
+          "yt_2Fu-QP_K6PQ",
+          "yt_UFnu98lc1Og",
+          "ig_DduTIO8EjHw"
+        ]
+      },
+      {
+        "feature": "tom=técnico",
+        "frequency": 0.0526,
+        "n_posts": 8,
+        "total": 152,
+        "example_post_ids": [
+          "yt_f2-d1bI09m4",
+          "yt_SZsWfSY4Zjg",
+          "ig_DfW5KIIkVNy"
+        ]
+      }
+    ],
+    "reference_posts": [
+      {
+        "post_id": "yt_4I6VzV4V5AA",
+        "url": "https://www.youtube.com/shorts/4I6VzV4V5AA",
+        "platform": "youtube",
+        "handle": "jairtavaresoficial2007",
+        "engagement_rate": 0.17889,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "talking head",
+          "tipo_hook": "curiosidade",
+          "hook_primeiros_3s": "Short Jair",
+          "tema_principal": "vendas",
+          "tom": "informal",
+          "tipo_cta": "nenhum",
+          "tem_rosto": 1,
+          "texto_na_tela": 0,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "Corte de cabelo curto feminino",
+            "Cliente sorridente na cadeira",
+            "Protetor facial transparente",
+            "Hashtag #cursoonline",
+            "Cenário de salão de beleza"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_LCaJEQJpjdw",
+        "url": "https://www.youtube.com/shorts/LCaJEQJpjdw",
+        "platform": "youtube",
+        "handle": "jairtavaresoficial2007",
+        "engagement_rate": 0.02612,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "antes/depois",
+          "tipo_hook": "curiosidade",
+          "hook_primeiros_3s": "Antes e depois",
+          "tema_principal": "vendas",
+          "tom": "informal",
+          "tipo_cta": "nenhum",
+          "tem_rosto": 1,
+          "texto_na_tela": 0,
+          "prova_social": 1,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "Transformação visual imediata",
+            "Demonstração de autoridade técnica",
+            "Resultado estético satisfatório",
+            "Foco no nicho de beleza",
+            "Conteúdo visual direto"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_cgI_sc6nd4c",
+        "url": "https://www.youtube.com/shorts/cgI_sc6nd4c",
+        "platform": "youtube",
+        "handle": "agadesivosdeunhas",
+        "engagement_rate": 0.02551,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "tutorial",
+          "tipo_hook": "pergunta",
+          "hook_primeiros_3s": "você usaria na unha ⁉️😬",
+          "tema_principal": "vendas",
+          "tom": "informal",
+          "tipo_cta": "comentar",
+          "tem_rosto": 0,
+          "texto_na_tela": 0,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "pergunta provocativa",
+            "foco no produto",
+            "nicho de beleza",
+            "interação simples",
+            "visual atraente"
+          ]
+        }
+      },
+      {
+        "post_id": "ig_DfW5KIIkVNy",
+        "url": "https://www.instagram.com/p/DfW5KIIkVNy/",
+        "platform": "instagram",
+        "handle": "sauloabrahaoo",
+        "engagement_rate": 0.03177,
+        "categories": {
+          "tipo_post": "carrossel",
+          "formato_video": null,
+          "tipo_hook": "curiosidade",
+          "hook_primeiros_3s": "A eleição acabou. O que muda no seu salão de beleza a partir de agora...",
+          "tema_principal": "finanças",
+          "tom": "técnico",
+          "tipo_cta": "comentar",
+          "tem_rosto": 1,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 0,
+          "elementos_top5": [
+            "Capa chamativa com figuras políticas",
+            "Tema atual e de grande interesse",
+            "Foco em donos de salão de beleza",
+            "Carrossel educativo sobre impostos",
+            "Chamada para ação de compartilhamento"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_64uKi3c5e-c",
+        "url": "https://www.youtube.com/shorts/64uKi3c5e-c",
+        "platform": "youtube",
+        "handle": "agadesivosdeunhas",
+        "engagement_rate": 0.02258,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "bastidores",
+          "tipo_hook": "pergunta",
+          "hook_primeiros_3s": "voce usaria essa joia na unha",
+          "tema_principal": "vendas",
+          "tom": "informal",
+          "tipo_cta": "comentar",
+          "tem_rosto": 0,
+          "texto_na_tela": 0,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "apelo visual forte",
+            "foco no produto",
+            "pergunta de engajamento",
+            "nicho de beleza",
+            "demonstração do produto"
+          ]
+        }
+      }
+    ],
+    "creatives": [],
+    "confidence_flag": false,
+    "explanation": "Olá! Como analista de conteúdo do Impulso Stone, analisei nossa base com 152 posts de alto desempenho no segmento de beleza para recomendar estratégias voltadas a atrair microempreendedoras.\n\nPara o formato do vídeo, os dados mostram que a faixa de 60-90s foi observada em 41% (62/152) dos casos, além da presença marcante de criadores e empreendedores reais em 97% (148/152) da base e o uso de rostos em 80% (122/152). Como exemplos de referência, temos publicações dos perfis @jairtavaresoficial2007 e @agadesivosdeunhas.\n\nSobre o tema principal, o foco em marketing apareceu em 49% (74/152) e vendas em 38% (57/152) dos posts, alinhando-se a conteúdos práticos como os observados em @sauloabrahaoo. Quanto aos ganchos, ganchos baseados em curiosidade e perguntas funcionam bem para gerar interesse, a exemplo do post de @agadesivosdeunhas (\"você usaria na unha ⁉️😬\"). \n\nPor fim, o tipo de CTA identificado como \"nenhum\" esteve presente em 87% (132/152) das publicações da base, indicando que o foco orgânico prioritário é o engajamento natural e a entrega de valor direto para o público de beleza.",
+    "run_id": "bcd694835a28",
+    "llm": "gemini/gemini-3.5-flash-lite"
+  },
+  "gerar_criativo|preciso de um vídeo curto para atrair donos de pequenos restaurantes e lanchonetes|alimentacao": {
+    "mode": "gerar_criativo",
+    "query": "Preciso de um vídeo curto para atrair donos de pequenos restaurantes e lanchonetes",
+    "segment_used": "alimentacao",
+    "findings": [
+      {
+        "feature": "criador_e_empreendedor_real=sim",
+        "frequency": 1.0,
+        "n_posts": 154,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_WxYN7fPd-h4",
+          "yt_RfQadOAwN58"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=30-60s",
+        "frequency": 0.2987,
+        "n_posts": 46,
+        "total": 154,
+        "example_post_ids": [
+          "yt_t2iyex_BlIs",
+          "yt_rRcZKUNz5RY",
+          "yt_dhkTCMcVaUI"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=15-30s",
+        "frequency": 0.2468,
+        "n_posts": 38,
+        "total": 154,
+        "example_post_ids": [
+          "yt_8YesB3PF2p4",
+          "yt_tpeDoLvlXMY",
+          "yt_2xEg3fzvIVA"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=60-90s",
+        "frequency": 0.1623,
+        "n_posts": 25,
+        "total": 154,
+        "example_post_ids": [
+          "yt__nAddFoTlm0",
+          "yt_TPtUd8QyLjA",
+          "yt_UnSKypIszQw"
+        ]
+      },
+      {
+        "feature": "formato_video=bastidores",
+        "frequency": 0.4026,
+        "n_posts": 62,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_RfQadOAwN58",
+          "yt__nAddFoTlm0"
+        ]
+      },
+      {
+        "feature": "formato_video=tutorial",
+        "frequency": 0.3701,
+        "n_posts": 57,
+        "total": 154,
+        "example_post_ids": [
+          "yt_t2iyex_BlIs",
+          "ig_DckBu86pMwc",
+          "yt_TPtUd8QyLjA"
+        ]
+      },
+      {
+        "feature": "formato_video=talking head",
+        "frequency": 0.1364,
+        "n_posts": 21,
+        "total": 154,
+        "example_post_ids": [
+          "yt_SWweplBQkK8",
+          "yt_fzIFryDiyng",
+          "yt_auGEoo1InBM"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=curta",
+        "frequency": 0.7922,
+        "n_posts": 122,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_WxYN7fPd-h4",
+          "yt_RfQadOAwN58"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=longa",
+        "frequency": 0.1299,
+        "n_posts": 20,
+        "total": 154,
+        "example_post_ids": [
+          "ig_DckBu86pMwc",
+          "ig_DdFf8BABDa7",
+          "ig_DchNZ0CheQN"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=média",
+        "frequency": 0.0779,
+        "n_posts": 12,
+        "total": 154,
+        "example_post_ids": [
+          "ig_DMps12IOWSw",
+          "ig_Ddyyft5RHS2",
+          "ig_DeiFpjzzUNp"
+        ]
+      },
+      {
+        "feature": "oferta_ou_beneficio_explicito=sim",
+        "frequency": 0.3052,
+        "n_posts": 47,
+        "total": 154,
+        "example_post_ids": [
+          "yt_t2iyex_BlIs",
+          "ig_Ddyyft5RHS2",
+          "ig_DckBu86pMwc"
+        ]
+      },
+      {
+        "feature": "prova_social=sim",
+        "frequency": 0.0195,
+        "n_posts": 3,
+        "total": 154,
+        "example_post_ids": [
+          "ig_Db9S2QNBK_R",
+          "yt_I5MqChTnwZg",
+          "yt_cXZxpxr-qns"
+        ]
+      },
+      {
+        "feature": "tem_rosto=sim",
+        "frequency": 0.4286,
+        "n_posts": 66,
+        "total": 154,
+        "example_post_ids": [
+          "yt_WxYN7fPd-h4",
+          "ig_DbwRJEbuaH7",
+          "ig_DckBu86pMwc"
+        ]
+      },
+      {
+        "feature": "tema_principal=vendas",
+        "frequency": 0.2792,
+        "n_posts": 43,
+        "total": 154,
+        "example_post_ids": [
+          "yt_RfQadOAwN58",
+          "yt_rRcZKUNz5RY",
+          "yt_TPtUd8QyLjA"
+        ]
+      },
+      {
+        "feature": "tema_principal=marketing",
+        "frequency": 0.2273,
+        "n_posts": 35,
+        "total": 154,
+        "example_post_ids": [
+          "yt_t2iyex_BlIs",
+          "ig_DckBu86pMwc",
+          "ig_DeiFpjzzUNp"
+        ]
+      },
+      {
+        "feature": "tema_principal=história de empreendedor",
+        "frequency": 0.1429,
+        "n_posts": 22,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt__nAddFoTlm0",
+          "yt_TqJ12xVgwDQ"
+        ]
+      },
+      {
+        "feature": "texto_na_tela=sim",
+        "frequency": 0.6234,
+        "n_posts": 96,
+        "total": 154,
+        "example_post_ids": [
+          "yt_WxYN7fPd-h4",
+          "ig_DMps12IOWSw",
+          "yt_t2iyex_BlIs"
+        ]
+      },
+      {
+        "feature": "tipo_cta=nenhum",
+        "frequency": 0.6558,
+        "n_posts": 101,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_WxYN7fPd-h4",
+          "yt_RfQadOAwN58"
+        ]
+      },
+      {
+        "feature": "tipo_cta=comentar",
+        "frequency": 0.2273,
+        "n_posts": 35,
+        "total": 154,
+        "example_post_ids": [
+          "ig_Ddyyft5RHS2",
+          "yt_SWweplBQkK8",
+          "yt_2xEg3fzvIVA"
+        ]
+      },
+      {
+        "feature": "tipo_cta=seguir",
+        "frequency": 0.0584,
+        "n_posts": 9,
+        "total": 154,
+        "example_post_ids": [
+          "yt_qsY8Gg-Q6i4",
+          "yt_2o7uUQSLvSI",
+          "yt_vwgj7NML8AQ"
+        ]
+      },
+      {
+        "feature": "tipo_hook=curiosidade",
+        "frequency": 0.4935,
+        "n_posts": 76,
+        "total": 154,
+        "example_post_ids": [
+          "yt_WxYN7fPd-h4",
+          "yt_RfQadOAwN58",
+          "ig_DMps12IOWSw"
+        ]
+      },
+      {
+        "feature": "tipo_hook=promessa",
+        "frequency": 0.2468,
+        "n_posts": 38,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_t2iyex_BlIs",
+          "ig_DckBu86pMwc"
+        ]
+      },
+      {
+        "feature": "tipo_hook=pergunta",
+        "frequency": 0.1818,
+        "n_posts": 28,
+        "total": 154,
+        "example_post_ids": [
+          "yt_SWweplBQkK8",
+          "yt_dhkTCMcVaUI",
+          "yt_Svtx7Dk2ehc"
+        ]
+      },
+      {
+        "feature": "tipo_post=short",
+        "frequency": 0.8636,
+        "n_posts": 133,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_WxYN7fPd-h4",
+          "yt_RfQadOAwN58"
+        ]
+      },
+      {
+        "feature": "tipo_post=reels",
+        "frequency": 0.1234,
+        "n_posts": 19,
+        "total": 154,
+        "example_post_ids": [
+          "ig_DbwRJEbuaH7",
+          "ig_Ddyyft5RHS2",
+          "ig_DckBu86pMwc"
+        ]
+      },
+      {
+        "feature": "tipo_post=imagem",
+        "frequency": 0.0065,
+        "n_posts": 1,
+        "total": 154,
+        "example_post_ids": [
+          "ig_DMps12IOWSw"
+        ]
+      },
+      {
+        "feature": "tom=informal",
+        "frequency": 0.8636,
+        "n_posts": 133,
+        "total": 154,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_RfQadOAwN58",
+          "ig_DMps12IOWSw"
+        ]
+      },
+      {
+        "feature": "tom=inspiracional",
+        "frequency": 0.0909,
+        "n_posts": 14,
+        "total": 154,
+        "example_post_ids": [
+          "yt_2xEg3fzvIVA",
+          "yt_Svtx7Dk2ehc",
+          "ig_Dcqn5W-uCB2"
+        ]
+      },
+      {
+        "feature": "tom=humorístico",
+        "frequency": 0.026,
+        "n_posts": 4,
+        "total": 154,
+        "example_post_ids": [
+          "yt_WxYN7fPd-h4",
+          "yt_Mv7wtSbHfWM",
+          "yt_7esbBc_UBHE"
+        ]
+      }
+    ],
+    "reference_posts": [
+      {
+        "post_id": "yt_qxZeyj_gecM",
+        "url": "https://www.youtube.com/shorts/qxZeyj_gecM",
+        "platform": "youtube",
+        "handle": "deliverycomdebora",
+        "engagement_rate": 0.02783,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "bastidores",
+          "tipo_hook": "dor",
+          "hook_primeiros_3s": "Você é uma microempresa!",
+          "tema_principal": "gestão",
+          "tom": "inspiracional",
+          "tipo_cta": "nenhum",
+          "tem_rosto": 0,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "bastidores da produção",
+            "foco no segmento de alimentação",
+            "texto na tela chamativo",
+            "identificação com o pequeno empreendedor",
+            "vídeo curto e direto"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_dtY5bO-lgUA",
+        "url": "https://www.youtube.com/shorts/dtY5bO-lgUA",
+        "platform": "youtube",
+        "handle": "wansalgados",
+        "engagement_rate": 0.03766,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "bastidores",
+          "tipo_hook": "promessa",
+          "hook_primeiros_3s": "Confiança e força de vontade de fazer acontecer",
+          "tema_principal": "motivação",
+          "tom": "inspiracional",
+          "tipo_cta": "comentar",
+          "tem_rosto": 0,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "produção de salgados",
+            "texto motivacional",
+            "vídeo curto dinâmico",
+            "bastidores da produção",
+            "chamada para engajamento"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_lHoq1_q6CRI",
+        "url": "https://www.youtube.com/shorts/lHoq1_q6CRI",
+        "platform": "youtube",
+        "handle": "wansalgados",
+        "engagement_rate": 0.04184,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "bastidores",
+          "tipo_hook": "curiosidade",
+          "hook_primeiros_3s": "Um pouco da nossa produção",
+          "tema_principal": "ferramentas/maquininha",
+          "tom": "informal",
+          "tipo_cta": "nenhum",
+          "tem_rosto": 0,
+          "texto_na_tela": 0,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "Mostra os bastidores da produção",
+            "Foco em equipamento de trabalho",
+            "Vídeo curto e direto",
+            "Uso de masseira profissional",
+            "Transparência no processo"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_JXH2Qx0teKU",
+        "url": "https://www.youtube.com/shorts/JXH2Qx0teKU",
+        "platform": "youtube",
+        "handle": "deliverycomdebora",
+        "engagement_rate": 0.03042,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "talking head",
+          "tipo_hook": "curiosidade",
+          "hook_primeiros_3s": "Esse vídeo não é sobre hambúrguer",
+          "tema_principal": "história de empreendedor",
+          "tom": "inspiracional",
+          "tipo_cta": "nenhum",
+          "tem_rosto": 1,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "Empreendedora real na cozinha",
+            "Hook intrigante que quebra expectativa",
+            "Bastidores do negócio de delivery",
+            "Legenda curta e instigante",
+            "Uso de texto na tela"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_Mv7wtSbHfWM",
+        "url": "https://www.youtube.com/shorts/Mv7wtSbHfWM",
+        "platform": "youtube",
+        "handle": "marcelomarani",
+        "engagement_rate": 0.04627,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "humor/esquete",
+          "tipo_hook": "pergunta",
+          "hook_primeiros_3s": "Você tem muita dor de cabeça com seus funcionários?",
+          "tema_principal": "gestão",
+          "tom": "humorístico",
+          "tipo_cta": "comentar",
+          "tem_rosto": 1,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "Identificação com a dor do empreendedor",
+            "Uso de humor na gestão",
+            "Chamada clara para comentários",
+            "Situação cotidiana de restaurante",
+            "Formato curto e dinâmico"
+          ]
+        }
+      }
+    ],
+    "creatives": [
+      {
+        "titulo": "Bastidores da Gestão no Restaurante",
+        "formato": "Reels 30-45s, bastidores com narração",
+        "gancho": "O segredo de um restaurante que cresce não está só na cozinha.",
+        "roteiro": "1. Gancho intrigante quebrando a expectativa de que o foco é só comida. 2. Mostra a rotina real de organização/produção. 3. Conecta o esforço físico com a necessidade de organização. 4. Encerra com convite para o Impulso Stone.",
+        "legenda": "A gente sabe: a rotina de quem trabalha com alimentação é uma correria só. 🥘\n\nÉ fogão ligado, cliente chegando e mil coisas para resolver ao mesmo tempo. Mas para o seu restaurante crescer com saúde, não basta só cozinhar bem, é preciso organizar a gestão.\n\nNo Impulso Stone, a gente te ajuda a transformar esse esforço em um negócio estruturado. Vamos juntos?",
+        "cta": "link na bio para inscrição",
+        "inspired_by": [
+          "yt_qxZeyj_gecM",
+          "yt_JXH2Qx0teKU"
+        ],
+        "justificativa": "O roteiro utiliza o formato de bastidores (40% de frequência observada) e foca no tema de gestão (conectado aos posts de @deliverycomdebora). O gancho utiliza a técnica de quebra de expectativa (inspirado em yt_JXH2Qx0teKU) para atrair a atenção. A duração de 30-45s respeita a faixa de 30% de maior desempenho (30-60s) e utiliza texto na tela (62% de frequência) para reforçar a mensagem de forma direta e acessível para o público de 35-54 anos.",
+        "cenas": [
+          {
+            "tempo": "0-3s",
+            "plano": "rosto",
+            "visual": "Empreendedora real na cozinha ou balcão, olhando para a câmera com expressão de quem tem um segredo.",
+            "fala": "O segredo de um restaurante que cresce não está só na cozinha.",
+            "texto_tela": "Não é só sobre a comida..."
+          },
+          {
+            "tempo": "3-12s",
+            "plano": "ambiente",
+            "visual": "Cenas rápidas da produção: organizando pedidos, conferindo estoque ou limpando o balcão.",
+            "fala": "A gente passa o dia todo entre fogão, pedidos e cliente, mas o que faz o negócio rodar é a organização por trás de tudo.",
+            "texto_tela": "A rotina é intensa!"
+          },
+          {
+            "tempo": "12-25s",
+            "plano": "maos",
+            "visual": "Mãos anotando algo em um caderno ou organizando uma planilha/comanda de forma prática.",
+            "fala": "Saber quanto você gasta e como organizar seu tempo é o que separa o cansaço do crescimento.",
+            "texto_tela": "Gestão = Crescimento"
+          },
+          {
+            "tempo": "25-35s",
+            "plano": "rosto",
+            "visual": "Empreendedora sorrindo, transmitindo acolhimento e encorajamento.",
+            "fala": "Se você sente que está só apagando incêndio, o Impulso Stone pode te ajudar a organizar a casa.",
+            "texto_tela": "Você não está sozinho(a)"
+          },
+          {
+            "tempo": "35-45s",
+            "plano": "ambiente",
+            "visual": "Cena do restaurante funcionando ou logo do Impulso Stone sobreposta.",
+            "fala": "Clique no link da nossa bio e conheça o programa.",
+            "texto_tela": "Link na Bio"
+          }
+        ]
+      }
+    ],
+    "confidence_flag": false,
+    "explanation": "Padrões observados entre 154 publicações de alto desempenho (segmento=alimentacao, 154 posts de alto desempenho): tipo de post 'short' (86%, 133/154); formato 'bastidores' (40%, 62/154); gancho 'curiosidade' (49%, 76/154); tema 'vendas' (28%, 43/154); CTA 'nenhum' (66%, 101/154). Referências: @deliverycomdebora, @wansalgados, @marcelomarani. São padrões observados na base, não garantia de resultado.",
+    "run_id": "0364b00c5abd",
+    "llm": "gemini/gemma-4-26b-a4b-it"
+  },
+  "gerar_criativo|vídeo curto sobre precificação para quem está começando a empreender|": {
+    "mode": "gerar_criativo",
+    "query": "Vídeo curto sobre precificação para quem está começando a empreender",
+    "segment_used": null,
+    "findings": [
+      {
+        "feature": "criador_e_empreendedor_real=sim",
+        "frequency": 0.8352,
+        "n_posts": 522,
+        "total": 625,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_tvD2hKCkUAE",
+          "yt_WxYN7fPd-h4"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=60-90s",
+        "frequency": 0.3872,
+        "n_posts": 242,
+        "total": 625,
+        "example_post_ids": [
+          "yt_L8lYfYVBCEM",
+          "yt_OAOQQwtLHcY",
+          "yt_tvD2hKCkUAE"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=30-60s",
+        "frequency": 0.248,
+        "n_posts": 155,
+        "total": 625,
+        "example_post_ids": [
+          "yt_VFXwKH2eNQE",
+          "yt_fBuVGlpc5pU",
+          "yt_GfiMbTyylfw"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=15-30s",
+        "frequency": 0.1344,
+        "n_posts": 84,
+        "total": 625,
+        "example_post_ids": [
+          "yt_OWI0Nnk1iQI",
+          "yt_ClKU9hLBkd8",
+          "yt_4UapXcQiqWY"
+        ]
+      },
+      {
+        "feature": "formato_video=talking head",
+        "frequency": 0.2864,
+        "n_posts": 179,
+        "total": 625,
+        "example_post_ids": [
+          "yt_HOKqKW15U8A",
+          "ig_DdCHiXjOzZf",
+          "yt_VFXwKH2eNQE"
+        ]
+      },
+      {
+        "feature": "formato_video=tutorial",
+        "frequency": 0.2,
+        "n_posts": 125,
+        "total": 625,
+        "example_post_ids": [
+          "yt_Uff1tet5qnI",
+          "yt_fBuVGlpc5pU",
+          "yt_t2iyex_BlIs"
+        ]
+      },
+      {
+        "feature": "formato_video=bastidores",
+        "frequency": 0.1728,
+        "n_posts": 108,
+        "total": 625,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_RfQadOAwN58",
+          "yt__nAddFoTlm0"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=curta",
+        "frequency": 0.616,
+        "n_posts": 385,
+        "total": 625,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_L8lYfYVBCEM",
+          "yt_tvD2hKCkUAE"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=média",
+        "frequency": 0.2048,
+        "n_posts": 128,
+        "total": 625,
+        "example_post_ids": [
+          "yt_HOKqKW15U8A",
+          "yt_VFXwKH2eNQE",
+          "ig_DMps12IOWSw"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=longa",
+        "frequency": 0.1792,
+        "n_posts": 112,
+        "total": 625,
+        "example_post_ids": [
+          "yt_OAOQQwtLHcY",
+          "yt_fBuVGlpc5pU",
+          "yt_d27PWJ6iYFQ"
+        ]
+      },
+      {
+        "feature": "oferta_ou_beneficio_explicito=sim",
+        "frequency": 0.2656,
+        "n_posts": 166,
+        "total": 625,
+        "example_post_ids": [
+          "yt_OAOQQwtLHcY",
+          "yt_VFXwKH2eNQE",
+          "yt_fBuVGlpc5pU"
+        ]
+      },
+      {
+        "feature": "prova_social=sim",
+        "frequency": 0.1936,
+        "n_posts": 121,
+        "total": 625,
+        "example_post_ids": [
+          "yt_tcQKC2VJzOM",
+          "yt_4UapXcQiqWY",
+          "yt_wg1UKi_woNI"
+        ]
+      },
+      {
+        "feature": "tem_rosto=sim",
+        "frequency": 0.744,
+        "n_posts": 465,
+        "total": 625,
+        "example_post_ids": [
+          "yt_L8lYfYVBCEM",
+          "yt_OAOQQwtLHcY",
+          "yt_tvD2hKCkUAE"
+        ]
+      },
+      {
+        "feature": "tema_principal=vendas",
+        "frequency": 0.248,
+        "n_posts": 155,
+        "total": 625,
+        "example_post_ids": [
+          "yt_L8lYfYVBCEM",
+          "yt_tvD2hKCkUAE",
+          "yt_RfQadOAwN58"
+        ]
+      },
+      {
+        "feature": "tema_principal=marketing",
+        "frequency": 0.2032,
+        "n_posts": 127,
+        "total": 625,
+        "example_post_ids": [
+          "yt_t2iyex_BlIs",
+          "yt_2Fu-QP_K6PQ",
+          "yt_tcQKC2VJzOM"
+        ]
+      },
+      {
+        "feature": "tema_principal=história de empreendedor",
+        "frequency": 0.1472,
+        "n_posts": 92,
+        "total": 625,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt__nAddFoTlm0",
+          "yt_TqJ12xVgwDQ"
+        ]
+      },
+      {
+        "feature": "texto_na_tela=sim",
+        "frequency": 0.6672,
+        "n_posts": 417,
+        "total": 625,
+        "example_post_ids": [
+          "yt_L8lYfYVBCEM",
+          "yt_OAOQQwtLHcY",
+          "yt_tvD2hKCkUAE"
+        ]
+      },
+      {
+        "feature": "tipo_cta=nenhum",
+        "frequency": 0.5904,
+        "n_posts": 369,
+        "total": 625,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_L8lYfYVBCEM",
+          "yt_tvD2hKCkUAE"
+        ]
+      },
+      {
+        "feature": "tipo_cta=link na bio",
+        "frequency": 0.2576,
+        "n_posts": 161,
+        "total": 625,
+        "example_post_ids": [
+          "yt_OAOQQwtLHcY",
+          "yt_VFXwKH2eNQE",
+          "yt_fBuVGlpc5pU"
+        ]
+      },
+      {
+        "feature": "tipo_cta=comentar",
+        "frequency": 0.0912,
+        "n_posts": 57,
+        "total": 625,
+        "example_post_ids": [
+          "ig_Ddyyft5RHS2",
+          "yt_kQIkDusMKf8",
+          "yt_SWweplBQkK8"
+        ]
+      },
+      {
+        "feature": "tipo_hook=curiosidade",
+        "frequency": 0.48,
+        "n_posts": 300,
+        "total": 625,
+        "example_post_ids": [
+          "yt_OAOQQwtLHcY",
+          "yt_WxYN7fPd-h4",
+          "yt_HOKqKW15U8A"
+        ]
+      },
+      {
+        "feature": "tipo_hook=promessa",
+        "frequency": 0.2048,
+        "n_posts": 128,
+        "total": 625,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_L8lYfYVBCEM",
+          "yt_Uff1tet5qnI"
+        ]
+      },
+      {
+        "feature": "tipo_hook=pergunta",
+        "frequency": 0.1504,
+        "n_posts": 94,
+        "total": 625,
+        "example_post_ids": [
+          "yt__wNlkS2hdRs",
+          "yt_ZfEqqaKR2BE",
+          "yt_OWI0Nnk1iQI"
+        ]
+      },
+      {
+        "feature": "tipo_post=short",
+        "frequency": 0.9008,
+        "n_posts": 563,
+        "total": 625,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt_L8lYfYVBCEM",
+          "yt_OAOQQwtLHcY"
+        ]
+      },
+      {
+        "feature": "tipo_post=reels",
+        "frequency": 0.072,
+        "n_posts": 45,
+        "total": 625,
+        "example_post_ids": [
+          "ig_DdCHiXjOzZf",
+          "ig_DbwRJEbuaH7",
+          "ig_Ddyyft5RHS2"
+        ]
+      },
+      {
+        "feature": "tipo_post=carrossel",
+        "frequency": 0.0176,
+        "n_posts": 11,
+        "total": 625,
+        "example_post_ids": [
+          "ig_DfBVr2RkS0c",
+          "ig_DaNjuEGlU9S",
+          "ig_DaoPz-HFM31"
+        ]
+      },
+      {
+        "feature": "tom=informal",
+        "frequency": 0.7296,
+        "n_posts": 456,
+        "total": 625,
+        "example_post_ids": [
+          "yt_6dd-F1oykhQ",
+          "yt__wNlkS2hdRs",
+          "ig_DdCHiXjOzZf"
+        ]
+      },
+      {
+        "feature": "tom=inspiracional",
+        "frequency": 0.1296,
+        "n_posts": 81,
+        "total": 625,
+        "example_post_ids": [
+          "yt_HOKqKW15U8A",
+          "yt_2Fu-QP_K6PQ",
+          "ig_De2BMh4juql"
+        ]
+      },
+      {
+        "feature": "tom=humorístico",
+        "frequency": 0.0992,
+        "n_posts": 62,
+        "total": 625,
+        "example_post_ids": [
+          "yt_L8lYfYVBCEM",
+          "yt_OAOQQwtLHcY",
+          "yt_tvD2hKCkUAE"
+        ]
+      }
+    ],
+    "reference_posts": [
+      {
+        "post_id": "yt_fBU9Slqo2os",
+        "url": "https://www.youtube.com/shorts/fBU9Slqo2os",
+        "platform": "youtube",
+        "handle": "wansalgados",
+        "engagement_rate": 0.06904,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "bastidores",
+          "tipo_hook": "pergunta",
+          "hook_primeiros_3s": "Quem ama Mini Churros?",
+          "tema_principal": "marketing",
+          "tom": "informal",
+          "tipo_cta": "comentar",
+          "tem_rosto": 0,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "vídeo curto de produção",
+            "visual apetitoso do doce",
+            "texto na tela chamativo",
+            "pergunta interativa na legenda",
+            "foco no segmento de alimentação"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_yz6uMiYlfds",
+        "url": "https://www.youtube.com/shorts/yz6uMiYlfds",
+        "platform": "youtube",
+        "handle": "deliverycomdebora",
+        "engagement_rate": 0.01942,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "talking head",
+          "tipo_hook": "dor",
+          "hook_primeiros_3s": "Repasse iFood, é bom avisar para quem está começando",
+          "tema_principal": "finanças",
+          "tom": "informal",
+          "tipo_cta": "seguir",
+          "tem_rosto": 1,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "autoridade no nicho",
+            "foco em dor financeira",
+            "interação com comentários",
+            "cenário de bastidores",
+            "linguagem direta e prática"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_fEkjoKrb-xA",
+        "url": "https://www.youtube.com/shorts/fEkjoKrb-xA",
+        "platform": "youtube",
+        "handle": "coracontapj",
+        "engagement_rate": 0.18776,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "depoimento",
+          "tipo_hook": "dor",
+          "hook_primeiros_3s": "A jornada de empreender vem acompanhada de muitas vozes.",
+          "tema_principal": "motivação",
+          "tom": "inspiracional",
+          "tipo_cta": "seguir",
+          "tem_rosto": 1,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 0,
+          "elementos_top5": [
+            "Manifesto inspirador sobre empreender",
+            "Imagem de celebração com bolo e confete",
+            "Texto 'Surpresa!' em destaque",
+            "CTA para se inscrever no canal",
+            "Marca Cora como apoiadora de PJ"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_qxZeyj_gecM",
+        "url": "https://www.youtube.com/shorts/qxZeyj_gecM",
+        "platform": "youtube",
+        "handle": "deliverycomdebora",
+        "engagement_rate": 0.02783,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "bastidores",
+          "tipo_hook": "dor",
+          "hook_primeiros_3s": "Você é uma microempresa!",
+          "tema_principal": "gestão",
+          "tom": "inspiracional",
+          "tipo_cta": "nenhum",
+          "tem_rosto": 0,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "bastidores da produção",
+            "foco no segmento de alimentação",
+            "texto na tela chamativo",
+            "identificação com o pequeno empreendedor",
+            "vídeo curto e direto"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_dtY5bO-lgUA",
+        "url": "https://www.youtube.com/shorts/dtY5bO-lgUA",
+        "platform": "youtube",
+        "handle": "wansalgados",
+        "engagement_rate": 0.03766,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "bastidores",
+          "tipo_hook": "promessa",
+          "hook_primeiros_3s": "Confiança e força de vontade de fazer acontecer",
+          "tema_principal": "motivação",
+          "tom": "inspiracional",
+          "tipo_cta": "comentar",
+          "tem_rosto": 0,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "produção de salgados",
+            "texto motivacional",
+            "vídeo curto dinâmico",
+            "bastidores da produção",
+            "chamada para engajamento"
+          ]
+        }
+      }
+    ],
+    "creatives": [
+      {
+        "titulo": "Precificação sem Medo",
+        "formato": "Reels 45-60s, talking head com cortes dinâmicos",
+        "gancho": "Você sente que trabalha, trabalha e não vê a cor do dinheiro no fim do mês?",
+        "roteiro": "1. Gancho focando na dor financeira do empreendedor iniciante. 2. Explicação rápida de que preço não é só custo + lucro, mas também o tempo dedicado. 3. Dica prática de separar gastos pessoais de gastos do negócio. 4. Encerramento encorajador convidando para o Impulso Stone.",
+        "legenda": "Você já sentiu que o dinheiro do seu negócio some sem você entender para onde foi? 💸\n\nPara quem está começando, a precificação é um dos maiores desafios. Muita gente foca só no custo do material, mas esquece de valorizar o próprio tempo e as despesas fixas.\n\nNão é sobre cobrar caro ou barato, é sobre cobrar o valor justo para o seu negócio ser sustentável e você ter tranquilidade para crescer. 🌱\n\nNo Impulso Stone, a gente te ajuda a transformar essa realidade com mentorias e educação prática para o seu dia a dia.",
+        "cta": "comentar",
+        "inspired_by": [
+          "yt_yz6uMiYlfds",
+          "yt_qxZeyj_gecM"
+        ],
+        "justificativa": "O roteiro utiliza o formato 'talking head' (observado em 29% dos posts de alto desempenho) e foca em uma 'dor' financeira (inspirado no post yt_yz6uMiYlfds), que é um tema central para microempreendedores. A duração estimada de 45-60s está dentro das faixas de maior desempenho (39% e 25%). O uso de 'texto na tela' (67% de frequência) foi aplicado para reforçar a mensagem. O tom é acolhedor e direto, conectando o conhecimento técnico (precificação) à rotina real, conforme solicitado.",
+        "cenas": [
+          {
+            "tempo": "0-3s",
+            "plano": "rosto",
+            "visual": "Empreendedora olhando para a câmera com expressão de dúvida/preocupação leve.",
+            "fala": "Você sente que trabalha, trabalha e não vê a cor do dinheiro no fim do mês?",
+            "texto_tela": "Trabalha muito e não vê lucro?"
+          },
+          {
+            "tempo": "3-15s",
+            "plano": "rosto",
+            "visual": "Empreendedora explicando de forma acolhedora, gesticulando.",
+            "fala": "Isso acontece muito quando a gente começa e esquece de um detalhe: o seu tempo e os seus custos invisíveis.",
+            "texto_tela": "O erro da precificação"
+          },
+          {
+            "tempo": "15-35s",
+            "plano": "maos",
+            "visual": "Mãos anotando valores em um caderno ou calculadora sobre uma mesa de trabalho.",
+            "fala": "Não é só somar o material e colocar uma margem. Você precisa incluir o seu tempo e separar o que é conta da casa do que é conta da empresa.",
+            "texto_tela": "Custo + Tempo + Despesas"
+          },
+          {
+            "tempo": "35-50s",
+            "plano": "rosto",
+            "visual": "Empreendedora sorrindo, transmitindo confiança e encorajamento.",
+            "fala": "Organizar isso é o primeiro passo para o seu negócio crescer com saúde. Não precisa ser difícil, você só precisa de método.",
+            "texto_tela": "Gestão é liberdade!"
+          },
+          {
+            "tempo": "50-60s",
+            "plano": "ambiente",
+            "visual": "Cenário de um pequeno negócio (ex: mesa de produção ou escritório) com logo do Impulso Stone.",
+            "fala": "Quer aprender a organizar seu negócio de um jeito simples? O Impulso Stone te ajuda. Comenta 'EU QUERO' aqui embaixo.",
+            "texto_tela": "Comente 'EU QUERO'"
+          }
+        ]
+      }
+    ],
+    "confidence_flag": false,
+    "explanation": "Padrões observados entre 625 publicações de alto desempenho (segmento=todos, 625 posts de alto desempenho): tipo de post 'short' (90%, 563/625); formato 'talking head' (29%, 179/625); gancho 'curiosidade' (48%, 300/625); tema 'vendas' (25%, 155/625); CTA 'nenhum' (59%, 369/625). Referências: @wansalgados, @deliverycomdebora, @coracontapj. São padrões observados na base, não garantia de resultado.",
+    "run_id": "2de30b59e7d2",
+    "llm": "gemini/gemma-4-26b-a4b-it"
+  },
+  "gerar_criativo|vídeo curto com humor sobre o dia a dia de quem tem loja ou comércio|varejo": {
+    "mode": "gerar_criativo",
+    "query": "Vídeo curto com humor sobre o dia a dia de quem tem loja ou comércio",
+    "segment_used": "varejo",
+    "findings": [
+      {
+        "feature": "criador_e_empreendedor_real=sim",
+        "frequency": 0.6316,
+        "n_posts": 24,
+        "total": 38,
+        "example_post_ids": [
+          "yt_VFXwKH2eNQE",
+          "ig_DdW-hq4Bc80",
+          "ig_DfPKzFxtp_w"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=30-60s",
+        "frequency": 0.3421,
+        "n_posts": 13,
+        "total": 38,
+        "example_post_ids": [
+          "yt_VFXwKH2eNQE",
+          "yt_FadrxdZ_rSk",
+          "yt_FxnV298xD3s"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=>90s",
+        "frequency": 0.1842,
+        "n_posts": 7,
+        "total": 38,
+        "example_post_ids": [
+          "yt_Uff1tet5qnI",
+          "yt_dNqPunNdonA",
+          "yt_sfuJTQ9r4yk"
+        ]
+      },
+      {
+        "feature": "duracao_faixa=60-90s",
+        "frequency": 0.1053,
+        "n_posts": 4,
+        "total": 38,
+        "example_post_ids": [
+          "yt_y8YN0khvQIc",
+          "yt_7-9vquY8cGE",
+          "yt_SCZY8-FvCbU"
+        ]
+      },
+      {
+        "feature": "formato_video=talking head",
+        "frequency": 0.4474,
+        "n_posts": 17,
+        "total": 38,
+        "example_post_ids": [
+          "yt_VFXwKH2eNQE",
+          "yt_FadrxdZ_rSk",
+          "yt_FxnV298xD3s"
+        ]
+      },
+      {
+        "feature": "formato_video=tutorial",
+        "frequency": 0.2368,
+        "n_posts": 9,
+        "total": 38,
+        "example_post_ids": [
+          "yt_Uff1tet5qnI",
+          "yt_dNqPunNdonA",
+          "yt_sfuJTQ9r4yk"
+        ]
+      },
+      {
+        "feature": "formato_video=bastidores",
+        "frequency": 0.1579,
+        "n_posts": 6,
+        "total": 38,
+        "example_post_ids": [
+          "ig_Dbp39aRN9_A",
+          "ig_Db3LhyKx62s",
+          "ig_DccS6KfxjC6"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=curta",
+        "frequency": 0.6842,
+        "n_posts": 26,
+        "total": 38,
+        "example_post_ids": [
+          "yt_Uff1tet5qnI",
+          "yt_FadrxdZ_rSk",
+          "yt_dNqPunNdonA"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=média",
+        "frequency": 0.2105,
+        "n_posts": 8,
+        "total": 38,
+        "example_post_ids": [
+          "yt_VFXwKH2eNQE",
+          "ig_DfPKzFxtp_w",
+          "yt_4nGRrav34SM"
+        ]
+      },
+      {
+        "feature": "legenda_tamanho=longa",
+        "frequency": 0.1053,
+        "n_posts": 4,
+        "total": 38,
+        "example_post_ids": [
+          "ig_DdW-hq4Bc80",
+          "yt_Fjq5wlma1gY",
+          "ig_Db3LhyKx62s"
+        ]
+      },
+      {
+        "feature": "oferta_ou_beneficio_explicito=sim",
+        "frequency": 0.3421,
+        "n_posts": 13,
+        "total": 38,
+        "example_post_ids": [
+          "yt_VFXwKH2eNQE",
+          "yt_dNqPunNdonA",
+          "yt_sfuJTQ9r4yk"
+        ]
+      },
+      {
+        "feature": "prova_social=sim",
+        "frequency": 0.0263,
+        "n_posts": 1,
+        "total": 38,
+        "example_post_ids": [
+          "ig_DdbhZsiRXg8"
+        ]
+      },
+      {
+        "feature": "tem_rosto=sim",
+        "frequency": 0.6053,
+        "n_posts": 23,
+        "total": 38,
+        "example_post_ids": [
+          "yt_VFXwKH2eNQE",
+          "yt_FadrxdZ_rSk",
+          "yt_Fjq5wlma1gY"
+        ]
+      },
+      {
+        "feature": "tema_principal=vendas",
+        "frequency": 0.2105,
+        "n_posts": 8,
+        "total": 38,
+        "example_post_ids": [
+          "yt_FadrxdZ_rSk",
+          "yt_Fjq5wlma1gY",
+          "yt_y8YN0khvQIc"
+        ]
+      },
+      {
+        "feature": "tema_principal=história de empreendedor",
+        "frequency": 0.2105,
+        "n_posts": 8,
+        "total": 38,
+        "example_post_ids": [
+          "yt_FxnV298xD3s",
+          "ig_Dbp39aRN9_A",
+          "yt_KtXTSEHBwew"
+        ]
+      },
+      {
+        "feature": "tema_principal=marketing",
+        "frequency": 0.1579,
+        "n_posts": 6,
+        "total": 38,
+        "example_post_ids": [
+          "ig_DdW-hq4Bc80",
+          "ig_Dclhe8_RYy7",
+          "ig_DccS6KfxjC6"
+        ]
+      },
+      {
+        "feature": "texto_na_tela=sim",
+        "frequency": 0.7368,
+        "n_posts": 28,
+        "total": 38,
+        "example_post_ids": [
+          "yt_FadrxdZ_rSk",
+          "yt_dNqPunNdonA",
+          "ig_DfPKzFxtp_w"
+        ]
+      },
+      {
+        "feature": "tipo_cta=nenhum",
+        "frequency": 0.8947,
+        "n_posts": 34,
+        "total": 38,
+        "example_post_ids": [
+          "yt_Uff1tet5qnI",
+          "yt_FadrxdZ_rSk",
+          "yt_dNqPunNdonA"
+        ]
+      },
+      {
+        "feature": "tipo_cta=link na bio",
+        "frequency": 0.0789,
+        "n_posts": 3,
+        "total": 38,
+        "example_post_ids": [
+          "yt_VFXwKH2eNQE",
+          "yt_4nGRrav34SM",
+          "ig_DdbhZsiRXg8"
+        ]
+      },
+      {
+        "feature": "tipo_cta=seguir",
+        "frequency": 0.0263,
+        "n_posts": 1,
+        "total": 38,
+        "example_post_ids": [
+          "yt_zqNiefyt2G0"
+        ]
+      },
+      {
+        "feature": "tipo_hook=curiosidade",
+        "frequency": 0.4474,
+        "n_posts": 17,
+        "total": 38,
+        "example_post_ids": [
+          "yt_FadrxdZ_rSk",
+          "ig_DdW-hq4Bc80",
+          "yt_FxnV298xD3s"
+        ]
+      },
+      {
+        "feature": "tipo_hook=promessa",
+        "frequency": 0.2368,
+        "n_posts": 9,
+        "total": 38,
+        "example_post_ids": [
+          "yt_Uff1tet5qnI",
+          "yt_sfuJTQ9r4yk",
+          "ig_DfPKzFxtp_w"
+        ]
+      },
+      {
+        "feature": "tipo_hook=dor",
+        "frequency": 0.1842,
+        "n_posts": 7,
+        "total": 38,
+        "example_post_ids": [
+          "yt_VFXwKH2eNQE",
+          "yt_dNqPunNdonA",
+          "yt_KtXTSEHBwew"
+        ]
+      },
+      {
+        "feature": "tipo_post=short",
+        "frequency": 0.6842,
+        "n_posts": 26,
+        "total": 38,
+        "example_post_ids": [
+          "yt_VFXwKH2eNQE",
+          "yt_Uff1tet5qnI",
+          "yt_FadrxdZ_rSk"
+        ]
+      },
+      {
+        "feature": "tipo_post=reels",
+        "frequency": 0.2632,
+        "n_posts": 10,
+        "total": 38,
+        "example_post_ids": [
+          "ig_DdW-hq4Bc80",
+          "ig_DfPKzFxtp_w",
+          "ig_Dbp39aRN9_A"
+        ]
+      },
+      {
+        "feature": "tipo_post=imagem",
+        "frequency": 0.0263,
+        "n_posts": 1,
+        "total": 38,
+        "example_post_ids": [
+          "ig_DeUAi4dRL5o"
+        ]
+      },
+      {
+        "feature": "tom=informal",
+        "frequency": 0.3947,
+        "n_posts": 15,
+        "total": 38,
+        "example_post_ids": [
+          "yt_VFXwKH2eNQE",
+          "yt_FadrxdZ_rSk",
+          "yt_dNqPunNdonA"
+        ]
+      },
+      {
+        "feature": "tom=inspiracional",
+        "frequency": 0.3947,
+        "n_posts": 15,
+        "total": 38,
+        "example_post_ids": [
+          "ig_DdW-hq4Bc80",
+          "ig_DfPKzFxtp_w",
+          "ig_Dbp39aRN9_A"
+        ]
+      },
+      {
+        "feature": "tom=técnico",
+        "frequency": 0.1579,
+        "n_posts": 6,
+        "total": 38,
+        "example_post_ids": [
+          "yt_Uff1tet5qnI",
+          "yt_sfuJTQ9r4yk",
+          "yt_4nGRrav34SM"
+        ]
+      }
+    ],
+    "reference_posts": [
+      {
+        "post_id": "ig_Dclhe8_RYy7",
+        "url": "https://www.instagram.com/p/Dclhe8_RYy7/",
+        "platform": "instagram",
+        "handle": "marianapetryy",
+        "engagement_rate": 0.04422,
+        "categories": {
+          "tipo_post": "reels",
+          "formato_video": "humor/esquete",
+          "tipo_hook": "curiosidade",
+          "hook_primeiros_3s": "Ser alta é lindo até chegar o dia de treinar perna",
+          "tema_principal": "marketing",
+          "tom": "humorístico",
+          "tipo_cta": "nenhum",
+          "tem_rosto": 1,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 0,
+          "elementos_top5": [
+            "Uso de humor e identificação",
+            "Texto na tela chamativo",
+            "Divulgação de cupom de desconto",
+            "Cenário de academia",
+            "Expressão de dor ou desafio cotidiano"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_VFXwKH2eNQE",
+        "url": "https://www.youtube.com/shorts/VFXwKH2eNQE",
+        "platform": "youtube",
+        "handle": "thainaeduardaalojacampea",
+        "engagement_rate": 1.11517,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "talking head",
+          "tipo_hook": "dor",
+          "hook_primeiros_3s": "Na correria de quem empreende, ter as informações da loja organizadas faz toda a diferença!",
+          "tema_principal": "gestão",
+          "tom": "informal",
+          "tipo_cta": "link na bio",
+          "tem_rosto": 1,
+          "texto_na_tela": 0,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "Identificação com a rotina corrida",
+            "Foco em organização da loja",
+            "Apresentação de solução ERP",
+            "Empreendedora real no vídeo",
+            "Chamada para cadastro"
+          ]
+        }
+      },
+      {
+        "post_id": "ig_DfPKzFxtp_w",
+        "url": "https://www.instagram.com/p/DfPKzFxtp_w/",
+        "platform": "instagram",
+        "handle": "marianapetryy",
+        "engagement_rate": 0.08739,
+        "categories": {
+          "tipo_post": "reels",
+          "formato_video": "trend",
+          "tipo_hook": "promessa",
+          "hook_primeiros_3s": "NÃO DESISTA Alguém já foi pro céu acreditando em você!",
+          "tema_principal": "motivação",
+          "tom": "inspiracional",
+          "tipo_cta": "nenhum",
+          "tem_rosto": 0,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "Mensagem de superação e incentivo",
+            "Apelo emocional forte",
+            "Conexão com data comemorativa",
+            "Estética visual agradável e limpa",
+            "Foco em humanização da marca"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_Oq-kBTpacQ8",
+        "url": "https://www.youtube.com/shorts/Oq-kBTpacQ8",
+        "platform": "youtube",
+        "handle": "dicasparaomei",
+        "engagement_rate": 0.04764,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "talking head",
+          "tipo_hook": "pergunta",
+          "hook_primeiros_3s": "Quais são as 05 fases da empresa?",
+          "tema_principal": "gestão",
+          "tom": "técnico",
+          "tipo_cta": "nenhum",
+          "tem_rosto": 1,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 0,
+          "elementos_top5": [
+            "pergunta instigante na tela",
+            "figura pública conhecida",
+            "tema de gestão empresarial",
+            "formato curto e direto",
+            "legenda com hashtags relevantes"
+          ]
+        }
+      },
+      {
+        "post_id": "yt_JSSaaZv88GM",
+        "url": "https://www.youtube.com/shorts/JSSaaZv88GM",
+        "platform": "youtube",
+        "handle": "dicasparaomei",
+        "engagement_rate": 0.0176,
+        "categories": {
+          "tipo_post": "short",
+          "formato_video": "talking head",
+          "tipo_hook": "dor",
+          "hook_primeiros_3s": "e aí um dia eu tava andando no lugar",
+          "tema_principal": "história de empreendedor",
+          "tom": "inspiracional",
+          "tipo_cta": "nenhum",
+          "tem_rosto": 1,
+          "texto_na_tela": 1,
+          "prova_social": 0,
+          "criador_e_empreendedor_real": 1,
+          "elementos_top5": [
+            "Rosto do empreendedor",
+            "Legenda 'Empreendedor Raiz'",
+            "Legenda no vídeo",
+            "Estética preto e branco",
+            "Hashtags virais"
+          ]
+        }
+      }
+    ],
+    "creatives": [
+      {
+        "titulo": "A realidade da loja física",
+        "formato": "Reels 30-45s, humor/esquete",
+        "gancho": "Quando você abre a loja e o primeiro cliente só quer trocar a sacola",
+        "roteiro": "Cena 1 (0-3s): Empreendedora arrumando a arara, vira com cara de quem vai desabar. Cena 2 (3-15s): Cliente entra, olha tudo e pede um favor que não dá lucro. Cena 3 (15-30s): Empreendedora respira fundo, sorri e atende com carinho. Cena 4 (30-45s): Texto na tela reforçando a resiliência de quem tem comércio.",
+        "legenda": "Quem mais se identifica com os corres do comércio no dia a dia? \n\nEmpreender no varejo exige muita dedicação e paciência. Saber lidar com os imprevistos da rotina faz parte do crescimento do negócio.\n\nConta aqui nos comentários qual foi a situação mais inusitada que já aconteceu na sua loja!",
+        "cta": "nenhum",
+        "inspired_by": [
+          "ig_Dclhe8_RYy7",
+          "yt_VFXwKH2eNQE"
+        ],
+        "justificativa": "O criativo utiliza humor e identificação com a rotina (padrão observado no post ig_Dclhe8_RYy7), conta com criador real (presente em 63% dos posts de alto desempenho do recorte) e traz texto na tela (presente em 74% da base). A duração fica na faixa de 30-60s (34% do top) e o tipo de CTA é nenhum (89% da base).",
+        "cenas": [
+          {
+            "tempo": "0-3s",
+            "plano": "rosto",
+            "visual": "Empreendedora com cara de exausta no balcão da loja.",
+            "fala": "Quando você abre a loja e o primeiro cliente só quer trocar a sacola",
+            "texto_tela": "Quem nunca? 😅"
+          },
+          {
+            "tempo": "3-15s",
+            "plano": "ambiente",
+            "visual": "Ela fingindo paciência enquanto ouve o pedido inusitado.",
+            "fala": "Bom dia! Pois não, claro que a gente resolve...",
+            "texto_tela": "Foco na paciência"
+          },
+          {
+            "tempo": "15-30s",
+            "plano": "rosto",
+            "visual": "Olhando pra câmera com um sorriso irônico e compreensivo.",
+            "fala": "Rotina de lojista não é para os fracos, mas a gente ama.",
+            "texto_tela": "Vida de lojista"
+          },
+          {
+            "tempo": "30-45s",
+            "plano": "maos",
+            "visual": "Ajeitando os produtos na prateleira com carinho.",
+            "fala": "Bora para mais um dia porque o movimento não para!",
+            "texto_tela": "Impulso Stone com você"
+          }
+        ]
+      }
+    ],
+    "confidence_flag": false,
+    "explanation": "Padrões observados entre 38 publicações de alto desempenho (segmento=varejo, 38 posts de alto desempenho): tipo de post 'short' (68%, 26/38); formato 'talking head' (45%, 17/38); gancho 'curiosidade' (45%, 17/38); tema 'vendas' (21%, 8/38); CTA 'nenhum' (89%, 34/38). Referências: @marianapetryy, @thainaeduardaalojacampea, @dicasparaomei. São padrões observados na base, não garantia de resultado.",
+    "run_id": "1d3b8efb611b",
+    "llm": "gemini/gemini-3.5-flash-lite"
+  }
+}

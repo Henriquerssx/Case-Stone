@@ -1,0 +1,33 @@
+# segredos: nunca versionar (o modelo .env.example é a única exceção)
+.env
+.env.*
+!.env.example
+
+# ambiente Python
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# dados brutos, processados, cache e mídia baixada: contêm texto de terceiros, não redistribuir.
+# A base pública sanitizada fica em data/release/ (ver docs/DADOS_PRIVACIDADE_E_SEGURANCA.md).
+data/raw/
+data/processed/
+data/cache/
+data/media/
+db/*.sqlite
+db/*.sqlite-wal
+db/*.sqlite-shm
+db/*.sqlite-journal
+
+# logs de execução e registros que crescem a cada uso (podem conter consultas e respostas de modelos)
+outputs/llm_calls.jsonl
+outputs/runs.jsonl
+outputs/youtube_quota.jsonl
+outputs/*.log
+
+# sistema
+.DS_Store
+Thumbs.db

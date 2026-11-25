@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 320" width="1280" height="320" role="img" aria-label="Impulso Stone · Conteúdo de alto engajamento para MPEs">
+  <defs>
+    <clipPath id="r"><rect width="1280" height="320" rx="28"/></clipPath>
+  </defs>
+  <g clip-path="url(#r)">
+    <rect width="1280" height="320" fill="#004132"/>
+    <circle cx="1170" cy="40" r="190" fill="#C7F93C" opacity="0.16"/>
+    <circle cx="1210" cy="300" r="90" fill="#32ADA1" opacity="0.22"/>
+    <path d="M1060 210 l14 -34 l14 34 l34 14 l-34 14 l-14 34 l-14 -34 l-34 -14 z" fill="#C7F93C" opacity="0.9"/>
+    <text x="64" y="92" font-family="Outfit, Manrope, Segoe UI, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" letter-spacing="3" fill="#C7F93C">IMPULSO STONE · STONE × INTELI ACADEMY</text>
+    <text x="64" y="158" font-family="Outfit, Manrope, Segoe UI, Helvetica, Arial, sans-serif" font-size="50" font-weight="700" fill="#FFFFFF">Conteúdo de alto engajamento para MPEs</text>
+    <text x="64" y="204" font-family="Manrope, Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#D6E4DF">O que as publicações que mais engajam pequenos empreendedores têm em comum,</text>
+    <text x="64" y="234" font-family="Manrope, Segoe UI, Helvetica, Arial, sans-serif" font-size="22" fill="#D6E4DF">e roteiros prontos para o Impulso Stone ligados a posts reais.</text>
+    <rect x="64" y="258" width="430" height="36" rx="18" fill="#C7F93C"/>
+    <text x="84" y="282" font-family="Manrope, Segoe UI, Helvetica, Arial, sans-serif" font-size="17" font-weight="700" fill="#004132">6.675 posts · 55 perfis · 6 criativos prontos</text>
+  </g>
+</svg>

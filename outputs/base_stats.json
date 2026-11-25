@@ -1,0 +1,40 @@
+{
+  "n_posts_raw": 6675,
+  "n_posts_eligible": 6235,
+  "n_top": 625,
+  "n_profiles": 55,
+  "by_platform": {
+    "instagram": 820,
+    "youtube": 5855
+  },
+  "eligible_by_platform": {
+    "instagram": 613,
+    "youtube": 5622
+  },
+  "profiles_by_faixa": {
+    "grande": 22,
+    "medio": 20,
+    "micro": 13
+  },
+  "exclusions": {
+    "elegivel": 6235,
+    "menos_de_14_dias": 272,
+    "curtidas_ocultas": 84,
+    "comentarios_indisponiveis": 76,
+    "video_indisponivel": 8
+  },
+  "posted_from": "2018-03-19",
+  "posted_to": "2026-11-24",
+  "collected_from": "2026-11-23",
+  "collected_to": "2026-11-24",
+  "er_threshold_by_platform": {
+    "instagram": 0.019956119161946312,
+    "youtube": 0.012864853294493196
+  },
+  "er_median_by_platform": {
+    "instagram": 0.0030586050576219344,
+    "youtube": 0.0004270394048346821
+  },
+  "ranking_scope": "platform",
+  "overlap_top_platform_vs_combined": 602
+}

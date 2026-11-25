@@ -1,0 +1,313 @@
+{
+  "n_top_categorizados": 625,
+  "concentracao": {
+    "n_criadores": 42,
+    "share_top1": 0.179,
+    "share_top4": 0.595,
+    "maiores": {
+      "jairtavaresoficial2007": 112,
+      "marcelo_baccarini": 96,
+      "gesieudo": 92,
+      "wansalgados": 72,
+      "deliverycomdebora": 54
+    }
+  },
+  "top_por_campo": {
+    "criador_e_empreendedor_real": [
+      {
+        "value": "sim",
+        "n": 522,
+        "freq": 0.835,
+        "n_criadores": 39,
+        "freq_por_criador": 0.809
+      },
+      {
+        "value": "não",
+        "n": 103,
+        "freq": 0.165,
+        "n_criadores": 16,
+        "freq_por_criador": 0.191
+      }
+    ],
+    "duracao_faixa": [
+      {
+        "value": "60-90s",
+        "n": 242,
+        "freq": 0.387,
+        "n_criadores": 15,
+        "freq_por_criador": 0.286
+      },
+      {
+        "value": "30-60s",
+        "n": 155,
+        "freq": 0.248,
+        "n_criadores": 19,
+        "freq_por_criador": 0.412
+      },
+      {
+        "value": "15-30s",
+        "n": 84,
+        "freq": 0.134,
+        "n_criadores": 9,
+        "freq_por_criador": 0.134
+      }
+    ],
+    "formato_video": [
+      {
+        "value": "talking head",
+        "n": 179,
+        "freq": 0.286,
+        "n_criadores": 28,
+        "freq_por_criador": 0.49
+      },
+      {
+        "value": "tutorial",
+        "n": 125,
+        "freq": 0.2,
+        "n_criadores": 17,
+        "freq_por_criador": 0.206
+      },
+      {
+        "value": "bastidores",
+        "n": 108,
+        "freq": 0.173,
+        "n_criadores": 13,
+        "freq_por_criador": 0.14
+      }
+    ],
+    "legenda_tamanho": [
+      {
+        "value": "curta",
+        "n": 385,
+        "freq": 0.616,
+        "n_criadores": 22,
+        "freq_por_criador": 0.408
+      },
+      {
+        "value": "média",
+        "n": 128,
+        "freq": 0.205,
+        "n_criadores": 23,
+        "freq_por_criador": 0.269
+      },
+      {
+        "value": "longa",
+        "n": 112,
+        "freq": 0.179,
+        "n_criadores": 24,
+        "freq_por_criador": 0.323
+      }
+    ],
+    "oferta_ou_beneficio_explicito": [
+      {
+        "value": "não",
+        "n": 459,
+        "freq": 0.734,
+        "n_criadores": 31,
+        "freq_por_criador": 0.584
+      },
+      {
+        "value": "sim",
+        "n": 166,
+        "freq": 0.266,
+        "n_criadores": 27,
+        "freq_por_criador": 0.416
+      }
+    ],
+    "prova_social": [
+      {
+        "value": "não",
+        "n": 504,
+        "freq": 0.806,
+        "n_criadores": 42,
+        "freq_por_criador": 0.913
+      },
+      {
+        "value": "sim",
+        "n": 121,
+        "freq": 0.194,
+        "n_criadores": 13,
+        "freq_por_criador": 0.087
+      }
+    ],
+    "tem_cta": [
+      {
+        "value": "não",
+        "n": 369,
+        "freq": 0.59,
+        "n_criadores": 27,
+        "freq_por_criador": 0.518
+      },
+      {
+        "value": "sim",
+        "n": 256,
+        "freq": 0.41,
+        "n_criadores": 30,
+        "freq_por_criador": 0.482
+      }
+    ],
+    "tem_rosto": [
+      {
+        "value": "sim",
+        "n": 465,
+        "freq": 0.744,
+        "n_criadores": 36,
+        "freq_por_criador": 0.694
+      },
+      {
+        "value": "não",
+        "n": 160,
+        "freq": 0.256,
+        "n_criadores": 23,
+        "freq_por_criador": 0.306
+      }
+    ],
+    "tema_principal": [
+      {
+        "value": "vendas",
+        "n": 155,
+        "freq": 0.248,
+        "n_criadores": 18,
+        "freq_por_criador": 0.16
+      },
+      {
+        "value": "marketing",
+        "n": 127,
+        "freq": 0.203,
+        "n_criadores": 11,
+        "freq_por_criador": 0.114
+      },
+      {
+        "value": "história de empreendedor",
+        "n": 92,
+        "freq": 0.147,
+        "n_criadores": 13,
+        "freq_por_criador": 0.092
+      }
+    ],
+    "texto_na_tela": [
+      {
+        "value": "sim",
+        "n": 417,
+        "freq": 0.667,
+        "n_criadores": 38,
+        "freq_por_criador": 0.776
+      },
+      {
+        "value": "não",
+        "n": 208,
+        "freq": 0.333,
+        "n_criadores": 22,
+        "freq_por_criador": 0.224
+      }
+    ],
+    "tipo_cta": [
+      {
+        "value": "nenhum",
+        "n": 369,
+        "freq": 0.59,
+        "n_criadores": 27,
+        "freq_por_criador": 0.518
+      },
+      {
+        "value": "link na bio",
+        "n": 161,
+        "freq": 0.258,
+        "n_criadores": 18,
+        "freq_por_criador": 0.249
+      },
+      {
+        "value": "comentar",
+        "n": 57,
+        "freq": 0.091,
+        "n_criadores": 14,
+        "freq_por_criador": 0.153
+      }
+    ],
+    "tipo_hook": [
+      {
+        "value": "curiosidade",
+        "n": 300,
+        "freq": 0.48,
+        "n_criadores": 25,
+        "freq_por_criador": 0.375
+      },
+      {
+        "value": "promessa",
+        "n": 128,
+        "freq": 0.205,
+        "n_criadores": 23,
+        "freq_por_criador": 0.227
+      },
+      {
+        "value": "pergunta",
+        "n": 94,
+        "freq": 0.15,
+        "n_criadores": 21,
+        "freq_por_criador": 0.169
+      }
+    ],
+    "tipo_post": [
+      {
+        "value": "short",
+        "n": 563,
+        "freq": 0.901,
+        "n_criadores": 26,
+        "freq_por_criador": 0.619
+      },
+      {
+        "value": "reels",
+        "n": 45,
+        "freq": 0.072,
+        "n_criadores": 11,
+        "freq_por_criador": 0.234
+      },
+      {
+        "value": "carrossel",
+        "n": 11,
+        "freq": 0.018,
+        "n_criadores": 7,
+        "freq_por_criador": 0.079
+      }
+    ],
+    "tom": [
+      {
+        "value": "informal",
+        "n": 456,
+        "freq": 0.73,
+        "n_criadores": 33,
+        "freq_por_criador": 0.647
+      },
+      {
+        "value": "inspiracional",
+        "n": 81,
+        "freq": 0.13,
+        "n_criadores": 15,
+        "freq_por_criador": 0.182
+      },
+      {
+        "value": "humorístico",
+        "n": 62,
+        "freq": 0.099,
+        "n_criadores": 8,
+        "freq_por_criador": 0.057
+      }
+    ],
+    "usa_linguagem_regional": [
+      {
+        "value": "não",
+        "n": 592,
+        "freq": 0.947,
+        "n_criadores": 41,
+        "freq_por_criador": 0.928
+      },
+      {
+        "value": "sim",
+        "n": 33,
+        "freq": 0.053,
+        "n_criadores": 11,
+        "freq_por_criador": 0.072
+      }
+    ]
+  }
+}

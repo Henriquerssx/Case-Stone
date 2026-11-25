@@ -1,0 +1,42 @@
+{
+  "pesos": {
+    "nicho": 0.35,
+    "perfil": 0.3,
+    "periodo": 0.2,
+    "porte": 0.15
+  },
+  "plataformas": {
+    "instagram": {
+      "elegiveis": 613,
+      "top_oficial": 62,
+      "top_idp": 62,
+      "em_ambos": 50,
+      "sobreposicao": 0.806,
+      "concentracao_oficial": {
+        "criadores": 16,
+        "top4_share": 0.613
+      },
+      "concentracao_idp": {
+        "criadores": 16,
+        "top4_share": 0.452
+      },
+      "idp_categorizados": 50
+    },
+    "youtube": {
+      "elegiveis": 5622,
+      "top_oficial": 563,
+      "top_idp": 563,
+      "em_ambos": 411,
+      "sobreposicao": 0.73,
+      "concentracao_oficial": {
+        "criadores": 26,
+        "top4_share": 0.661
+      },
+      "concentracao_idp": {
+        "criadores": 30,
+        "top4_share": 0.51
+      },
+      "idp_categorizados": 416
+    }
+  }
+}
